@@ -38,7 +38,6 @@ PRESETS = [
     "How many HDB transactions are in the database?",
 ]
 
-@st.cache_resource
 def get_gen(): return AnswerGenerator()
 
 def get_stats():
