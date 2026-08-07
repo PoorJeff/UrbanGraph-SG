@@ -694,26 +694,136 @@ with tabs[3]:
 
 # ═══════════════ TAB 4: REPORT ═══════════════
 with tabs[4]:
-    col_a, col_b = st.columns(2)
-    with col_a:
+    # ── Fix #4: System Health Dashboard ──
+    st.subheader("System Health")
+    h1, h2, h3, h4 = st.columns(4)
+    try:
+        neo = run_query("RETURN 1 AS ok")[0]["ok"]
+        with h1: st.success(f"✅ Neo4j — Connected")
+    except:
+        with h1: st.error(f"❌ Neo4j — Offline")
+    try:
+        from src.retrieval.vector_store import get_store
+        vs = get_store()
+        vs._ensure_client()
+        count = vs.collection.count() if vs.collection else 0
+        with h2: st.success(f"✅ ChromaDB — {count:,} entities indexed")
+    except:
+        with h2: st.warning("⚠️ ChromaDB — Not connected")
+    try:
+        g = get_gen()
+        with h3: st.success(f"✅ LLM — {g.llm.model}")
+    except:
+        with h3: st.error("❌ LLM — API unreachable")
+    try:
+        import psutil, os
+        mem = psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024
+        with h4: st.info(f"💾 Memory — {mem:.0f} MB")
+    except:
+        with h4: st.info("💾 Memory — N/A")
+
+    st.divider()
+
+    # ── Fix #1: Structured Model Card (not JSON dump) ──
+    col_mc, col_exp = st.columns([1, 1])
+
+    with col_mc:
         st.subheader("Model Card")
         cp = Path("reports/mlops/model_card.json")
         if cp.exists():
-            st.json(json.loads(cp.read_text()))
-    with col_b:
-        st.subheader("Geospatial Visualizations")
-        for f, cap in [("mrt_topology.png","MRT Network Topology"),("demographic_heatmap.png","Population Density Heatmap"),("area_clustering.png","K-Means Area Clustering")]:
-            p = fig_dir / f
-            if p.exists():
-                st.image(str(p), caption=cap, use_container_width=True)
+            card = json.loads(cp.read_text())
+            st.markdown(f"""
+            <div style="background:#f8fafc;border-radius:10px;padding:18px;border:1px solid #e2e8f0">
+                <div style="font-weight:700;font-size:1rem;color:#0f172a">{card.get('project','')}</div>
+                <div style="font-size:0.75rem;color:#64748b;margin:4px 0">{card.get('generated_at','')[:19]}</div>
+                <hr style="margin:10px 0">
+                <div style="font-size:0.8rem;color:#334155"><b>Dataset:</b> {card.get('dataset','')}</div>
+                <div style="font-size:0.8rem;color:#334155"><b>Task:</b> {card.get('task','')}</div>
+                <div style="font-size:0.8rem;color:#334155"><b>Best Model:</b> <span style="color:#16a34a;font-weight:700">{card.get('best_model','')}</span></div>
+            </div>
+            """, unsafe_allow_html=True)
 
+            st.subheader("Model Comparison")
+            models = card.get("models", {})
+            if models:
+                rows = []
+                for name, metrics in models.items():
+                    rows.append({
+                        "Model": name,
+                        "R²": f"{metrics.get('R2', 0):.4f}",
+                        "MAE": f"{metrics.get('MAE', 0):.1f}",
+                        "RMSE": f"{metrics.get('RMSE', 0):.1f}",
+                        "CV R²": f"{metrics.get('CV_R2_mean', 0):.4f}±{metrics.get('CV_R2_std', 0):.4f}",
+                    })
+                st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
+        else:
+            st.info("Run 'Refresh Analysis' in the Analytics tab to generate model card")
+
+        # ── Fix #2: Experiment timeline ──
+        st.subheader("Experiment Timeline")
+        ep = Path("reports/mlops/experiments_20260807.json")
+        if ep.exists():
+            exps = json.loads(ep.read_text())
+            for e in exps:
+                with st.expander(f"🔬 {e['run_name']} — {e.get('status','')}"):
+                    c1, c2 = st.columns(2)
+                    with c1:
+                        st.caption("Parameters")
+                        st.json(e.get("params", {}))
+                    with c2:
+                        st.caption("Metrics")
+                        st.json(e.get("metrics", {}))
+        else:
+            st.info("No experiment logs yet")
+
+    with col_exp:
+        st.subheader("Geospatial Visualizations")
+
+        # ── Fix #3: Categorized visuals with explanations ──
+        viz_categories = {
+            "Network Topology": {
+                "files": [("mrt_topology.png", "MRT Network Topology — 137 stations, 7 lines, color-coded connections")],
+                "desc": "Graph representation of Singapore's MRT network. Nodes are stations, edges are CONNECTS_TO relationships. Interchange stations (degree > 2) are labeled."
+            },
+            "Demographics": {
+                "files": [("demographic_heatmap.png", "Population Density Heatmap — Yellow=High, Light=Low")],
+                "desc": "55 planning areas colored by population. Darker areas have higher population density. Data sourced from SingStat 2024 estimates."
+            },
+            "Clustering": {
+                "files": [("area_clustering.png", "K-Means Area Clustering — 4 clusters by demographics+transport")],
+                "desc": "Planning areas clustered by population, MRT station count, and HDB price. Downtown Core forms its own cluster (high MRT, high price)."
+            },
+        }
+
+        for cat_name, cat_data in viz_categories.items():
+            with st.expander(f"📊 {cat_name}", expanded=(cat_name == "Network Topology")):
+                st.caption(cat_data["desc"])
+                for f, cap in cat_data["files"]:
+                    p = fig_dir / f
+                    if p.exists():
+                        st.image(str(p), caption=cap, use_container_width=True)
+
+    # ── Fix #5: Export Report ──
     st.divider()
-    st.subheader("Experiment Tracking")
-    ep = Path("reports/mlops/experiments_20260807.json")
-    if ep.exists():
-        exps = json.loads(ep.read_text())
-        cols = st.columns(len(exps))
-        for i, e in enumerate(exps):
-            with cols[i]:
-                st.metric(e["run_name"], f"R²={e['metrics'].get('R2','?'):.3f}" if 'R2' in e.get('metrics',{}) else "N/A")
-                st.caption(str(e.get("params",""))[:80])
+    col_export, col_space = st.columns([2, 5])
+    with col_export:
+        if st.button("📥 Export Report Summary", use_container_width=True):
+            try:
+                export = {
+                    "project": "UrbanGraph-SG",
+                    "exported_at": str(datetime.now()),
+                    "system_status": {
+                        "neo4j": "connected" if run_query("RETURN 1") else "offline",
+                        "chromadb": count if 'count' in dir() else "unknown",
+                        "llm_model": get_gen().llm.model,
+                    },
+                    "knowledge_graph": {"nodes": N, "edges": E, "mrt": M, "bus": B, "hdb_areas": H},
+                    "ml_model_card": json.loads(cp.read_text()) if cp.exists() else {},
+                    "experiments": json.loads(ep.read_text()) if ep.exists() else [],
+                }
+                export_str = json.dumps(export, indent=2, default=str)
+                st.download_button("⬇️ Download JSON Report", export_str, "urbangraph_report.json", "application/json",
+                    use_container_width=True, key="dl_report")
+                st.success("Report generated! Click above to download.")
+            except Exception as e:
+                st.error(f"Export failed: {e}")
