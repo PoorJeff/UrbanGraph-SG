@@ -59,10 +59,28 @@ If any gate fails, STOP and fix before continuing.
 | 2 | ChromaDB Vector Store | ✅ Done | 2026-08-07 | 37/37 ✅ | 6/6 ✅ | 5,439 entities indexed, disk-persisted |
 | 3 | ML Weather Prediction | ✅ Done | 2026-08-07 | 37/37 ✅ | 6/6 ✅ | RF R²=0.82, CV=0.76, 3 charts |
 | 4 | Time Series Analysis | ✅ Done | 2026-08-07 | 37/37 ✅ | N/A | Humidity↔Temp r=-0.85, 3 charts |
-| 5 | CV Visualization | ⏳ Pending | - | - | - | - |
-| 6 | Graph ML Node2Vec | ⏳ Pending | - | - | - | - |
-| 7 | Multi-Agent System | ⏳ Pending | - | - | - | - |
-| 8 | MLOps Pipeline | ⏳ Pending | - | - | - | - |
+| 5 | CV Visualization | ✅ Done | 2026-08-07 | 37/37 ✅ | N/A | MRT topology, heatmap, K-Means clusters |
+| 6 | Graph ML Node2Vec | ✅ Done | 2026-08-07 | 37/37 ✅ | N/A | 3,137 nodes, link prediction 0.99 |
+| 7 | Multi-Agent System | ✅ Done | 2026-08-07 | 37/37 ✅ | 6/6 ✅ | Planner→Retriever→Reasoner→Visualizer |
+| 8 | MLOps Pipeline | ✅ Done | 2026-08-07 | 37/37 ✅ | N/A | 3 experiments tracked, model card |
+
+---
+
+## Resume Domain Coverage
+
+| CS/AI Domain | Module | Key Technology |
+|---|---|---|
+| **NLP / LLM** | Semantic Search + Answer Generation | sentence-transformers, DeepSeek API, prompt engineering |
+| **Vector DB** | ChromaDB Vector Store | Dense retrieval, cosine similarity, persistent embeddings |
+| **Knowledge Graphs** | Neo4j + Cypher + Community Detection | Graph DB, graph algorithms, Louvain, 5,532 nodes |
+| **Machine Learning** | Weather Prediction | RandomForest (R²=0.82), GradientBoosting, LinearRegression, feature engineering, cross-validation |
+| **Graph ML** | Node2Vec + Link Prediction | Graph embeddings, SVD, link prediction, t-SNE visualization |
+| **Time Series** | NEA Weather Analysis | Seasonal decomposition, rolling statistics, correlation analysis, ADF testing |
+| **Computer Vision / Viz** | Geo-Visualization Pipeline | MRT topology graph, demographic heatmap, K-Means clustering, matplotlib |
+| **Multi-Agent** | Agent Orchestrator | Planner→Retriever→Reasoner→Visualizer pipeline |
+| **Data Engineering** | 6 Ingestion Agents + ETL | REST APIs, Parquet, data validation, manifest tracking |
+| **Full-Stack** | Streamlit + Folium + Neo4j | Interactive web UI, map visualization, answer↔map sync |
+| **MLOps** | Experiment Tracker + Model Card | MLflow-compatible API, experiment tracking, model evaluation |
 
 ---
 
