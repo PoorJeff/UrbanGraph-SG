@@ -43,17 +43,24 @@ class AnswerGenerator:
         Returns:
             dict with answer_text, confidence, sources_used, graph_entities, tokens
         """
-        # Step 1: Determine retrieval mode
-        if retrieval_mode == "auto":
-            retrieval_mode = self._classify_query(query)
+        # Step 1: Always try Cypher first (exact data is best)
+        cypher_data = self._cypher_retrieve(query)
+        ctx = cypher_data.get("context_text", "")
 
-        # Step 2: Retrieve context based on mode
-        context_data = self._retrieve(query, retrieval_mode)
+        if ctx and ("Cypher database query" in ctx or "Cypher query returned" in ctx):
+            # Cypher hit — use deterministic data directly
+            context_data = cypher_data
+            retrieval_mode = "cypher"
+        else:
+            # Fall back to semantic search
+            if retrieval_mode == "auto":
+                retrieval_mode = self._classify_query(query)
+            context_data = self._retrieve_semantic(query, retrieval_mode)
 
-        # Step 3: Generate answer with LLM
+        # Step 2: Generate answer with LLM
         answer_data = self._generate(query, context_data, retrieval_mode)
 
-        # Step 4: Add confidence labeling
+        # Step 3: Add confidence
         answer_data["confidence"] = self._assess_confidence(context_data, retrieval_mode)
 
         return answer_data
@@ -84,20 +91,8 @@ class AnswerGenerator:
         # Default: local search
         return "local"
 
-    def _retrieve(self, query: str, mode: str) -> dict[str, Any]:
-        """Retrieve context using the selected mode.
-
-        Always tries Cypher first (exact match presets), then falls back
-        to the mode-specific search (local/global).
-        """
-        # Always try Cypher first for all modes
-        cypher_result = self._cypher_retrieve(query)
-        # Check if Cypher actually found something meaningful
-        ctx = cypher_result.get("context_text", "")
-        if ctx and "Cypher query returned" in ctx:
-            return cypher_result
-
-        # Fall back to mode-specific search
+    def _retrieve_semantic(self, query: str, mode: str) -> dict[str, Any]:
+        """Fallback: semantic search (local or global)."""
         if mode == "global":
             return global_search(query)
         else:
@@ -111,18 +106,20 @@ class AnswerGenerator:
         q = query.lower()
 
         # Map common queries to presets
-        preset_map = {
-            "mrt station": "station_count",
-            "bishan": "mrt_lines_bishan",
-            "jurong east": "lines_at_jurong_east",
-            "mrt line": "lines_at_jurong_east",
-            "cbd": "mrt_in_cbd",
-            "downtown": "mrt_in_cbd",
-            "most mrt": "areas_with_most_mrt",
-            "bus stop": "bus_stops_orchard",
-            "orchard road": "bus_stops_orchard",
-            "punggol": "hdb_price_punggol",
-        }
+        preset_map = [
+            # SPECIFIC queries first (order matters!)
+            ("most mrt", "areas_with_most_mrt"),
+            ("cbd", "mrt_count_cbd"),
+            ("downtown", "mrt_count_cbd"),
+            ("bishan", "mrt_lines_bishan"),
+            ("jurong east", "lines_at_jurong_east"),
+            ("orchard road", "bus_stops_orchard"),
+            ("punggol", "hdb_price_punggol"),
+            # GENERIC queries last
+            ("mrt line", "lines_at_jurong_east"),
+            ("bus stop", "bus_stops_orchard"),
+            ("mrt station", "station_count"),
+        ]
 
         # Population queries: extract area name from query pattern
         if "population" in q:
@@ -137,7 +134,7 @@ class AnswerGenerator:
                 if "error" not in result and result.get("results"):
                     return self._format_cypher_result(result, f"Population of {area_name.title()}")
 
-        for keyword, preset_id in preset_map.items():
+        for keyword, preset_id in preset_map:
             if keyword in q:
                 result = run_preset(preset_id)
                 if "error" not in result and result.get("results"):
@@ -157,7 +154,9 @@ class AnswerGenerator:
         system_prompt = self.prompt.get("system", "")
         user_prompt = self.prompt.get("user", "{user_query}")
 
-        # Replace placeholders in system prompt (not user prompt)
+        # Replace ALL placeholders correctly:
+        # - {retrieved_subgraph} and {source_citations} → in system prompt
+        # - {user_query} → in user prompt
         system_prompt = system_prompt.replace("{retrieved_subgraph}", context_text[:3000])
         system_prompt = system_prompt.replace("{source_citations}", sources_text[:1000])
         user_prompt = user_prompt.replace("{user_query}", query)
@@ -186,23 +185,40 @@ class AnswerGenerator:
         }
 
     def _format_cypher_result(self, result: dict[str, Any], label: str = "") -> dict[str, Any]:
-        """Format Cypher query results as readable context."""
+        """Format Cypher query results as readable context.
+
+        The context is designed to give the LLM clear, actionable data so it can
+        directly answer without needing to interpret complex structures.
+        """
         cols = result.get("columns", [])
         rows = result["results"]
         prefix = f"{label}: " if label else ""
-        readable_lines = [f"{prefix}Cypher query returned {result['count']} result(s)."]
+
+        readable_lines = [
+            f"Cypher database query returned {result['count']} result(s).",
+            f"Use this data to answer the user's question:",
+        ]
+
+        # Format as a clear table-like structure
         for i, row in enumerate(rows[:20]):
             parts = []
             for col in cols:
                 val = row.get(col, "")
-                parts.append(f"{col}: {val}")
-            readable_lines.append(f"  {i+1}. " + ", ".join(parts))
+                parts.append(f"{col}={val}")
+            readable_lines.append(f"  Result {i+1}: " + ", ".join(parts))
+
+        # If result is a single count, make it extra explicit
+        if result['count'] == 1 and len(cols) == 1:
+            col = cols[0]
+            val = rows[0].get(col, "?")
+            readable_lines.append(f"  --> The answer is: {val}")
+
         return {
             "entities": [],
             "subgraph": {"nodes": [], "edges": []},
             "context_text": "\n".join(readable_lines),
             "sources": [
-                f"[Source: Neo4j graph database, Cypher query, {result['count']} records retrieved, Singapore urban data 2024-2025]"
+                f"[Source: Neo4j graph database, {result['count']} record(s), Singapore urban data 2024-2025]"
             ],
         }
 

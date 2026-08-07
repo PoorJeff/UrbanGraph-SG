@@ -1,0 +1,17 @@
+{
+  "source": "hdb",
+  "timestamp_utc": "2026-08-07T03:55:19.349622+00:00",
+  "files": {
+    "resale_prices": {
+      "path": "C:\\Users\\Jzh20\\Desktop\\UrbanGraph-SG\\data\\raw\\hdb\\resale_prices.parquet",
+      "sha256": "8aac98f3f0f68219c4a174fba36560e7eff0fa405a0d5697d4495cbdce557c57",
+      "size_bytes": 881108
+    }
+  },
+  "metadata": {
+    "api_base": "https://data.gov.sg/api/action/datastore_search",
+    "record_counts": {
+      "resale_prices": 100000
+    }
+  }
+}

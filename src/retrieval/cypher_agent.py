@@ -122,6 +122,14 @@ PRESET_QUERIES: dict[str, str] = {
         LIMIT 30
     """,
 
+    "mrt_count_cbd": """
+        MATCH (mrt:TransportNode {transport_type: 'mrt'})-[:LOCATED_IN]->(pa:PlanningArea)
+        WHERE pa.name CONTAINS 'Downtown' OR pa.name CONTAINS 'Outram' OR pa.name CONTAINS 'Museum'
+           OR pa.name CONTAINS 'Rochor' OR pa.name CONTAINS 'Singapore River' OR pa.name CONTAINS 'Straits View'
+           OR pa.name CONTAINS 'Marina' OR pa.name CONTAINS 'Orchard'
+        RETURN count(mrt) AS total_mrt_in_cbd_area
+    """,
+
     "planning_area_population": """
         MATCH (pa:PlanningArea)
         WHERE toLower(pa.name) CONTAINS toLower($area_name)
