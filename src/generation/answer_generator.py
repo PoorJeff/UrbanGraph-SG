@@ -65,7 +65,8 @@ class AnswerGenerator:
         # Cypher candidates: specific listing/aggregation queries
         cypher_patterns = [
             "how many", "list all", "which mrt lines", "find all",
-            "what are all", "total number", "count",
+            "what are all", "total number", "count", "most mrt",
+            "population of", "population",
         ]
         for pattern in cypher_patterns:
             if pattern in q:
@@ -84,13 +85,21 @@ class AnswerGenerator:
         return "local"
 
     def _retrieve(self, query: str, mode: str) -> dict[str, Any]:
-        """Retrieve context using the selected mode."""
-        if mode == "local":
-            return local_search(query)
-        elif mode == "global":
+        """Retrieve context using the selected mode.
+
+        Always tries Cypher first (exact match presets), then falls back
+        to the mode-specific search (local/global).
+        """
+        # Always try Cypher first for all modes
+        cypher_result = self._cypher_retrieve(query)
+        # Check if Cypher actually found something meaningful
+        ctx = cypher_result.get("context_text", "")
+        if ctx and "Cypher query returned" in ctx:
+            return cypher_result
+
+        # Fall back to mode-specific search
+        if mode == "global":
             return global_search(query)
-        elif mode == "cypher":
-            return self._cypher_retrieve(query)
         else:
             return local_search(query)
 
@@ -115,22 +124,18 @@ class AnswerGenerator:
             "punggol": "hdb_price_punggol",
         }
 
-        # Population queries: extract area name and use parameterized query
+        # Population queries: extract area name from query pattern
         if "population" in q:
-            # Try to find known planning area names in the query
-            import pandas as pd
-            try:
-                pop_df = pd.read_parquet(str(config.data_dir / "raw" / "singstat" / "population.parquet"))
-                area_names = pop_df["planning_area"].str.lower().tolist()
-            except Exception:
-                area_names = []
-
-            for area in area_names:
-                if area in q:
-                    result = run_preset("planning_area_population", {"area_name": area})
-                    if "error" not in result and result.get("results"):
-                        return self._format_cypher_result(result, f"Population of {area.title()}")
-                    break
+            # Pattern: "population of X" or "X population"
+            import re
+            pop_match = re.search(r'population\s+of\s+(\w[\w\s]*)', q)
+            if not pop_match:
+                pop_match = re.search(r'(\w[\w\s]*)\s+population', q)
+            if pop_match:
+                area_name = pop_match.group(1).strip()
+                result = run_preset("planning_area_population", {"area_name": area_name})
+                if "error" not in result and result.get("results"):
+                    return self._format_cypher_result(result, f"Population of {area_name.title()}")
 
         for keyword, preset_id in preset_map.items():
             if keyword in q:
@@ -152,8 +157,9 @@ class AnswerGenerator:
         system_prompt = self.prompt.get("system", "")
         user_prompt = self.prompt.get("user", "{user_query}")
 
-        user_prompt = user_prompt.replace("{retrieved_subgraph}", context_text[:3000])
-        user_prompt = user_prompt.replace("{source_citations}", sources_text[:1000])
+        # Replace placeholders in system prompt (not user prompt)
+        system_prompt = system_prompt.replace("{retrieved_subgraph}", context_text[:3000])
+        system_prompt = system_prompt.replace("{source_citations}", sources_text[:1000])
         user_prompt = user_prompt.replace("{user_query}", query)
 
         try:

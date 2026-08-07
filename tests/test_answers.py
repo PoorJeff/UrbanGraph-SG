@@ -1,4 +1,4 @@
-"""Quick test of answer generation quality."""
+"""Test answer generation with fixed queries."""
 import sys, io
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
@@ -11,11 +11,14 @@ questions = [
     "Which MRT lines pass through Bishan?",
     "Which areas have the most MRT stations?",
     "How many MRT stations are in the CBD area?",
+    "What is the population of Tampines?",
 ]
 
 for q in questions:
     result = gen.answer(q)
-    print(f"Q: {q}")
-    print(f"  Mode: {result['retrieval_mode']}, Confidence: {result.get('confidence','?')}")
-    print(f"  A: {result['answer_text'][:300]}")
+    mode = result.get("retrieval_mode", "?")
+    conf = result.get("confidence", "?")
+    ans = result["answer_text"][:250]
+    print(f"[{mode}/{conf}] Q: {q}")
+    print(f"  {ans}")
     print()
