@@ -1,12 +1,20 @@
 """ML: Weather Feature Prediction Model.
 
-Predicts daily rainfall from temperature, humidity, and wind features.
+Predicts total daily rainfall (sum across all NEA stations) from
+temperature, humidity, and wind features.
+
+IMPORTANT DATA NOTES:
+- rainfall_mm = SUM of all 78 NEA station readings for that day
+  (NOT per-station — explains values up to 2,278mm)
+- temp/humidity/wind = mean across stations
+- Wind gusts up to 37.7 m/s are real squall events, not errors
+
 Strict methodology: train/test split BEFORE feature engineering,
 model selection by cross-validation, no data leakage.
 
-Data: 91 days of NEA weather (2M+ readings aggregated to daily)
-Models: LinearRegression baseline → RandomForest → GradientBoosting
-Metrics: R², MAE, RMSE, CV-R²
+Data: 91 days, 2M+ readings, 78 stations
+Models: LinearRegression · RandomForest · GradientBoosting
+Metrics: R², MAE, RMSE, CV-R² (TimeSeriesSplit)
 """
 
 import logging
