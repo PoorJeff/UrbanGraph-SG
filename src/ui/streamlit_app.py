@@ -349,16 +349,37 @@ with tabs[0]:
 
 # ═══════════════ TAB 1: QUERY ═══════════════
 with tabs[1]:
-    c_pick, c_btn = st.columns([4, 1])
-    with c_pick:
-        pick = st.selectbox("", PRESETS, label_visibility="collapsed", key="qpick")
-    with c_btn:
-        ask = st.button("Ask Graph", type="primary", use_container_width=True)
+    # ── Fix #1: Categorized preset chips (not long dropdown) ──
+    categories = {
+        "🚇 Transport": ["How many MRT stations are there in total?","How many bus stops are there in Singapore?",
+            "How many stations are on the Circle Line?","How many MRT stations are in the CBD area?",
+            "Which MRT lines pass through Bishan?","Which MRT lines pass through Jurong East?",
+            "Which MRT lines serve Woodlands?","List all MRT stations in Orchard",
+            "Which MRT stations are in Downtown Core?","Which station has the most connections?",
+            "Is Bishan station connected to Orchard?","How many stations from Jurong East to City Hall?"],
+        "👥 Population": ["What is the population of Bedok?","What is the population of Tampines?",
+            "What is the population of Punggol?","Which planning area has the largest population?",
+            "Which areas have the smallest population?"],
+        "🏠 Housing": ["Which area has the highest HDB resale prices?","How many HDB transactions are in the database?"],
+        "📍 Spatial": ["Which planning area is Bedok MRT in?","List bus stops along Orchard Road",
+            "How many bus stops are near Orchard MRT?"],
+    }
+    cat_tabs = st.tabs(list(categories.keys()))
+    selected_preset = None
+    for i, (cat_name, questions) in enumerate(categories.items()):
+        with cat_tabs[i]:
+            cols = st.columns(2)
+            for j, q in enumerate(questions):
+                with cols[j % 2]:
+                    if st.button(q[:80], key=f"cat_{i}_{j}", use_container_width=True,
+                       help=f"Domain: {cat_name}"):
+                        selected_preset = q
 
+    # ── Search bar ──
     manual = st.chat_input("Or type any question — semantic search + Cypher + ChromaDB...")
 
     query = None
-    if ask: query = str(pick)
+    if selected_preset: query = selected_preset
     if manual: query = manual
 
     if query:
@@ -366,7 +387,9 @@ with tabs[1]:
         with st.spinner("Retrieving from knowledge graph + vector store..."):
             r = get_gen().answer(query)
         st.session_state.chat.append({"role": "assistant", "content": r["answer_text"],
-            "confidence": r.get("confidence","MEDIUM"), "mode": r.get("retrieval_mode","")})
+            "confidence": r.get("confidence","MEDIUM"), "mode": r.get("retrieval_mode",""),
+            "sources": r.get("sources_used",[]), "entities": r.get("entities",[])})
+        # Map highlights
         hl = []
         try:
             names = run_query("MATCH (n) WHERE n.name IS NOT NULL AND n.lat IS NOT NULL RETURN n.name AS n, n.lat AS la, n.lon AS lo, labels(n)[0] AS l LIMIT 5000")
@@ -378,12 +401,53 @@ with tabs[1]:
         st.session_state.hl = hl
         st.rerun()
 
-    for msg in st.session_state.chat:
+    # ── Chat display ──
+    for i, msg in enumerate(st.session_state.chat):
         with st.chat_message(msg["role"]):
-            if msg["role"] == "assistant":
-                c = {"HIGH":"🟢","MEDIUM":"🟡","LOW":"🟠"}.get(msg.get("confidence",""),"")
-                st.caption(f"{c} {msg.get('confidence','')} · {msg.get('mode','')}")
-            st.write(msg["content"])
+            if msg["role"] == "user":
+                st.markdown(f"**{msg['content']}**")
+            else:
+                # ── Fix #3: Confidence bar (not just text) ──
+                conf = msg.get("confidence","MEDIUM")
+                conf_pct = {"HIGH": 95, "MEDIUM": 70, "LOW": 40}.get(conf, 50)
+                conf_colors = {"HIGH": "#16a34a", "MEDIUM": "#ea580c", "LOW": "#DC2626"}
+                col_conf, col_mode = st.columns([1, 3])
+                with col_conf:
+                    st.markdown(f"""
+                    <div style="background:#f1f5f9;border-radius:8px;padding:8px;text-align:center">
+                        <div style="font-size:1.4rem;font-weight:800;color:{conf_colors.get(conf,'#64748b')}">{conf_pct}%</div>
+                        <div style="font-size:0.65rem;color:#64748b;font-weight:600">{conf}</div>
+                    </div>
+                    """, unsafe_allow_html=True)
+                with col_mode:
+                    mode_label = {"cypher":"Cypher Query","semantic":"Semantic Search","local":"Local Search"}.get(msg.get("mode",""), msg.get("mode",""))
+                    st.caption(f"Retrieval: {mode_label} · DeepSeek LLM")
+
+                st.write(msg["content"])
+
+                # ── Fix #2: Expandable source citations ──
+                sources = msg.get("sources", [])
+                if sources:
+                    with st.expander(f"📎 {len(sources)} sources cited"):
+                        for s in sources[:8]:
+                            st.caption(f"• {str(s)[:200]}")
+                        st.caption("Data: LTA DataMall, data.gov.sg, OneMap, SingStat · 2024-2025")
+
+                # ── Fix #5: Mini chart for ranked answers ──
+                content = msg["content"]
+                import re
+                numbers = re.findall(r'(\d[\d,]*)\s*(?:stations|stops|areas)', content.lower())
+                if numbers and "1." in content:
+                    # Extract ranking data for mini bar
+                    lines = [l.strip() for l in content.split('\n') if re.match(r'\d+\.', l.strip())]
+                    if len(lines) >= 3:
+                        chart_data = {}
+                        for line in lines[:6]:
+                            m = re.match(r'\d+\.\s*\*{0,2}([^*\n]+?)\*{0,2}\s*[–\-—]\s*(\d+)', line)
+                            if m:
+                                chart_data[m.group(1).strip()] = int(m.group(2))
+                        if chart_data:
+                            st.bar_chart(chart_data, horizontal=True, height=180)
 
 
 # ═══════════════ TAB 2: ANALYTICS ═══════════════
