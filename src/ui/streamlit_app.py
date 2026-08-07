@@ -161,38 +161,175 @@ st.markdown(f"""
 # ═══════════════════════════════════════════════════════
 tabs = st.tabs(["🗺️ Explore", "💬 Query", "📊 Analytics", "🔬 Graph ML", "📋 Report"])
 
-# ═══════════════ TAB 0: MAP-FIRST EXPLORE ═══════════════
+# ═══════════════ TAB 0: EXPLORE ═══════════════
 with tabs[0]:
-    mp = folium.Map(location=[1.3521,103.8198], zoom_start=12, tiles="CartoDB dark_matter", control_scale=True)
+    # ── Search + Spatial Query Bar ──
+    s1, s2, s3 = st.columns([3, 1, 1])
+    with s1:
+        search_term = st.text_input("", placeholder="Search station or area (e.g. Orchard, Bedok, Bishan)...", label_visibility="collapsed", key="map_search")
+    with s2:
+        radius = st.selectbox("Nearby radius", ["500m", "1km", "2km"], key="radius_sel", label_visibility="collapsed")
+    with s3:
+        do_search = st.button("Find", use_container_width=True, key="map_find_btn")
+
+    # ── Context Bar ──
+    # Initialize session state for map
+    if "map_center" not in st.session_state: st.session_state.map_center = [1.3521, 103.8198]
+    if "map_zoom" not in st.session_state: st.session_state.map_zoom = 12
+    if "selected_station" not in st.session_state: st.session_state.selected_station = None
+    if "nearby_entities" not in st.session_state: st.session_state.nearby_entities = []
+
+    # Process search
+    if do_search and search_term:
+        try:
+            results = run_query("""
+                MATCH (n) WHERE toLower(n.name) CONTAINS toLower($q) AND n.lat IS NOT NULL
+                RETURN n.name AS name, n.lat AS lat, n.lon AS lon, labels(n)[0] AS type,
+                       n.transport_type AS tt, n.population AS pop
+                ORDER BY CASE WHEN n.transport_type='mrt' THEN 0 ELSE 1 END, n.name LIMIT 1
+            """, {"q": search_term.strip()})
+            if results:
+                r = results[0]
+                st.session_state.map_center = [float(r["lat"]), float(r["lon"])]
+                st.session_state.map_zoom = 15
+                st.session_state.selected_station = {"name": r["name"], "type": r.get("type",""), "lat": r["lat"], "lon": r["lon"], "pop": r.get("pop"), "tt": r.get("tt")}
+                # Find nearby entities
+                dist_m = {"500m": 500, "1km": 1000, "2km": 2000}.get(radius, 1000)
+                dist_deg = dist_m / 111000.0
+                nearby = run_query("""
+                    MATCH (n) WHERE n.lat IS NOT NULL AND n.lat > $min_lat AND n.lat < $max_lat
+                    AND n.lon > $min_lon AND n.lon < $max_lon AND n.name <> $center_name
+                    RETURN n.name AS name, labels(n)[0] AS type, n.lat AS lat, n.lon AS lon,
+                           n.transport_type AS tt
+                    ORDER BY n.name LIMIT 30
+                """, {"min_lat": r["lat"] - dist_deg, "max_lat": r["lat"] + dist_deg,
+                      "min_lon": r["lon"] - dist_deg, "max_lon": r["lon"] + dist_deg,
+                      "center_name": r["name"]})
+                st.session_state.nearby_entities = nearby
+                st.session_state.map_center = [float(r["lat"]), float(r["lon"])]
+                st.session_state.map_zoom = 15
+            else:
+                st.warning(f"No station or area found matching '{search_term}'")
+        except Exception as e:
+            st.warning(f"Search error: {e}")
+
+    # ── Info Panel (if station selected) ──
+    sel = st.session_state.selected_station
+    if sel:
+        pinfo = []
+        try:
+            # Get lines for MRT stations
+            if sel.get("tt") == "mrt":
+                lines = run_query("""
+                    MATCH (n:TransportNode {name: $name})-[r:CONNECTS_TO]-(neighbor)
+                    RETURN DISTINCT r.line AS line, collect(neighbor.name)[0..3] AS neighbors
+                """, {"name": sel["name"]})
+                for l in lines:
+                    pinfo.append(f'{l["line"]}: connected to {", ".join(l["neighbors"])}')
+
+            # Get planning area
+            pa = run_query("MATCH (n {name: $name})-[:LOCATED_IN]->(pa:PlanningArea) RETURN pa.name AS area, pa.population AS pop", {"name": sel["name"]})
+            if pa:
+                pinfo.append(f"Planning Area: {pa[0]['area']}" + (f" (pop: {pa[0]['pop']:,})" if pa[0].get("pop") else ""))
+        except: pass
+
+        st.info(f"**📍 {sel['name']}** ({sel.get('tt', sel.get('type', ''))})" + ("\n- " + "\n- ".join(pinfo) if pinfo else ""))
+        st.caption(f"Nearby ({radius}): {len(st.session_state.nearby_entities)} entities found")
+
+    # ── Map ──
+    mp = folium.Map(location=st.session_state.map_center, zoom_start=st.session_state.map_zoom,
+                     tiles="CartoDB dark_matter", control_scale=True)
     colors = {"EWL":"#009530","NSL":"#D42E2B","NEL":"#9900AA","CCL":"#FA9E0D","DTL":"#005EC4","TEL":"#9D5B25"}
-    names = {"EWL":"East-West","NSL":"North-South","NEL":"North East","CCL":"Circle","DTL":"Downtown","TEL":"Thomson-East Coast"}
+    line_names = {"EWL":"East-West","NSL":"North-South","NEL":"North East","CCL":"Circle","DTL":"Downtown","TEL":"Thomson-East Coast"}
+
+    # Layer 1: MRT Lines
     try:
         ld = run_query("MATCH (a:TransportNode {transport_type:'mrt'})-[r:CONNECTS_TO]->(b:TransportNode {transport_type:'mrt'}) RETURN a.lat AS al, a.lon AS ao, b.lat AS bl, b.lon AS bo, r.line AS l LIMIT 150")
-        grps = {}
+        mrt_line_grps = {}
         for row in ld:
             ln = row.get("l","?")
-            if ln not in grps: grps[ln] = FeatureGroup(name=f"{ln} {names.get(ln,'')}")
-            try: folium.PolyLine([[float(row["al"]),float(row["ao"])],[float(row["bl"]),float(row["bo"])]], color=colors.get(ln,"#888"), weight=3, opacity=0.8).add_to(grps[ln])
+            if ln not in mrt_line_grps: mrt_line_grps[ln] = FeatureGroup(name=f"🚇 {ln} {line_names.get(ln,'')}")
+            try: folium.PolyLine([[float(row["al"]),float(row["ao"])],[float(row["bl"]),float(row["bo"])]], color=colors.get(ln,"#888"), weight=3, opacity=0.8, tooltip=ln).add_to(mrt_line_grps[ln])
             except: pass
-        for g in grps.values(): g.add_to(mp)
+        for g in mrt_line_grps.values(): g.add_to(mp)
     except: pass
+
+    # Layer 2: MRT Stations
     try:
         mrts = run_query("MATCH (n:TransportNode {transport_type:'mrt'}) RETURN n.name AS n, n.lat AS la, n.lon AS lo LIMIT 200")
-        fg = FeatureGroup(name="MRT Stations")
+        mrt_station_fg = FeatureGroup(name="🔴 MRT Stations")
         for s in mrts:
             if s.get("la") and s.get("lo"):
-                folium.CircleMarker([float(s["la"]),float(s["lo"])], radius=3.5, color="#ED2939", fill=True, fill_color="#ED2939", fill_opacity=0.9, tooltip=s["n"]).add_to(fg)
-        fg.add_to(mp)
+                popup_html = f"<b>{s['n']}</b><br><small>Click for info panel</small>"
+                folium.CircleMarker([float(s["la"]),float(s["lo"])], radius=4, color="#ED2939", fill=True,
+                    fill_color="#ED2939", fill_opacity=0.9, tooltip=s["n"], popup=folium.Popup(popup_html, max_width=200)).add_to(mrt_station_fg)
+        mrt_station_fg.add_to(mp)
     except: pass
-    for e in st.session_state.get("hl",[]):
-        try: folium.Marker([e["lat"],e["lon"]], icon=folium.Icon(color="orange",icon="star",prefix="fa"), popup=f"<b>{e['name']}</b>").add_to(mp)
-        except: pass
-    folium.LayerControl().add_to(mp)
-    folium_static(mp, height=550)
 
-    c1, c2, c3, c4, c5, c6, c7 = st.columns(7)
-    for c, code in [(c1,"EWL"),(c2,"NSL"),(c3,"NEL"),(c4,"CCL"),(c5,"DTL"),(c6,"TEL"),(c7,"")]:
-        if code: c.markdown(f'<span style="color:{colors[code]};font-weight:600">●</span> <span style="color:#8a8d91;font-size:0.75rem">{code}</span>', unsafe_allow_html=True)
+    # Layer 3: Bus Stops (sampled for performance)
+    try:
+        buses = run_query("MATCH (n:TransportNode {transport_type:'bus'}) WHERE n.lat IS NOT NULL RETURN n.name AS n, n.lat AS la, n.lon AS lo LIMIT 3000")
+        bus_fg = FeatureGroup(name="🔵 Bus Stops")
+        for b in buses:
+            if b.get("la") and b.get("lo"):
+                folium.CircleMarker([float(b["la"]),float(b["lo"])], radius=1, color="#005EC4", fill=True,
+                    fill_color="#005EC4", fill_opacity=0.5, tooltip=b["n"]).add_to(bus_fg)
+        bus_fg.add_to(mp)
+    except: pass
+
+    # Layer 4: Planning Area boundaries
+    try:
+        import json, pandas as pd
+        pa_path = Path("data/raw/onemap/planning_areas.parquet")
+        if pa_path.exists():
+            pa_df = pd.read_parquet(pa_path)
+            pa_fg = FeatureGroup(name="🏙️ Planning Areas")
+            for _, row in pa_df.iterrows():
+                try:
+                    geom = json.loads(row["geojson"])
+                    folium.GeoJson(geom, style_function=lambda x: {"fillColor":"#3388ff","color":"#3388ff","weight":0.5,"fillOpacity":0.05},
+                        tooltip=row["pln_area_n"].title()).add_to(pa_fg)
+                except: pass
+            pa_fg.add_to(mp)
+    except: pass
+
+    # Layer 5: Nearby entities highlight
+    if st.session_state.nearby_entities:
+        nearby_fg = FeatureGroup(name="📍 Nearby Results")
+        for e in st.session_state.nearby_entities:
+            try:
+                color = "#ED2939" if e.get("tt") == "mrt" else "#005EC4" if e.get("tt") == "bus" else "#FA9E0D"
+                folium.CircleMarker([float(e["lat"]),float(e["lon"])], radius=5, color=color, fill=True,
+                    fill_color=color, fill_opacity=0.6, weight=2, tooltip=e["name"]).add_to(nearby_fg)
+            except: pass
+        nearby_fg.add_to(mp)
+
+    # Layer 6: Selected station highlight
+    if sel and sel.get("lat") and sel.get("lon"):
+        sel_fg = FeatureGroup(name="🎯 Selected")
+        folium.Marker([float(sel["lat"]),float(sel["lon"])], icon=folium.Icon(color="orange",icon="star",prefix="fa"),
+            popup=f"<b>{sel['name']}</b>").add_to(sel_fg)
+        # Radius circle
+        dist_m = {"500m":500,"1km":1000,"2km":2000}.get(radius, 1000)
+        folium.Circle([float(sel["lat"]),float(sel["lon"])], radius=dist_m, color="#FA9E0D", weight=1, fill=True,
+            fill_color="#FA9E0D", fill_opacity=0.08).add_to(sel_fg)
+        sel_fg.add_to(mp)
+
+    # Highlight entities from chat answers
+    highlight_fg = FeatureGroup(name="⭐ Answer Highlights")
+    for e in st.session_state.get("hl",[]):
+        try: folium.Marker([e["lat"],e["lon"]], icon=folium.Icon(color="orange",icon="star",prefix="fa"), popup=f"<b>{e['name']}</b>").add_to(highlight_fg)
+        except: pass
+    highlight_fg.add_to(mp)
+
+    folium.LayerControl(collapsed=False).add_to(mp)
+    folium_static(mp, height=520)
+
+    # Legend
+    legend_cols = st.columns(7)
+    for i, code in enumerate(["EWL","NSL","NEL","CCL","DTL","TEL"]):
+        legend_cols[i].markdown(f'<span style="color:{colors[code]};font-weight:600">●</span> <span style="color:#8a8d91;font-size:0.7rem">{code}</span>', unsafe_allow_html=True)
+    legend_cols[6].markdown(f'<span style="color:#ED2939">●M</span><span style="color:#8a8d91;font-size:0.65rem">RT</span> <span style="color:#005EC4">●B</span><span style="color:#8a8d91;font-size:0.65rem">us</span>', unsafe_allow_html=True)
 
 
 # ═══════════════ TAB 1: QUERY ═══════════════
