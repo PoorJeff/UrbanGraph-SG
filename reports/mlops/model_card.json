@@ -1,0 +1,30 @@
+{
+  "project": "UrbanGraph-SG Weather Prediction",
+  "generated_at": "2026-08-07T06:05:43.897817+00:00",
+  "dataset": "NEA Singapore weather, 91 days, 4 variables",
+  "task": "Regression \u2014 predict daily rainfall",
+  "best_model": "LinearRegression",
+  "models": {
+    "LinearRegression": {
+      "R2": 0.8482,
+      "MAE": 148.93,
+      "RMSE": 205.83,
+      "CV_R2_mean": 0.6961,
+      "CV_R2_std": 0.1442
+    },
+    "RandomForest": {
+      "R2": 0.8187,
+      "MAE": 174.43,
+      "RMSE": 224.94,
+      "CV_R2_mean": 0.7608,
+      "CV_R2_std": 0.0983
+    },
+    "GradientBoosting": {
+      "R2": 0.6552,
+      "MAE": 204.85,
+      "RMSE": 310.22,
+      "CV_R2_mean": 0.7074,
+      "CV_R2_std": 0.156
+    }
+  }
+}
