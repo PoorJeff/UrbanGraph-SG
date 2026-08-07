@@ -49,6 +49,26 @@ def get_stats():
     except: return 137, 5207, 24
 
 if "chat" not in st.session_state: st.session_state.chat = []
+if "highlight" not in st.session_state: st.session_state.highlight = []
+
+def find_entities_in_answer(answer_text):
+    """Extract entity names from answer and get Neo4j coordinates."""
+    import re
+    # Look for proper nouns: capitalized words, MRT station names, area names
+    # Also check for station names in the answer by querying Neo4j
+    entities = []
+    try:
+        # Get all MRT station names and PlanningArea names that appear in the answer
+        names = run_query("MATCH (n) WHERE n.name IS NOT NULL RETURN DISTINCT n.name AS name, n.lat AS lat, n.lon AS lon, labels(n)[0] AS label LIMIT 6000")
+        for n in names:
+            name = str(n.get("name", ""))
+            if len(name) > 3 and name.lower() in answer_text.lower():
+                lat = n.get("lat")
+                lon = n.get("lon")
+                if lat and lon and len(entities) < 10:
+                    entities.append({"name": name, "lat": float(lat), "lon": float(lon), "label": n.get("label","")})
+    except: pass
+    return entities
 
 m, b, h = get_stats()
 
@@ -70,6 +90,7 @@ with left:
                 r = get_gen().answer(q)
             st.session_state.chat.append({"role": "assistant", "content": r["answer_text"],
                 "confidence": r.get("confidence","MEDIUM")})
+            st.session_state.highlight = find_entities_in_answer(r["answer_text"])
             st.rerun()
     with c1:
         manual = st.chat_input("Or type your own...")
@@ -79,6 +100,7 @@ with left:
                 r = get_gen().answer(manual)
             st.session_state.chat.append({"role": "assistant", "content": r["answer_text"],
                 "confidence": r.get("confidence","MEDIUM")})
+            st.session_state.highlight = find_entities_in_answer(r["answer_text"])
             st.rerun()
 
     for msg in st.session_state.chat:
@@ -114,6 +136,15 @@ with right:
                 folium.CircleMarker([float(s["lat"]),float(s["lon"])], radius=3, color="#cc0000", fill=True, fill_color="#cc0000", fill_opacity=0.8, tooltip=s["name"]).add_to(fg)
         fg.add_to(mp)
     except: pass
+
+    # Highlight entities from last answer
+    for e in st.session_state.get("highlight", []):
+        try:
+            folium.Marker([e["lat"], e["lon"]],
+                icon=folium.Icon(color="orange", icon="star", prefix="fa"),
+                popup=f"<b>{e['name']}</b><br><small>{e.get('label','')}</small>"
+            ).add_to(mp)
+        except: pass
 
     folium.LayerControl().add_to(mp)
     folium_static(mp, height=480)
