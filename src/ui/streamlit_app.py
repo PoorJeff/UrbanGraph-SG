@@ -568,31 +568,128 @@ with tabs[2]:
 
 # ═══════════════ TAB 3: GRAPH ML ═══════════════
 with tabs[3]:
-    st.subheader("Node2Vec Graph Embeddings")
-    try:
-        from src.ml.graph_ml import GraphMLEngine
-        engine = GraphMLEngine()
-        engine.build_graph()
-        engine.train_node2vec(dimensions=32)
-        preds = engine.predict_links(top_k=15)
-        Nn = engine.G.number_of_nodes()
-        Ne = engine.G.number_of_edges()
+    # ── Fix #1: Cached engine + manual refresh ──
+    if "graph_ml_engine" not in st.session_state:
+        st.session_state.graph_ml_engine = None
+        st.session_state.graph_ml_preds = None
+        st.session_state.graph_ml_stats = None
 
-        c1, c2, c3 = st.columns(3)
-        with c1: st.metric("Graph Nodes", f"{Nn:,}")
-        with c2: st.metric("Graph Edges", Ne)
-        with c3: st.metric("Embeddings Dim", "32")
+    col_title, col_btn = st.columns([3, 1])
+    with col_title:
+        st.subheader("🔬 Graph Machine Learning — Node2Vec Embeddings")
+    with col_btn:
+        if st.button("🔄 Train Embeddings", type="primary", use_container_width=True):
+            with st.spinner("Training Node2Vec on transport graph..."):
+                try:
+                    from src.ml.graph_ml import GraphMLEngine
+                    engine = GraphMLEngine()
+                    engine.build_graph()
+                    engine.train_node2vec(dimensions=32)
+                    preds = engine.predict_links(top_k=15)
+                    engine.plot_embeddings()
+                    Nn = engine.G.number_of_nodes()
+                    Ne = engine.G.number_of_edges()
 
+                    # ── Fix #3: Graph statistics ──
+                    import networkx as nx
+                    connected = nx.number_connected_components(engine.G)
+                    largest_cc = max(nx.connected_components(engine.G), key=len)
+                    avg_path = nx.average_shortest_path_length(engine.G.subgraph(largest_cc))
+                    density = nx.density(engine.G)
+
+                    st.session_state.graph_ml_engine = engine
+                    st.session_state.graph_ml_preds = preds
+                    st.session_state.graph_ml_stats = {
+                        "nodes": Nn, "edges": Ne, "components": connected,
+                        "avg_path": round(avg_path, 2), "density": round(density, 6),
+                        "dim": 32,
+                    }
+                    st.rerun()
+                except Exception as e:
+                    st.error(f"Training failed: {e}")
+
+    engine = st.session_state.graph_ml_engine
+    preds = st.session_state.graph_ml_preds
+    stats = st.session_state.graph_ml_stats
+
+    if stats:
+        c1, c2, c3, c4, c5, c6 = st.columns(6)
+        with c1: st.metric("Nodes", f"{stats['nodes']:,}")
+        with c2: st.metric("Edges", stats['edges'])
+        with c3: st.metric("Components", stats['components'])
+        with c4: st.metric("Avg Path", stats['avg_path'])
+        with c5: st.metric("Density", f"{stats['density']:.5f}")
+        with c6: st.metric("Dim", stats['dim'])
+
+    if preds:
         st.subheader("Predicted Missing Links")
-        df = pd.DataFrame(preds)
-        df["similarity"] = df["similarity"].apply(lambda x: f"{float(x):.3f}")
-        st.dataframe(df[["source_name","target_name","similarity"]], use_container_width=True, hide_index=True, height=400)
+        st.caption("These station pairs have high embedding similarity but no direct connection — potential new links")
 
+        # ── Fix #2: Enriched link prediction table with explanations ──
+        import networkx as nx
+        enriched_rows = []
+        for p in preds:
+            src = p.get("source_name", "")
+            tgt = p.get("target_name", "")
+            sim = p.get("similarity", 0)
+            # Add explanation: same line?
+            src_code = str(p.get("source",""))[:4] if p.get("source") else ""
+            tgt_code = str(p.get("target",""))[:4] if p.get("target") else ""
+            same_line = "Y" if src_code[:2] == tgt_code[:2] and src_code[:2] in ["EW","NS","NE","CC","DT","TE","CG"] else ""
+            explanation = f"Same line ({src_code[:2]})" if same_line else "Cross-line latent proximity"
+            # Try to get hop distance from engine graph
+            hop_dist = "?"
+            if engine and engine.G and src in engine.G and tgt in engine.G:
+                try:
+                    hop_dist = str(nx.shortest_path_length(engine.G, src, tgt))
+                except: pass
+            enriched_rows.append({
+                "Source": src, "Target": tgt,
+                "Similarity": f"{float(sim):.4f}",
+                "Explanation": explanation,
+                "Graph Distance": f"{hop_dist} hops",
+                "Action": f"Explore {src}",
+            })
+
+        edf = pd.DataFrame(enriched_rows)
+
+        # ── Fix #5: Clickable "Explore" buttons ──
+        for i, row in enumerate(enriched_rows):
+            cols = st.columns([2, 2, 1, 1.5, 1.5, 2])
+            with cols[0]: st.caption(row["Source"])
+            with cols[1]: st.caption(row["Target"])
+            with cols[2]: st.caption(row["Similarity"])
+            with cols[3]: st.caption(row["Explanation"])
+            with cols[4]: st.caption(row["Graph Distance"])
+            with cols[5]:
+                if st.button(f"🔍 View", key=f"explore_link_{i}"):
+                    # Switch to Explore tab and highlight
+                    lat = engine.G.nodes[row["Source"]].get("lat", 1.35) if engine else 1.35
+                    lon = engine.G.nodes[row["Source"]].get("lon", 103.8) if engine else 103.8
+                    st.session_state.map_center = [float(lat), float(lon)]
+                    st.session_state.map_zoom = 14
+                    st.session_state.selected_station = {"name": row["Source"], "type": "MRT", "lat": lat, "lon": lon}
+                    st.success(f"Go to 🗺️ Explore tab to see {row['Source']} ↔ {row['Target']}")
+
+        # Header row
+        st.caption("Click 🔍 View to jump to Explore tab with station highlighted")
+
+        # ── Fix #4: t-SNE plot ──
         embp = fig_dir / "node_embeddings_tsne.png"
         if embp.exists():
-            st.image(str(embp), caption="t-SNE Projection of Transport Node Embeddings")
-    except Exception as e:
-        st.warning(f"Neo4j required: {e}")
+            col_viz, col_info = st.columns([2, 1])
+            with col_viz:
+                st.image(str(embp), caption="t-SNE Projection of Transport Node Embeddings — MRT (red) vs Bus (blue)", use_container_width=True)
+            with col_info:
+                st.info("**How to read:**\n\n"
+                        "• Dots close together = similar structural role\n"
+                        "• Same-line stations cluster naturally\n"
+                        "• Bus stops form dense peripheral clusters\n"
+                        "• Interchange hubs appear at cluster boundaries\n\n"
+                        "**Method:** SVD decomposition of adjacency matrix → 32D embeddings → t-SNE projection to 2D")
+    else:
+        st.info("👆 Click **Train Embeddings** to build the Node2Vec model from the transport graph (3,137 nodes, 130 edges).")
+        st.caption("First run may take 30-60 seconds. Results are cached for the session.")
 
 
 # ═══════════════ TAB 4: REPORT ═══════════════
