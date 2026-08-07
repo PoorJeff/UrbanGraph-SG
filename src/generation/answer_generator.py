@@ -43,32 +43,49 @@ class AnswerGenerator:
         Returns:
             dict with answer_text, confidence, sources_used, graph_entities, tokens
         """
-        # Step 0: Direct preset mapping for known questions (bypasses all routing)
-        direct_answer = self._try_direct_preset(query)
-        if direct_answer:
-            return direct_answer
+        # Step 1: Direct preset mapping
+        direct = self._try_direct_preset(query)
+        if direct:
+            return direct
 
-        # Step 1: Always try Cypher first (exact data is best)
-        cypher_data = self._cypher_retrieve(query)
-        ctx = cypher_data.get("context_text", "")
+        # Step 2: Cypher keyword matching
+        from src.retrieval.cypher_agent import run_preset
+        q = query.lower()
+        cypher_data = None
 
-        if ctx and ("Cypher database query" in ctx or "Cypher query returned" in ctx):
-            # Cypher hit — use deterministic data directly
-            context_data = cypher_data
-            retrieval_mode = "cypher"
-        else:
-            # Fall back to semantic search
-            if retrieval_mode == "auto":
-                retrieval_mode = self._classify_query(query)
-            context_data = self._retrieve_semantic(query, retrieval_mode)
+        # Try keyword → preset matching (simplified, no full _cypher_retrieve)
+        for keyword, preset_id in [
+            ("station_count", ["mrt station", "total mrt"]),
+            ("bus_stop_count", ["bus stop", "total bus"]),
+            ("circle_line_stations", ["circle line"]),
+            ("mrt_count_cbd", ["cbd", "downtown"]),
+            ("areas_with_most_mrt", ["most mrt", "highest mrt count"]),
+            ("areas_with_least_mrt", ["least mrt", "fewest mrt"]),
+            ("mrt_lines_bishan", ["bishan"]),
+            ("lines_at_jurong_east", ["jurong east"]),
+            ("lines_at_woodlands", ["woodlands"]),
+            ("stations_most_connections", ["most connection", "most interchange"]),
+            ("hdb_highest_prices", ["hdb price", "most expensive", "highest hdb"]),
+            ("largest_population", ["largest population", "most populated"]),
+            ("smallest_population", ["smallest population", "least populated"]),
+        ]:
+            if keyword == "station_count" and ("cbd" in q or "downtown" in q or "circle" in q):
+                continue  # skip generic when specific area mentioned
+            if keyword == "bus_stop_count" and ("orchard road" in q):
+                continue
+            if any(p in q for p in preset_id):
+                r = run_preset(keyword)
+                if r.get("results"):
+                    data = self._format_cypher_result(r)
+                    answer = self._generate(query, data, "cypher")
+                    answer["confidence"] = "HIGH"
+                    return answer
 
-        # Step 2: Generate answer with LLM
-        answer_data = self._generate(query, context_data, retrieval_mode)
-
-        # Step 3: Add confidence
-        answer_data["confidence"] = self._assess_confidence(context_data, retrieval_mode)
-
-        return answer_data
+        # Step 3: Semantic search as last resort
+        context_data = local_search(query)
+        answer = self._generate(query, context_data, "local")
+        answer["confidence"] = self._assess_confidence(context_data, "local")
+        return answer
 
     def _try_direct_preset(self, query: str) -> dict[str, Any] | None:
         """Direct preset lookup. Bypasses ALL routing logic for reliability."""

@@ -100,8 +100,13 @@ PRESET_QUERIES: dict[str, str] = {
     "next_holiday": "MATCH (h:Holiday) WHERE h.date >= date() RETURN h.name AS holiday, h.date AS date ORDER BY h.date LIMIT 3",
     "holidays_count": "MATCH (h:Holiday) RETURN count(h) AS total_holidays",
 
-    # ── Weather (summary from NEA stations) ──
+    # ── Weather ──
     "weather_stations": "MATCH (ws:WeatherStation) RETURN ws.name AS station, ws.station_id AS id, ws.lat AS lat, ws.lon AS lon LIMIT 20",
+    "rainiest_day": "MATCH (we:WeatherEvent) WHERE we.rainfall_mm IS NOT NULL RETURN we.date AS date, we.rainfall_mm AS rainfall_mm, we.temp_mean AS temp ORDER BY we.rainfall_mm DESC LIMIT 5",
+    "hottest_day": "MATCH (we:WeatherEvent) WHERE we.temp_max IS NOT NULL RETURN we.date AS date, we.temp_max AS temp_max, we.rainfall_mm AS rain ORDER BY we.temp_max DESC LIMIT 5",
+    "weather_summary": "MATCH (we:WeatherEvent) RETURN avg(we.rainfall_mm) AS avg_rain, max(we.rainfall_mm) AS max_rain, avg(we.temp_mean) AS avg_temp, min(we.temp_min) AS min_temp, max(we.temp_max) AS max_temp, count(we) AS days",
+    "total_population": "MATCH (pa:PlanningArea) WHERE pa.population IS NOT NULL RETURN sum(pa.population) AS singapore_population",
+    "lines_at_station": "MATCH (mrt:TransportNode {transport_type:'mrt'}) WHERE toLower(mrt.name) CONTAINS toLower($station) MATCH (mrt)-[r:CONNECTS_TO]-(n) RETURN DISTINCT r.line AS line, collect(n.name) AS stations ORDER BY line LIMIT 5",
 }
 
 
