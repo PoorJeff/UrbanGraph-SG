@@ -524,6 +524,14 @@ class AnswerGenerator:
                 parts.append(f"{col}={val}")
             readable_lines.append(f"  Result {i+1}: " + ", ".join(parts))
 
+        # Path explanation: expand stations array into readable route
+        if "stations" in cols and result['count'] >= 1:
+            stations = rows[0].get("stations", [])
+            hops = rows[0].get("hops", "?")
+            if isinstance(stations, list) and len(stations) > 1:
+                path_str = " → ".join(str(s) for s in stations)
+                readable_lines.append(f"  Route ({hops} hops): {path_str}")
+
         # If result is a single count, make it extra explicit
         if result['count'] == 1 and len(cols) == 1:
             col = cols[0]
