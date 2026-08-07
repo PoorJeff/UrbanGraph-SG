@@ -54,7 +54,7 @@ m, b, h = get_stats()
 
 # ═══════ HEADER ═══════
 st.markdown(f"### 🇸🇬 UrbanGraph-SG")
-st.caption(f"**{m}** MRT · **{b}** bus stops · **{h}** areas with HDB · Neo4j + DeepSeek | 23 verified questions")
+st.caption(f"**{m}** MRT · **{b}** bus stops · **{h}** areas with HDB · Neo4j + DeepSeek | v2.1 | 23 verified questions")
 
 # ═══════ TWO COLUMNS ═══════
 left, right = st.columns([0.85, 1.15])
