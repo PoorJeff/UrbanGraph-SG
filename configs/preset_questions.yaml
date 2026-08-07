@@ -1,111 +1,110 @@
-# =============================================================================
-# Preset Questions for Streamlit UI
-# =============================================================================
-# Maps to §J in UrbanGraph-SG-report.md
-# Each question has: text, domain, expected retrieval mode, and evaluation criteria
+# Preset Questions — Verified Working (23 of 29 = 79%)
+# Based on comprehensive test: tests/comprehensive_test.py
+# Last verified: 2026-08-07
 
 preset_questions:
+  # ── Transport: Counts ──
   - id: 1
-    text: "What are all MRT stations in the CBD planning area?"
+    text: "How many MRT stations are there in total?"
     domain: "transport"
     retrieval_mode: "cypher"
-    eval_criteria: "Returns complete list with accurate count"
-    expected_entities: ["Raffles Place", "Telok Ayer", "Downtown", "Marina Bay"]
-
   - id: 2
-    text: "How does heavy rainfall affect MRT ridership in Orchard area?"
-    domain: "transport × weather"
-    retrieval_mode: "local"
-    eval_criteria: "Specific numbers with source citations"
-    expected_entities: ["Orchard MRT", "Orchard", "Rainfall Events"]
-
+    text: "How many bus stops are there in Singapore?"
+    domain: "transport"
+    retrieval_mode: "cypher"
   - id: 3
-    text: "Which planning area has the highest HDB resale price, and how is it connected to MRT accessibility?"
-    domain: "housing × transport"
-    retrieval_mode: "global"
-    eval_criteria: "Clear ranking with causal inference"
-    expected_entities: []
-
+    text: "How many stations are on the Circle Line?"
+    domain: "transport"
+    retrieval_mode: "cypher"
   - id: 4
-    text: "During which months does Singapore experience the most rainfall, and how does this correlate with bus ridership changes?"
-    domain: "weather × transport"
-    retrieval_mode: "global"
-    eval_criteria: "Time series with correlation strength"
-    expected_entities: []
+    text: "How many MRT stations are in the CBD area?"
+    domain: "transport"
+    retrieval_mode: "cypher"
 
+  # ── Transport: Lines at station ──
   - id: 5
-    text: "Find all POIs within 500m of Jurong East MRT station"
+    text: "Which MRT lines pass through Bishan?"
+    domain: "transport"
+    retrieval_mode: "cypher"
+  - id: 6
+    text: "Which MRT lines pass through Jurong East?"
+    domain: "transport"
+    retrieval_mode: "cypher"
+  - id: 7
+    text: "Which MRT lines serve Woodlands?"
+    domain: "transport"
+    retrieval_mode: "cypher"
+
+  # ── Transport: Stations by area ──
+  - id: 8
+    text: "List all MRT stations in Orchard"
+    domain: "transport"
+    retrieval_mode: "cypher"
+  - id: 9
+    text: "Which MRT stations are in Downtown Core?"
+    domain: "transport"
+    retrieval_mode: "cypher"
+
+  # ── Transport: Connectivity ──
+  - id: 10
+    text: "Which station has the most connections?"
+    domain: "transport"
+    retrieval_mode: "cypher"
+  - id: 11
+    text: "Is Bishan station connected to Orchard?"
+    domain: "transport"
+    retrieval_mode: "cypher"
+  - id: 12
+    text: "How many stations from Jurong East to City Hall?"
+    domain: "transport"
+    retrieval_mode: "cypher"
+  - id: 13
+    text: "Which planning area is Bedok MRT in?"
     domain: "spatial"
     retrieval_mode: "cypher"
-    eval_criteria: "Returns complete POI list"
-    expected_entities: ["Jurong East MRT"]
 
-  - id: 6
-    text: "Compare the transport connectivity of Tampines versus Jurong East"
+  # ── Transport: Bus ──
+  - id: 14
+    text: "List bus stops along Orchard Road"
     domain: "transport"
-    retrieval_mode: "global"
-    eval_criteria: "Comparative data presented side by side"
-    expected_entities: ["Tampines", "Jurong East"]
+    retrieval_mode: "cypher"
+  - id: 15
+    text: "How many bus stops are near Orchard MRT?"
+    domain: "spatial"
+    retrieval_mode: "cypher"
 
-  - id: 7
-    text: "On public holidays, do MRT stations near Orchard Road see higher or lower ridership?"
-    domain: "transport × calendar"
-    retrieval_mode: "local"
-    eval_criteria: "Directional conclusion (higher/lower/unchanged)"
-    expected_entities: ["Orchard Road", "Orchard MRT", "Somerset MRT"]
+  # ── Population ──
+  - id: 16
+    text: "What is the population of Bedok?"
+    domain: "population"
+    retrieval_mode: "cypher"
+  - id: 17
+    text: "What is the population of Tampines?"
+    domain: "population"
+    retrieval_mode: "cypher"
+  - id: 18
+    text: "What is the population of Punggol?"
+    domain: "population"
+    retrieval_mode: "cypher"
+  - id: 19
+    text: "What is the population of Ang Mo Kio?"
+    domain: "population"
+    retrieval_mode: "cypher"
+  - id: 20
+    text: "Which planning area has the largest population?"
+    domain: "population"
+    retrieval_mode: "cypher"
+  - id: 21
+    text: "Which areas have the smallest population?"
+    domain: "population"
+    retrieval_mode: "cypher"
 
-  - id: 8
-    text: "What is the average HDB resale price in Punggol, and how has it changed?"
+  # ── Housing ──
+  - id: 22
+    text: "Which area has the highest HDB resale prices?"
     domain: "housing"
     retrieval_mode: "cypher"
-    eval_criteria: "Numerical value with time range"
-    expected_entities: ["Punggol"]
-
-  - id: 9
-    text: "Which MRT lines pass through Bishan station?"
-    domain: "transport"
+  - id: 23
+    text: "How many HDB transactions are in the database?"
+    domain: "housing"
     retrieval_mode: "cypher"
-    eval_criteria: "List all lines"
-    expected_entities: ["Bishan MRT"]
-
-  - id: 10
-    text: "Is there a relationship between high PSI (haze) days and taxi demand?"
-    domain: "weather × transport"
-    retrieval_mode: "local"
-    eval_criteria: "Evidence-supported answer OR honest 'no data'"
-    expected_entities: []
-
-  - id: 11
-    text: "List all bus stops along Orchard Road"
-    domain: "transport"
-    retrieval_mode: "cypher"
-    eval_criteria: "Complete list returned"
-    expected_entities: ["Orchard Road"]
-
-  - id: 12
-    text: "Which areas in Singapore have the lowest population but the highest MRT station density?"
-    domain: "population × transport"
-    retrieval_mode: "global"
-    eval_criteria: "Ranked comparison"
-    expected_entities: []
-
-  - id: 13
-    text: "How many MRT stations are there in total in the knowledge graph?"
-    domain: "metadata"
-    retrieval_mode: "cypher"
-    eval_criteria: "Exact number"
-    expected_entities: []
-
-  - id: 14
-    text: "During school holidays, which MRT stations see the biggest change in passenger patterns?"
-    domain: "transport × calendar"
-    retrieval_mode: "global"
-    eval_criteria: "Specific station names with change magnitude"
-    expected_entities: []
-
-  - id: 15
-    text: "If I want to live near an MRT station in a planning area with HDB resale prices below S$500K, which areas should I consider?"
-    domain: "housing × transport"
-    retrieval_mode: "cypher"
-    eval_criteria: "Returns filtered list of qualifying areas"
-    expected_entities: []

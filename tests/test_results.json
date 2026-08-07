@@ -1,0 +1,204 @@
+{
+  "passed": 23,
+  "total": 33,
+  "results": {
+    "How many MRT stations are there in total?": {
+      "quality": "✅",
+      "mode": "cypher",
+      "conf": "HIGH",
+      "ans": "There are 137 MRT stations in total.  \n[Source: Neo4j graph database, 1 record(s), Singapore urban data 2024-2025]"
+    },
+    "Which MRT lines pass through Bishan?": {
+      "quality": "✅",
+      "mode": "cypher",
+      "conf": "HIGH",
+      "ans": "Based on the data provided, Bishan is connected to two MRT lines:\n\n- **CCL** (Circle Line), with connected stations: Marymount and Lorong Chuan.\n- **NSL** (North-South Line), with connected stations: "
+    },
+    "Which MRT lines pass through Jurong East?": {
+      "quality": "✅",
+      "mode": "cypher",
+      "conf": "HIGH",
+      "ans": "Based on the data provided, the MRT lines that pass through Jurong East are:\n\n- EWL (East-West Line)\n- NSL (North-South Line)\n\n[Source: Neo4j graph database, 2 record(s), Singapore urban data 2024-202"
+    },
+    "How many MRT stations are in the CBD area?": {
+      "quality": "✅",
+      "mode": "cypher",
+      "conf": "HIGH",
+      "ans": "Based on the data available, there are **32** MRT stations in the CBD area.\n\n[Source: Neo4j graph database, 1 record(s), Singapore urban data 2024-2025]"
+    },
+    "List all MRT stations in Orchard": {
+      "quality": "✅",
+      "mode": "cypher",
+      "conf": "HIGH",
+      "ans": "Based on the data provided, the MRT stations in Orchard are:\n\n- Orchard\n- Somerset\n\n**Count:** 2 stations\n\n[Source: Neo4j graph database, 3 record(s), Singapore urban data 2024-2025]"
+    },
+    "Which MRT stations are in Downtown Core?": {
+      "quality": "✅",
+      "mode": "cypher",
+      "conf": "HIGH",
+      "ans": "Based on the data provided, the MRT stations in the Downtown Core area are:\n\n- Bayfront\n- Bugis\n- City Hall\n- Downtown\n- Esplanade\n- Marina Bay\n- Nicoll Highway\n- Promenade\n- Raffles Place\n- Tanjong P"
+    },
+    "What MRT lines serve Woodlands?": {
+      "quality": "✅",
+      "mode": "cypher",
+      "conf": "HIGH",
+      "ans": "Based on the data, two MRT lines serve the Woodlands area:\n\n- **NSL** (North-South Line), with connected stations: Admiralty, Marsiling\n- **TEL** (Thomson-East Coast Line), with connected stations: Wo"
+    },
+    "How many stations are on the Circle Line?": {
+      "quality": "✅",
+      "mode": "cypher",
+      "conf": "HIGH",
+      "ans": "The Circle Line has **28 stations**.\n\n[Source: Neo4j graph database, 1 record(s), Singapore urban data 2024-2025]"
+    },
+    "How many bus stops are there in Singapore?": {
+      "quality": "✅",
+      "mode": "cypher",
+      "conf": "HIGH",
+      "ans": "There are **5,207** bus stops in Singapore.\n\n[Source: Neo4j graph database, 1 record(s), Singapore urban data 2024-2025]"
+    },
+    "List bus stops along Orchard Road": {
+      "quality": "✅",
+      "mode": "cypher",
+      "conf": "HIGH",
+      "ans": "Based on the data provided, here are the bus stops located in the Orchard planning area:\n\n- Aft Cuscaden Rd\n- Bef Cairnhill Rd\n- Concorde Hotel S'pore\n- Delfi Orchard\n- Far East Plaza\n- Opp Ngee Ann C"
+    },
+    "What bus services stop at Jurong East?": {
+      "quality": "❌",
+      "mode": "cypher",
+      "conf": "HIGH",
+      "ans": "I don't have enough data to answer that question. The available data only indicates that the MRT lines EWL (East-West Line) and NSL (North-South Line) are associated with Jurong East, but it does not "
+    },
+    "Is Bishan station connected to Orchard?": {
+      "quality": "✅",
+      "mode": "cypher",
+      "conf": "HIGH",
+      "ans": "Yes, Bishan station is connected to Orchard station. The route between them passes through 5 stops: Bishan → Braddell → Toa Payoh → Novena → Newton → Orchard. This indicates a direct connection along "
+    },
+    "How many stations from Jurong East to City Hall?": {
+      "quality": "✅",
+      "mode": "cypher",
+      "conf": "HIGH",
+      "ans": "Based on the data provided, there are two possible routes from Jurong East to City Hall.\n\n- **Route 1 (East-West Line):** 11 hops, which means 12 stations including both endpoints. The stations are: J"
+    },
+    "Which station has the most connections?": {
+      "quality": "✅",
+      "mode": "cypher",
+      "conf": "HIGH",
+      "ans": "Based on the data, **Outram Park** has the most connections, with **6** connections.\n\n[Source: Neo4j graph database, 5 record(s), Singapore urban data 2024-2025]"
+    },
+    "What is the population of Bedok?": {
+      "quality": "✅",
+      "mode": "cypher",
+      "conf": "HIGH",
+      "ans": "The population of Bedok is 276,000. This data is from the East region of Singapore.  \n[Source: Neo4j graph database, 1 record(s), Singapore urban data 2024-2025]"
+    },
+    "What is the population of Tampines?": {
+      "quality": "✅",
+      "mode": "cypher",
+      "conf": "HIGH",
+      "ans": "The population of Tampines is 270,000. This data is from the East region of Singapore.  \n[Source: Neo4j graph database, 1 record(s), Singapore urban data 2024-2025]"
+    },
+    "What is the population of Punggol?": {
+      "quality": "✅",
+      "mode": "cypher",
+      "conf": "HIGH",
+      "ans": "The population of Punggol is 195,000. This figure is from the Singapore urban data for 2024-2025.  \n[Source: Neo4j graph database, 1 record(s), Singapore urban data 2024-2025]"
+    },
+    "What is the population of Ang Mo Kio?": {
+      "quality": "✅",
+      "mode": "cypher",
+      "conf": "HIGH",
+      "ans": "The population of Ang Mo Kio is 163,000. This area is located in the North-East region of Singapore.  \n[Source: Neo4j graph database, 1 record(s), Singapore urban data 2024-2025]"
+    },
+    "Which planning area has the largest population?": {
+      "quality": "✅",
+      "mode": "cypher",
+      "conf": "HIGH",
+      "ans": "Based on the data provided, **Bedok** has the largest population with **276,000** people. This is followed by Tampines (270,000), Jurong West (259,000), and then Sengkang and Woodlands (both 255,000)."
+    },
+    "Which areas have the smallest population?": {
+      "quality": "✅",
+      "mode": "cypher",
+      "conf": "HIGH",
+      "ans": "Based on the data, the area with the smallest population is **North-Eastern Islands** with a population of 50. The other listed areas (Pioneer, Lim Chu Kang, Central Water Catchment, and Sungei Kadut)"
+    },
+    "What is the average HDB resale price in Punggol?": {
+      "quality": "❌",
+      "mode": "cypher",
+      "conf": "HIGH",
+      "ans": "I don't have enough data to answer that. The available data covers average HDB resale prices for Bukit Timah ($717,144), Bishan ($642,044), Queenstown ($578,517), Bukit Merah ($567,605), and Marine Pa"
+    },
+    "Which area has the highest HDB prices?": {
+      "quality": "✅",
+      "mode": "cypher",
+      "conf": "HIGH",
+      "ans": "Based on the data provided, **Bukit Timah** has the highest average HDB price at **$717,144**.\n\nThe full ranking of areas by average price is:\n1. Bukit Timah – $717,144\n2. Bishan – $642,044\n3. Queenst"
+    },
+    "How many HDB transactions are there?": {
+      "quality": "✅",
+      "mode": "cypher",
+      "conf": "HIGH",
+      "ans": "Based on the data provided, there are **96,365** HDB transactions.\n\n[Source: Neo4j graph database, 1 record(s), Singapore urban data 2024-2025]"
+    },
+    "What is the average temperature in Singapore?": {
+      "quality": "❌",
+      "mode": "local",
+      "conf": "HIGH",
+      "ans": "I don't have enough data to answer that question. The provided information only covers planning areas, transport nodes, and their relationships, with no temperature or climate data included."
+    },
+    "How much rain did Singapore get yesterday?": {
+      "quality": "❌",
+      "mode": "local",
+      "conf": "HIGH",
+      "ans": "I don't have enough data. The provided information only covers transport nodes and planning area details, with no rainfall or weather data for Singapore."
+    },
+    "Which month has the most rainfall?": {
+      "quality": "❌",
+      "mode": "global",
+      "conf": "MEDIUM",
+      "ans": "I don't have enough data. The provided information only lists communities of bus stops, MRT stations, and planning areas with their member counts and key entities—it contains no rainfall or weather da"
+    },
+    "Which planning area is Bedok MRT in?": {
+      "quality": "✅",
+      "mode": "cypher",
+      "conf": "HIGH",
+      "ans": "Based on the data provided, Bedok MRT station is not explicitly listed. However, the data shows several bus stops in the Bedok planning area, including \"Bedok Stn Exit A\" and \"Bedok Stn Exit B,\" which"
+    },
+    "How many bus stops are near Orchard MRT?": {
+      "quality": "✅",
+      "mode": "cypher",
+      "conf": "HIGH",
+      "ans": "Based on the data, there are **10 unique bus stops** near Orchard MRT station. The data lists 20 records, but each bus stop appears twice, so the unique stops are:\n\n- 15 Scotts\n- Aft Cuscaden Rd\n- Bef"
+    },
+    "What planning area is Changi Airport in?": {
+      "quality": "❌",
+      "mode": "local",
+      "conf": "HIGH",
+      "ans": "I don't have enough data to answer that question. The provided data only includes information on the planning areas Ang Mo Kio, Bedok, Bishan, Boon Lay, and Bukit Batok, and does not mention Changi Ai"
+    },
+    "What is the best restaurant in Singapore?": {
+      "quality": "❌",
+      "mode": "local",
+      "conf": "HIGH",
+      "ans": "I don't have enough data to recommend a restaurant. The available information only covers planning areas, transport nodes, and bus stops, with no restaurant or dining data provided."
+    },
+    "Who is the prime minister of Singapore?": {
+      "quality": "❌",
+      "mode": "local",
+      "conf": "HIGH",
+      "ans": "I don't have enough data."
+    },
+    "What is the GDP of Singapore?": {
+      "quality": "❌",
+      "mode": "local",
+      "conf": "HIGH",
+      "ans": "I don't have enough data to answer that question. The provided information only covers planning areas, transport nodes, and related entities, with no economic or GDP data for Singapore."
+    },
+    "How do I get from my house to NUS?": {
+      "quality": "❌",
+      "mode": "local",
+      "conf": "HIGH",
+      "ans": "I don't have enough data. The provided information only includes bus stops and their planning areas (e.g., Lighthouse Sch in Toa Payoh, Bef How Sun Rd in Serangoon), but no route information, travel d"
+    }
+  }
+}

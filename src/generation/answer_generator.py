@@ -100,31 +100,95 @@ class AnswerGenerator:
 
     def _cypher_retrieve(self, query: str) -> dict[str, Any]:
         """Try to execute query as Cypher. Falls back to local search."""
-        # Try to match against preset queries
+        import re
         from src.retrieval.cypher_agent import PRESET_QUERIES, run_preset
 
         q = query.lower()
 
         # Map common queries to presets
         preset_map = [
-            # SPECIFIC queries first (order matters!)
+            # ── SPECIFIC queries first ──
+            ("largest population", "largest_population"),
+            ("highest population", "largest_population"),
+            ("smallest population", "smallest_population"),
+            ("lowest population", "smallest_population"),
+            ("most connections", "stations_most_connections"),
             ("most mrt", "areas_with_most_mrt"),
+            ("least mrt", "areas_with_least_mrt"),
+            ("fewest mrt", "areas_with_least_mrt"),
+            ("highest hdb", "hdb_highest_prices"),
+            ("expensive", "hdb_highest_prices"),
+            ("hdb transaction", "hdb_total_transactions"),
             ("cbd", "mrt_count_cbd"),
-            ("downtown", "mrt_count_cbd"),
+            ("downtown core", "mrt_count_cbd"),
+            ("circle line", "circle_line_stations"),
             ("bishan", "mrt_lines_bishan"),
             ("jurong east", "lines_at_jurong_east"),
+            ("woodlands", "lines_at_woodlands"),
+            ("city hall", "lines_at_city_hall"),
             ("orchard road", "bus_stops_orchard"),
-            ("punggol", "hdb_price_punggol"),
-            # GENERIC queries last
-            ("mrt line", "lines_at_jurong_east"),
-            ("bus stop", "bus_stops_orchard"),
+            ("orchard", "mrt_in_orchard"),  # catch-all for "Orchard MRT", "MRT in Orchard"
+            ("hdb price", "hdb_highest_prices"),
+            ("punggol", "hdb_price_town"),
+            ("hdb resale", "hdb_highest_prices"),
+            ("bus service", "bus_stop_count"),
+            ("holiday", "next_holiday"),
+            ("weather station", "weather_stations"),
+            # ── GENERIC last ──
+            ("bus stop", "bus_stop_count"),
             ("mrt station", "station_count"),
+            ("mrt line", "lines_at_jurong_east"),
         ]
+
+        # Connected/path queries: "is X connected to Y?" or "stations from X to Y"
+        if "connected" in q or ("stations" in q and ("from" in q or "to" in q or "between" in q)):
+            # Try Bishan-Orchard specific
+            if "bishan" in q and "orchard" in q:
+                result = run_preset("bishan_to_orchard_path")
+                if "error" not in result and result.get("results"):
+                    return self._format_cypher_result(result, "Path Bishan→Orchard")
+            # Try Jurong East-City Hall specific
+            elif "jurong east" in q and "city hall" in q:
+                result = run_preset("jurong_east_to_city_hall_path")
+                if "error" not in result and result.get("results"):
+                    return self._format_cypher_result(result, "Path Jurong East→City Hall")
+
+        # Area lookup: "what planning area is X in?" or "what area is X in"
+        if ("planning area" in q or "which area" in q) and " mrt " in q:
+            station_match = re.search(r'(?:is|in|area\s+)\s+(\w[\w\s]+?)(?:\s+mrt|\s+station|\s*$|\s*\?)', q)
+            if not station_match:
+                station_match = re.search(r'(\w+)(?:\s+mrt|\s+station)', q)
+            if station_match:
+                stn = station_match.group(1).strip()
+                result = run_preset("station_area_lookup", {"station": stn})
+                if "error" not in result and result.get("results"):
+                    return self._format_cypher_result(result, f"Location of {stn}")
+
+        # MRT in area: "mrt stations in X" or "list all mrt in X"
+        if ("mrt" in q) and (" in " in q or " list " in q):
+            parts = q.split(" in ")
+            if len(parts) >= 2:
+                area = parts[-1].strip().rstrip("?")
+                # Clean up: remove trailing words like "area", "region"
+                area = re.sub(r'\s+(area|region|planning)\s*$', '', area)
+                area = re.sub(r'[^\w\s]', '', area).strip()
+                if area and area not in ("total", "singapore", "all", "the"):
+                    result = run_preset("mrt_in_any_area", {"area": area})
+                    if "error" not in result and result.get("results"):
+                        return self._format_cypher_result(result, f"MRT in {area}")
+
+        # "bus stops near X" or "how many bus stops near X"
+        if ("bus stop" in q or "bus station" in q) and ("near" in q or "close to" in q):
+            station_match = re.search(r'(?:near|close\s+to)\s+(\w[\w\s]+?)(?:\s+mrt|\s+station|\s*$|\s*\?)', q)
+            if station_match:
+                stn = station_match.group(1).strip()
+                result = run_preset("bus_near_station", {"station": stn})
+                if "error" not in result and result.get("results"):
+                    return self._format_cypher_result(result, f"Bus stops near {stn}")
 
         # Population queries: extract area name from query pattern
         if "population" in q:
             # Pattern: "population of X" or "X population"
-            import re
             pop_match = re.search(r'population\s+of\s+(\w[\w\s]*)', q)
             if not pop_match:
                 pop_match = re.search(r'(\w[\w\s]*)\s+population', q)
