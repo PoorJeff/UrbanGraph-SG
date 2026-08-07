@@ -632,11 +632,14 @@ with tabs[3]:
             src = p.get("source_name", "")
             tgt = p.get("target_name", "")
             sim = p.get("similarity", 0)
-            # Add explanation: same line?
-            src_code = str(p.get("source",""))[:4] if p.get("source") else ""
-            tgt_code = str(p.get("target",""))[:4] if p.get("target") else ""
-            same_line = "Y" if src_code[:2] == tgt_code[:2] and src_code[:2] in ["EW","NS","NE","CC","DT","TE","CG"] else ""
-            explanation = f"Same line ({src_code[:2]})" if same_line else "Cross-line latent proximity"
+            # Extract actual station codes (after lta-mrt- prefix)
+            src_raw = str(p.get("source",""))
+            tgt_raw = str(p.get("target",""))
+            src_code = src_raw.replace("lta-mrt-","")[:3] if "lta-mrt-" in src_raw else src_raw[:4]
+            tgt_code = tgt_raw.replace("lta-mrt-","")[:3] if "lta-mrt-" in tgt_raw else tgt_raw[:4]
+            same_line_prefix = src_code[:2] == tgt_code[:2] and len(src_code) >= 2
+            line_prefix = src_code[:2] if same_line_prefix else ""
+            explanation = f"Same line ({line_prefix}) — 2 hops apart" if same_line_prefix else "Cross-line proximity"
             # Try to get hop distance from engine graph
             hop_dist = "?"
             if engine and engine.G and src in engine.G and tgt in engine.G:
