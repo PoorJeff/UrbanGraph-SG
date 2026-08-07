@@ -355,6 +355,16 @@ The project includes an automated evaluation framework (`src/evaluation/`) and p
 
 ---
 
+## Screenshots
+
+<!-- Add screenshots after running the app: streamlit run src/ui/streamlit_app.py -->
+
+| | | |
+|---|---|---|
+| ![Home](screenshots/home.png) | ![Query](screenshots/query.png) | ![Map](screenshots/map.png) |
+
+*To add: open http://localhost:8502, press F12 or use Snipping Tool, save to `screenshots/`*
+
 ## Author
 
 **UrbanGraph-SG** — A personal project demonstrating GraphRAG + knowledge graph integration for urban data intelligence.
