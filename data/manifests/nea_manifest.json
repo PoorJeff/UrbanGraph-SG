@@ -1,41 +1,41 @@
 {
   "source": "nea",
-  "timestamp_utc": "2026-08-07T02:37:21.321420+00:00",
+  "timestamp_utc": "2026-08-07T05:46:41.258313+00:00",
   "files": {
     "rainfall": {
       "path": "C:\\Users\\Jzh20\\Desktop\\UrbanGraph-SG\\data\\raw\\nea\\rainfall.parquet",
-      "sha256": "03c2826418f73199de86b9fc5685ae1693074e3231352b79c2890d8c3aa719ee",
-      "size_bytes": 18901
+      "sha256": "6a65125f31b1494b929afe3bb4a266c0f0839f24928213484296983f1f7bdee1",
+      "size_bytes": 498034
     },
     "temperature": {
       "path": "C:\\Users\\Jzh20\\Desktop\\UrbanGraph-SG\\data\\raw\\nea\\temperature.parquet",
-      "sha256": "538401ec4a9e6d3c2feb30efad8368f6293850af98e9dbf22c7a2c3fe4503b03",
-      "size_bytes": 107157
+      "sha256": "97a65227bd312e37fa85f6d5bae8bf9421144898576e84245332ff844fab3296",
+      "size_bytes": 3873723
     },
     "humidity": {
       "path": "C:\\Users\\Jzh20\\Desktop\\UrbanGraph-SG\\data\\raw\\nea\\humidity.parquet",
-      "sha256": "90cb33afa8efd8c23ca48ba5435a1d4e7f08a62f4492985fcf6a38b08da8f10e",
-      "size_bytes": 133343
+      "sha256": "356f4ca5b1ee2f3aff1b511f2bfb40a52bd5f9999215f8ee4438e29181ab459b",
+      "size_bytes": 4478406
     },
     "wind_speed": {
       "path": "C:\\Users\\Jzh20\\Desktop\\UrbanGraph-SG\\data\\raw\\nea\\wind_speed.parquet",
-      "sha256": "8b7569c5b3d0243979aefc0b6c861e0578bdb83955b65c42370e4224842c0318",
-      "size_bytes": 128874
+      "sha256": "1fc11f244178b77559a12ea5791fceea25a6cf960bf47f7f1a1e42355ae82976",
+      "size_bytes": 4406767
     },
     "wind_direction": {
       "path": "C:\\Users\\Jzh20\\Desktop\\UrbanGraph-SG\\data\\raw\\nea\\wind_direction.parquet",
-      "sha256": "c94374012a0e914102bb66a97fffb5e59841418510648786c72006ade19288ae",
-      "size_bytes": 139975
+      "sha256": "aa9d4db07cca3cf4bad87a90382aef90cae533e0d6b34e82124f126f017d4d0a",
+      "size_bytes": 4616040
     }
   },
   "metadata": {
-    "date_range": "2026-08-04 to 2026-08-07",
+    "date_range": "2026-05-09 to 2026-08-07",
     "record_counts": {
-      "rainfall": 75908,
-      "temperature": 79008,
-      "humidity": 79008,
-      "wind_speed": 83970,
-      "wind_direction": 83966
+      "rainfall": 1945876,
+      "temperature": 2143062,
+      "humidity": 2114326,
+      "wind_speed": 2168805,
+      "wind_direction": 2167658
     }
   }
 }
