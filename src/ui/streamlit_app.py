@@ -453,31 +453,113 @@ with tabs[1]:
 # ═══════════════ TAB 2: ANALYTICS ═══════════════
 with tabs[2]:
     fig_dir = Path("reports/figures")
-    c1, c2, c3 = st.columns(3)
-    with c1: st.metric("Best Model R²", "0.819", help="RandomForest on 9 engineered features")
-    with c2: st.metric("Cross-Validation", "0.761 ± 0.098")
-    with c3: st.metric("Top Predictor", "Temperature")
 
+    # ── Fix #5: Run Analysis button ──
+    c_run, c_space = st.columns([2, 5])
+    with c_run:
+        if st.button("🔄 Refresh Analysis", type="primary", use_container_width=True):
+            with st.spinner("Re-running ML pipeline..."):
+                try:
+                    from src.ml.weather_predictor import WeatherPredictor
+                    from src.ml.visualization import plot_feature_importance, plot_predictions, plot_weather_dashboard
+                    from src.ml.timeseries_analysis import analyze as run_ts
+                    wp = WeatherPredictor(); X, y = wp.prepare_data(); results = wp.train_and_evaluate()
+                    wp_best, wp_model = wp.get_best_model()
+                    if 'RandomForest' in wp.models:
+                        plot_feature_importance(wp.feature_names, wp.models['RandomForest'].feature_importances_)
+                        from sklearn.model_selection import train_test_split
+                        from sklearn.preprocessing import StandardScaler
+                        Xtr, Xte, ytr, yte = train_test_split(X, y, test_size=0.2, random_state=42)
+                        sc = StandardScaler(); Xtr_s = sc.fit_transform(Xtr); Xte_s = sc.transform(Xte)
+                        yp = wp.models['RandomForest'].predict(Xte_s)
+                        plot_predictions(yte, yp)
+                    run_ts()
+                    plot_weather_dashboard()
+                    st.success("Analysis refreshed! Charts updated.")
+                    st.rerun()
+                except Exception as e:
+                    st.error(f"Analysis failed: {e}")
+
+    # ── Fix #1: Live metrics from model card ──
+    card_path = Path("reports/mlops/model_card.json")
+    if card_path.exists():
+        card = json.loads(card_path.read_text())
+        best = card.get("best_model", "RandomForest")
+        models_data = card.get("models", {})
+    else:
+        best = "RandomForest"
+        models_data = {}
+
+    r2_val = models_data.get(best, {}).get("R2", 0.819) if models_data else 0.819
+    cv_val = models_data.get(best, {}).get("CV_R2_mean", 0.761) if models_data else 0.761
+    cv_std = models_data.get(best, {}).get("CV_R2_std", 0.098) if models_data else 0.098
+
+    c1, c2, c3, c4 = st.columns(4)
+    with c1: st.metric("Best Model", best, help="Selected by R² on test set")
+    with c2: st.metric("R² Score", f"{r2_val:.3f}", help="Coefficient of determination")
+    with c3: st.metric("CV (mean±std)", f"{cv_val:.3f}±{cv_std:.3f}", help="5-fold cross-validation")
+    with c4: st.metric("Features", "9", help="temp, humidity, wind, day_of_week, day_of_month, rain_lag1, temp_lag1, rain_roll3, temp_roll3")
+
+    # ── Fix #3: Model comparison grid ──
     st.divider()
-    charts = [
-        ("weather_dashboard.png", "90-Day Singapore Weather — 4 Variables"),
-        ("feature_importance.png", "RandomForest Feature Importance — Temperature Dominates"),
+    st.subheader("Model Comparison")
+    if models_data:
+        cols = st.columns(len(models_data))
+        for i, (name, metrics) in enumerate(models_data.items()):
+            with cols[i]:
+                is_best = name == best
+                border = "2px solid #16a34a" if is_best else "1px solid #e2e8f0"
+                bg = "#f0fdf4" if is_best else "#ffffff"
+                st.markdown(f"""
+                <div style="background:{bg};border:{border};border-radius:10px;padding:16px;text-align:center">
+                    <div style="font-weight:700;font-size:0.95rem;color:#0f172a">{name}</div>
+                    <div style="font-size:1.6rem;font-weight:800;color:#0f172a;margin:6px 0">R²={metrics.get('R2',0):.3f}</div>
+                    <div style="font-size:0.7rem;color:#64748b">MAE={metrics.get('MAE',0):.1f} · RMSE={metrics.get('RMSE',0):.1f}</div>
+                    <div style="font-size:0.7rem;color:#64748b">CV={metrics.get('CV_R2_mean',0):.3f}±{metrics.get('CV_R2_std',0):.3f}</div>
+                </div>
+                """, unsafe_allow_html=True)
+
+    # ── Charts grid ──
+    st.divider()
+    st.subheader("Model Diagnostics")
+    charts_primary = [
+        ("feature_importance.png", "Feature Importance — Temperature dominates at 76% weight"),
         ("prediction_vs_actual.png", "Predicted vs Actual Rainfall — R² = 0.82"),
+        ("weather_dashboard.png", "90-Day Singapore Weather — 4 Variables"),
     ]
     cols = st.columns(3)
-    for i, (f, cap) in enumerate(charts):
+    for i, (f, cap) in enumerate(charts_primary):
         p = fig_dir / f
         if p.exists():
             with cols[i]: st.image(str(p), caption=cap, use_container_width=True)
 
     st.divider()
     st.subheader("Time Series & Correlations")
-    cols2 = st.columns(3)
+
+    # ── Fix #4: Key findings callout ──
+    findings_cols = st.columns(3)
+    findings = [
+        ("🌡️↔💧", "-0.852", "Humidity ↔ Temperature", "Strong inverse — warmer air holds less moisture"),
+        ("🌧️↔💧", "0.737", "Humidity ↔ Rainfall", "Wetter days = higher humidity"),
+        ("🌡️↔💨", "0.403", "Temperature ↔ Wind", "Moderate positive correlation"),
+    ]
+    for i, (icon, val, title, desc) in enumerate(findings):
+        with findings_cols[i]:
+            st.markdown(f"""
+            <div style="background:#f8fafc;border-radius:10px;padding:14px;border:1px solid #e2e8f0;text-align:center">
+                <div style="font-size:1.6rem">{icon}</div>
+                <div style="font-size:1.8rem;font-weight:800;color:#DC2626">{val}</div>
+                <div style="font-size:0.8rem;font-weight:600;color:#0f172a">{title}</div>
+                <div style="font-size:0.7rem;color:#64748b">{desc}</div>
+            </div>
+            """, unsafe_allow_html=True)
+
     charts2 = [
         ("timeseries_dashboard.png", "91-Day Trends with 7-Day Rolling Mean"),
-        ("correlation_heatmap.png", "Variable Correlations — Humidity↔Temp r=-0.85"),
+        ("correlation_heatmap.png", "Variable Correlation Matrix"),
         ("seasonal_pattern.png", "Day-of-Week Weather Patterns"),
     ]
+    cols2 = st.columns(3)
     for i, (f, cap) in enumerate(charts2):
         p = fig_dir / f
         if p.exists():
