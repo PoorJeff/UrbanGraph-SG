@@ -102,5 +102,249 @@
     "started_at": "2026-08-07T06:05:43.881819+00:00",
     "status": "completed",
     "ended_at": "2026-08-07T06:05:43.881819+00:00"
+  },
+  {
+    "run_name": "LinearRegression_baseline",
+    "params": {
+      "model": "LinearRegression",
+      "features": 9
+    },
+    "metrics": {
+      "LR_R2_test": 0.743,
+      "LR_MAE": 179.51,
+      "LR_RMSE": 245.12,
+      "LR_CV_R2_mean": 0.3058,
+      "LR_CV_R2_std": 0.4186,
+      "LR_CV_regular_mean": 0.6367,
+      "LR_n_train": 71,
+      "LR_n_test": 18
+    },
+    "started_at": "2026-08-07T06:42:14.079698+00:00",
+    "status": "completed",
+    "ended_at": "2026-08-07T06:42:18.363584+00:00"
+  },
+  {
+    "run_name": "LinearRegression_baseline",
+    "params": {
+      "model": "LinearRegression",
+      "features": 9
+    },
+    "metrics": {
+      "LR_R2_test": 0.743,
+      "LR_MAE": 179.51,
+      "LR_RMSE": 245.12,
+      "LR_CV_R2_mean": 0.3058,
+      "LR_CV_R2_std": 0.4186,
+      "LR_CV_regular_mean": 0.6367,
+      "LR_n_train": 71,
+      "LR_n_test": 18
+    },
+    "started_at": "2026-08-07T06:42:14.079698+00:00",
+    "status": "completed",
+    "ended_at": "2026-08-07T06:42:18.363584+00:00"
+  },
+  {
+    "run_name": "RandomForest_tuned",
+    "params": {
+      "model": "RandomForest",
+      "n_estimators": 100,
+      "max_depth": 8
+    },
+    "metrics": {
+      "RF_R2_test": 0.8168,
+      "RF_MAE": 135.31,
+      "RF_RMSE": 206.97,
+      "RF_CV_R2_mean": 0.5734,
+      "RF_CV_R2_std": 0.1864,
+      "RF_CV_regular_mean": 0.6913,
+      "RF_n_train": 71,
+      "RF_n_test": 18
+    },
+    "started_at": "2026-08-07T06:42:18.366149+00:00",
+    "status": "completed",
+    "ended_at": "2026-08-07T06:42:18.366149+00:00"
+  },
+  {
+    "run_name": "LinearRegression_baseline",
+    "params": {
+      "model": "LinearRegression",
+      "features": 9
+    },
+    "metrics": {
+      "LR_R2_test": 0.743,
+      "LR_MAE": 179.51,
+      "LR_RMSE": 245.12,
+      "LR_CV_R2_mean": 0.3058,
+      "LR_CV_R2_std": 0.4186,
+      "LR_CV_regular_mean": 0.6367,
+      "LR_n_train": 71,
+      "LR_n_test": 18
+    },
+    "started_at": "2026-08-07T06:42:14.079698+00:00",
+    "status": "completed",
+    "ended_at": "2026-08-07T06:42:18.363584+00:00"
+  },
+  {
+    "run_name": "RandomForest_tuned",
+    "params": {
+      "model": "RandomForest",
+      "n_estimators": 100,
+      "max_depth": 8
+    },
+    "metrics": {
+      "RF_R2_test": 0.8168,
+      "RF_MAE": 135.31,
+      "RF_RMSE": 206.97,
+      "RF_CV_R2_mean": 0.5734,
+      "RF_CV_R2_std": 0.1864,
+      "RF_CV_regular_mean": 0.6913,
+      "RF_n_train": 71,
+      "RF_n_test": 18
+    },
+    "started_at": "2026-08-07T06:42:18.366149+00:00",
+    "status": "completed",
+    "ended_at": "2026-08-07T06:42:18.366149+00:00"
+  },
+  {
+    "run_name": "GradientBoosting",
+    "params": {
+      "model": "GradientBoosting",
+      "n_estimators": 100
+    },
+    "metrics": {
+      "GB_R2_test": 0.7545,
+      "GB_MAE": 154.66,
+      "GB_RMSE": 239.6,
+      "GB_CV_R2_mean": 0.5724,
+      "GB_CV_R2_std": 0.1167,
+      "GB_CV_regular_mean": 0.6615,
+      "GB_n_train": 71,
+      "GB_n_test": 18
+    },
+    "started_at": "2026-08-07T06:42:18.381778+00:00",
+    "status": "completed",
+    "ended_at": "2026-08-07T06:42:18.381778+00:00"
+  },
+  {
+    "run_name": "LinearRegression_baseline",
+    "params": {
+      "model": "LinearRegression",
+      "features": 9
+    },
+    "metrics": {
+      "LR_R2_test": 0.743,
+      "LR_MAE": 179.51,
+      "LR_RMSE": 245.12,
+      "LR_CV_R2_mean": 0.3058,
+      "LR_CV_R2_std": 0.4186,
+      "LR_CV_regular_mean": 0.6367,
+      "LR_n_train": 71,
+      "LR_n_test": 18
+    },
+    "started_at": "2026-08-07T06:42:43.645677+00:00",
+    "status": "completed",
+    "ended_at": "2026-08-07T06:42:47.992439+00:00"
+  },
+  {
+    "run_name": "LinearRegression_baseline",
+    "params": {
+      "model": "LinearRegression",
+      "features": 9
+    },
+    "metrics": {
+      "LR_R2_test": 0.743,
+      "LR_MAE": 179.51,
+      "LR_RMSE": 245.12,
+      "LR_CV_R2_mean": 0.3058,
+      "LR_CV_R2_std": 0.4186,
+      "LR_CV_regular_mean": 0.6367,
+      "LR_n_train": 71,
+      "LR_n_test": 18
+    },
+    "started_at": "2026-08-07T06:42:43.645677+00:00",
+    "status": "completed",
+    "ended_at": "2026-08-07T06:42:47.992439+00:00"
+  },
+  {
+    "run_name": "RandomForest_tuned",
+    "params": {
+      "model": "RandomForest",
+      "n_estimators": 100,
+      "max_depth": 8
+    },
+    "metrics": {
+      "RF_R2_test": 0.8168,
+      "RF_MAE": 135.31,
+      "RF_RMSE": 206.97,
+      "RF_CV_R2_mean": 0.5734,
+      "RF_CV_R2_std": 0.1864,
+      "RF_CV_regular_mean": 0.6913,
+      "RF_n_train": 71,
+      "RF_n_test": 18
+    },
+    "started_at": "2026-08-07T06:42:48.005029+00:00",
+    "status": "completed",
+    "ended_at": "2026-08-07T06:42:48.005029+00:00"
+  },
+  {
+    "run_name": "LinearRegression_baseline",
+    "params": {
+      "model": "LinearRegression",
+      "features": 9
+    },
+    "metrics": {
+      "LR_R2_test": 0.743,
+      "LR_MAE": 179.51,
+      "LR_RMSE": 245.12,
+      "LR_CV_R2_mean": 0.3058,
+      "LR_CV_R2_std": 0.4186,
+      "LR_CV_regular_mean": 0.6367,
+      "LR_n_train": 71,
+      "LR_n_test": 18
+    },
+    "started_at": "2026-08-07T06:42:43.645677+00:00",
+    "status": "completed",
+    "ended_at": "2026-08-07T06:42:47.992439+00:00"
+  },
+  {
+    "run_name": "RandomForest_tuned",
+    "params": {
+      "model": "RandomForest",
+      "n_estimators": 100,
+      "max_depth": 8
+    },
+    "metrics": {
+      "RF_R2_test": 0.8168,
+      "RF_MAE": 135.31,
+      "RF_RMSE": 206.97,
+      "RF_CV_R2_mean": 0.5734,
+      "RF_CV_R2_std": 0.1864,
+      "RF_CV_regular_mean": 0.6913,
+      "RF_n_train": 71,
+      "RF_n_test": 18
+    },
+    "started_at": "2026-08-07T06:42:48.005029+00:00",
+    "status": "completed",
+    "ended_at": "2026-08-07T06:42:48.005029+00:00"
+  },
+  {
+    "run_name": "GradientBoosting",
+    "params": {
+      "model": "GradientBoosting",
+      "n_estimators": 100
+    },
+    "metrics": {
+      "GB_R2_test": 0.7545,
+      "GB_MAE": 154.66,
+      "GB_RMSE": 239.6,
+      "GB_CV_R2_mean": 0.5724,
+      "GB_CV_R2_std": 0.1167,
+      "GB_CV_regular_mean": 0.6615,
+      "GB_n_train": 71,
+      "GB_n_test": 18
+    },
+    "started_at": "2026-08-07T06:42:48.019034+00:00",
+    "status": "completed",
+    "ended_at": "2026-08-07T06:42:48.019034+00:00"
   }
 ]

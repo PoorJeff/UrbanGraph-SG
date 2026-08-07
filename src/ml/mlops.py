@@ -140,13 +140,14 @@ def run_ml_evaluation():
 
 def generate_model_card(results: dict[str, dict]) -> dict:
     """Generate a model card for the project."""
-    best = max(results, key=lambda n: results[n]["R2"])
+    best = max(results, key=lambda n: results[n].get("CV_R2_mean", results[n].get("R2_test", 0)))
     card = {
         "project": "UrbanGraph-SG Weather Prediction",
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "dataset": "NEA Singapore weather, 91 days, 4 variables",
-        "task": "Regression — predict daily rainfall",
+        "dataset": "NEA Singapore weather, 91 days, 4 variables, 78 stations (daily aggregation)",
+        "task": "Regression — predict total daily rainfall (sum across stations)",
         "best_model": best,
+        "split": "Chronological: first 80% train, last 20% test (no data leakage)",
         "models": {},
     }
     for name, metrics in results.items():

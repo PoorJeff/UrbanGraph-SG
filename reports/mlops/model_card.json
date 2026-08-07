@@ -1,30 +1,40 @@
 {
   "project": "UrbanGraph-SG Weather Prediction",
-  "generated_at": "2026-08-07T06:05:43.897817+00:00",
-  "dataset": "NEA Singapore weather, 91 days, 4 variables",
-  "task": "Regression \u2014 predict daily rainfall",
-  "best_model": "LinearRegression",
+  "generated_at": "2026-08-07T06:42:48.034055+00:00",
+  "dataset": "NEA Singapore weather, 91 days, 4 variables, 78 stations (daily aggregation)",
+  "task": "Regression \u2014 predict total daily rainfall (sum across stations)",
+  "best_model": "RandomForest",
+  "split": "Chronological: first 80% train, last 20% test (no data leakage)",
   "models": {
     "LinearRegression": {
-      "R2": 0.8482,
-      "MAE": 148.93,
-      "RMSE": 205.83,
-      "CV_R2_mean": 0.6961,
-      "CV_R2_std": 0.1442
+      "R2_test": 0.743,
+      "MAE": 179.51,
+      "RMSE": 245.12,
+      "CV_R2_mean": 0.3058,
+      "CV_R2_std": 0.4186,
+      "CV_regular_mean": 0.6367,
+      "n_train": 71,
+      "n_test": 18
     },
     "RandomForest": {
-      "R2": 0.8187,
-      "MAE": 174.43,
-      "RMSE": 224.94,
-      "CV_R2_mean": 0.7608,
-      "CV_R2_std": 0.0983
+      "R2_test": 0.8168,
+      "MAE": 135.31,
+      "RMSE": 206.97,
+      "CV_R2_mean": 0.5734,
+      "CV_R2_std": 0.1864,
+      "CV_regular_mean": 0.6913,
+      "n_train": 71,
+      "n_test": 18
     },
     "GradientBoosting": {
-      "R2": 0.6552,
-      "MAE": 204.85,
-      "RMSE": 310.22,
-      "CV_R2_mean": 0.7074,
-      "CV_R2_std": 0.156
+      "R2_test": 0.7545,
+      "MAE": 154.66,
+      "RMSE": 239.6,
+      "CV_R2_mean": 0.5724,
+      "CV_R2_std": 0.1167,
+      "CV_regular_mean": 0.6615,
+      "n_train": 71,
+      "n_test": 18
     }
   }
 }
