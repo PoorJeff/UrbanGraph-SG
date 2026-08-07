@@ -1,7 +1,6 @@
 """
-UrbanGraph-SG — Modern Streamlit Interface
-===========================================
-Beautiful Singapore-themed UI with interactive map, preset questions, and chat.
+UrbanGraph-SG — Clean Streamlit Interface
+Two-column: Presets+Chat on left, Map on right
 """
 
 import json, sys
@@ -19,344 +18,165 @@ from src.config import config
 from src.generation.answer_generator import AnswerGenerator
 from src.graph.neo4j_client import run_query
 
-# ── Page Config ──────────────────────────────────────────────────
+# ── Page Config ──
 st.set_page_config(
-    page_title="UrbanGraph-SG | Singapore Knowledge Navigator",
+    page_title="UrbanGraph-SG | Singapore Knowledge Graph",
     page_icon="🇸🇬",
     layout="wide",
-    initial_sidebar_state="collapsed",
 )
 
-# ── Custom CSS ───────────────────────────────────────────────────
+# ── Compact CSS ──
 st.markdown("""
 <style>
-/* ── Global ── */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
-.main { background: #f5f7fa; }
-
-/* ── Header ── */
-.header-banner {
-    background: linear-gradient(135deg, #ED2939 0%, #D42E2B 40%, #1A1A2E 100%);
-    border-radius: 16px;
-    padding: 28px 36px;
-    margin-bottom: 20px;
-    color: white;
-    box-shadow: 0 4px 24px rgba(237,41,57,0.25);
-}
-.header-banner h1 {
-    font-size: 2rem; font-weight: 700; margin: 0; letter-spacing: -0.5px;
-}
-.header-banner p {
-    font-size: 0.95rem; opacity: 0.85; margin: 4px 0 0 0;
-}
-
-/* ── Stat Cards ── */
-.stat-row { display: flex; gap: 14px; margin-bottom: 20px; }
-.stat-card {
-    flex: 1; background: white; border-radius: 12px; padding: 16px 20px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06); border: 1px solid #eef0f4;
-    text-align: center;
-}
-.stat-card .stat-num { font-size: 1.6rem; font-weight: 700; color: #ED2939; }
-.stat-card .stat-label { font-size: 0.78rem; color: #888; margin-top: 2px; }
-
-/* ── Preset Cards ── */
-.preset-card {
-    background: white; border-radius: 10px; padding: 11px 15px;
-    margin-bottom: 8px; cursor: pointer; border: 1px solid #eef0f4;
-    transition: all 0.15s; font-size: 0.85rem; color: #333;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-.preset-card:hover { border-color: #ED2939; box-shadow: 0 2px 8px rgba(237,41,57,0.12); }
-.preset-icon { font-size: 1.1rem; margin-right: 6px; }
-
-/* ── Chat ── */
-.chat-container { background: white; border-radius: 16px; padding: 20px; min-height: 420px; }
-.user-msg { background: #ED2939; color: white; padding: 10px 16px; border-radius: 12px 12px 2px 12px; margin: 8px 0; display: inline-block; max-width: 85%; font-size: 0.9rem; }
-.bot-msg { background: #f0f2f5; color: #1a1a2e; padding: 12px 18px; border-radius: 12px 12px 12px 2px; margin: 8px 0; max-width: 90%; font-size: 0.9rem; line-height: 1.55; }
-.bot-msg .source { font-size: 0.72rem; color: #888; margin-top: 6px; border-top: 1px solid #e0e0e0; padding-top: 6px; }
-.conf-badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.68rem; font-weight: 600; margin-right: 6px; }
-.conf-high { background: #d4edda; color: #155724; }
-.conf-medium { background: #fff3cd; color: #856404; }
-.conf-low { background: #f8d7da; color: #721c24; }
-
-/* ── Map ── */
-.map-container { border-radius: 16px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
-
-/* ── Legend ── */
-.legend-box { background: white; border-radius: 10px; padding: 10px 14px; margin-top: 8px; }
-.legend-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; }
-
-/* ── Clean Sidebar ── */
-section[data-testid="stSidebar"] { background: white; border-right: 1px solid #eef0f4; }
-section[data-testid="stSidebar"] .stButton button {
-    width: 100%; text-align: left; border-radius: 8px; border: 1px solid #eef0f4;
-    background: white; font-size: 0.82rem; padding: 8px 12px;
-    transition: all 0.15s;
-}
-section[data-testid="stSidebar"] .stButton button:hover {
-    border-color: #ED2939; background: #fff5f5;
-}
+.main .block-container { padding-top: 1rem; padding-bottom: 1rem; max-width: 100%; }
+header { visibility: hidden; }
+.stButton button { text-align: left; border-radius: 6px; border: 1px solid #e0e0e0;
+    background: white; font-size: 0.8rem; padding: 6px 10px; margin: 0 0 3px 0; width: 100%; }
+.stButton button:hover { border-color: #ED2939; background: #fff5f5; }
+.preset-btn-row { display: flex; gap: 4px; flex-wrap: wrap; margin: 4px 0 8px 0; }
+.preset-chip { font-size: 0.72rem; padding: 4px 10px; border-radius: 14px; border: 1px solid #ddd;
+    background: #f8f9fa; cursor: pointer; white-space: nowrap; display: inline-block; }
+.preset-chip:hover { background: #fee; border-color: #ED2939; }
+h3 { font-size: 1.1rem !important; margin: 0 0 4px 0 !important; }
+.chat-box { border: 1px solid #eee; border-radius: 8px; padding: 10px; min-height: 250px; max-height: 450px; overflow-y: auto; background: #fafafa; }
+.chat-user { background: #ED2939; color: white; padding: 6px 12px; border-radius: 10px 10px 2px 10px; margin: 4px 0; display: inline-block; font-size: 0.82rem; max-width: 90%; }
+.chat-bot { background: white; padding: 8px 14px; border-radius: 10px 10px 10px 2px; margin: 4px 0; border: 1px solid #eee; font-size: 0.82rem; max-width: 95%; }
+.badge-green { background: #d4edda; color: #155724; padding: 1px 6px; border-radius: 8px; font-size: 0.65rem; }
+.badge-yellow { background: #fff3cd; color: #856404; padding: 1px 6px; border-radius: 8px; font-size: 0.65rem; }
+.badge-red { background: #f8d7da; color: #721c24; padding: 1px 6px; border-radius: 8px; font-size: 0.65rem; }
 </style>
 """, unsafe_allow_html=True)
 
 
-# ── Cached Resources ─────────────────────────────────────────────
+# ── Cached ──
 @st.cache_resource
-def get_generator():
-    return AnswerGenerator()
+def get_gen(): return AnswerGenerator()
 
-@st.cache_data(ttl=120)
-def get_graph_stats():
+@st.cache_data(ttl=60)
+def get_stats():
     try:
-        nodes = run_query("MATCH (n) RETURN labels(n)[0] AS label, count(n) AS cnt ORDER BY cnt DESC")
-        rels = run_query("MATCH ()-[r]->() RETURN count(r) AS total")
-        return {
-            "total_nodes": sum(r["cnt"] for r in nodes),
-            "total_rels": rels[0]["total"],
-            "mrt": next((r["cnt"] for r in nodes if "TransportNode" in str(r["label"])), 0),
-            "areas": next((r["cnt"] for r in nodes if "PlanningArea" in str(r["label"])), 0),
-        }
-    except Exception:
-        return {"total_nodes": 5532, "total_rels": 10964, "mrt": 137, "areas": 55}
+        n = run_query("MATCH (mrt:TransportNode {transport_type:'mrt'}) RETURN count(mrt) AS c")[0]["c"]
+        b = run_query("MATCH (bus:TransportNode {transport_type:'bus'}) RETURN count(bus) AS c")[0]["c"]
+        a = run_query("MATCH (pa:PlanningArea) RETURN count(pa) AS c")[0]["c"]
+        return n, b, a
+    except: return 137, 5207, 55
 
-@st.cache_resource
-def load_preset_questions():
-    try:
-        return config.preset_questions.get("preset_questions", [])
-    except Exception:
-        return []
+@st.cache_data
+def get_presets():
+    try: return config.preset_questions.get("preset_questions", [])
+    except: return []
 
 
-# ── Session State ─────────────────────────────────────────────────
-if "chat" not in st.session_state:
-    st.session_state.chat = []
-if "pending_query" not in st.session_state:
-    st.session_state.pending_query = None
-if "map_data" not in st.session_state:
-    st.session_state.map_data = {"entities": [], "mode": ""}
+# ── Session ──
+if "chat" not in st.session_state: st.session_state.chat = []
+if "pending" not in st.session_state: st.session_state.pending = None
 
 
-# ── Header Banner ─────────────────────────────────────────────────
-st.markdown("""
-<div class="header-banner">
-    <h1>🇸🇬 UrbanGraph-SG</h1>
-    <p>GraphRAG-powered urban knowledge navigator — Ask anything about Singapore's transport, weather & housing</p>
-</div>
-""", unsafe_allow_html=True)
+# ══════════════════════════════════════════════════════════════════
+# LAYOUT
+# ══════════════════════════════════════════════════════════════════
 
-# ── Stat Row ──────────────────────────────────────────────────────
-stats = get_graph_stats()
-st.markdown(f"""
-<div class="stat-row">
-    <div class="stat-card"><div class="stat-num">{stats['total_nodes']:,}</div><div class="stat-label">Knowledge Graph Nodes</div></div>
-    <div class="stat-card"><div class="stat-num">{stats['total_rels']:,}</div><div class="stat-label">Relationships</div></div>
-    <div class="stat-card"><div class="stat-num">{stats['mrt']}</div><div class="stat-label">MRT Stations</div></div>
-    <div class="stat-card"><div class="stat-num">{stats['areas']}</div><div class="stat-label">Planning Areas</div></div>
-</div>
-""", unsafe_allow_html=True)
+# ── Top Bar ──
+st.markdown("### 🇸🇬 UrbanGraph-SG")
+mrt_n, bus_n, area_n = get_stats()
+st.caption(f"**{mrt_n}** MRT · **{bus_n}** Bus stops · **{area_n}** Planning Areas · Neo4j + DeepSeek")
 
-# ── Main Layout: Sidebar + Chat + Map ────────────────────────────
-with st.sidebar:
-    st.markdown("### 📁 Quick Questions")
-    st.caption("Click any question to instantly query the knowledge graph")
+# ── Preset Chips ──
+presets = get_presets()
+chips_html = '<div class="preset-btn-row">'
+domain_icon = {"transport": "🚇", "population": "👥", "housing": "🏠", "spatial": "📍"}
+for q in presets[:20]:
+    d = q.get("domain","")
+    icon = next((v for k,v in domain_icon.items() if k in d), "❓")
+    t = q["text"][:60]
+    chips_html += f'<span class="preset-chip">{icon} {t}</span>'
+chips_html += '</div>'
+st.markdown(chips_html, unsafe_allow_html=True)
+st.caption("Click a question below or type your own —")
 
-    presets = load_preset_questions()
-    domain_icons = {"transport": "🚇", "weather": "🌧️", "housing": "🏠", "spatial": "📍", "population": "👥"}
+# ── Two Columns ──
+left, right = st.columns([1, 1.15])
 
-    for q_data in presets[:15]:
-        q_id = q_data.get("id", "")
-        q_text = q_data.get("text", "")
-        domain = q_data.get("domain", "general")
-        icon = "❓"
-        for key, val in domain_icons.items():
-            if key in domain.lower():
-                icon = val
-                break
+with left:
+    # Preset buttons in a compact grid
+    cols = st.columns(2)
+    for i, q in enumerate(presets[:20]):
+        icon = next((v for k,v in domain_icon.items() if k in q.get("domain","")), "❓")
+        label = f"{icon} {q['text'][:55]}"
+        with cols[i % 2]:
+            if st.button(label, key=f"p{q['id']}", use_container_width=True):
+                st.session_state.pending = q["text"]
 
-        if st.button(f"{icon} {q_text}", key=f"preset_{q_id}", use_container_width=True):
-            st.session_state.pending_query = q_text
-
+    # Chat area
     st.divider()
-    st.caption("💡 You can also type your own question below")
-
-
-# ── Two-Column Layout ─────────────────────────────────────────────
-col_left, col_right = st.columns([1.05, 1])
-
-with col_left:
-    st.markdown('<div class="chat-container">', unsafe_allow_html=True)
-    st.subheader("💬 Ask about Singapore")
-
-    # Display chat history
     for msg in st.session_state.chat:
         if msg["role"] == "user":
-            st.markdown(f'<div class="user-msg">{msg["content"]}</div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="chat-user">{msg["content"]}</div>', unsafe_allow_html=True)
         else:
             conf = msg.get("confidence", "MEDIUM")
-            badge_html = {
-                "HIGH": '<span class="conf-badge conf-high">HIGH confidence</span>',
-                "MEDIUM": '<span class="conf-badge conf-medium">MEDIUM confidence</span>',
-                "LOW": '<span class="conf-badge conf-low">LOW confidence</span>',
-            }.get(conf, "")
-            mode = msg.get("mode", "")
-            source = msg.get("source", "")
-            st.markdown(
-                f'<div class="bot-msg">{badge_html}<span class="mode-tag">{mode}</span><br>{msg["content"]}'
-                f'<div class="source">{source}</div></div>',
-                unsafe_allow_html=True,
-            )
+            badge = {"HIGH": "badge-green", "MEDIUM": "badge-yellow"}.get(conf, "badge-red")
+            ans = msg["content"][:400].replace("\n","<br>")
+            st.markdown(f'<div class="chat-bot"><span class="{badge}">{conf}</span> {ans}</div>', unsafe_allow_html=True)
 
-    st.markdown('</div>', unsafe_allow_html=True)
+    # Input
+    q = st.chat_input("e.g. Which areas have the most MRT stations?")
+    if q: st.session_state.pending = q
 
-    # Chat input
-    user_input = st.chat_input("e.g. Which areas have the most MRT stations?")
-    if user_input:
-        st.session_state.pending_query = user_input
-
-    # Process pending query
-    if st.session_state.pending_query:
-        query = st.session_state.pending_query
-        st.session_state.pending_query = None
-
-        # Add user message
+    # Process
+    if st.session_state.pending:
+        query = st.session_state.pending
+        st.session_state.pending = None
         st.session_state.chat.append({"role": "user", "content": query})
-
-        # Generate answer
-        with st.spinner("🔍 Searching knowledge graph..."):
-            gen = get_generator()
-            result = gen.answer(query)
-
-        # Add bot message
-        source_text = " | ".join(s.get("Source", "") if isinstance(s, dict) else str(s)
-                                  for s in result.get("sources_used", [])[:2])
-        st.session_state.chat.append({
-            "role": "assistant",
-            "content": result["answer_text"],
-            "confidence": result.get("confidence", "MEDIUM"),
-            "mode": result.get("retrieval_mode", "?"),
-            "source": f"📎 {source_text}" if source_text else "",
-        })
-
-        # Update map data
-        st.session_state.map_data = {
-            "entities": result.get("entities", []),
-            "mode": result.get("retrieval_mode", ""),
-            "query": query,
-        }
+        with st.spinner("Searching..."):
+            r = get_gen().answer(query)
+        st.session_state.chat.append({"role": "assistant", "content": r["answer_text"], "confidence": r.get("confidence","MEDIUM")})
         st.rerun()
 
+# ══════════════════════════════════════════════════════════════════
+# RIGHT: MAP
+# ══════════════════════════════════════════════════════════════════
+with right:
+    m = folium.Map(location=[1.3521, 103.8198], zoom_start=12, tiles="CartoDB positron", control_scale=True)
 
-# ── Right Column: Map + Legend ────────────────────────────────────
-with col_right:
-    st.markdown('<div class="map-container">', unsafe_allow_html=True)
-
-    # Build Folium map
-    m = folium.Map(
-        location=[1.3521, 103.8198],
-        zoom_start=12,
-        tiles="CartoDB positron",
-        control_scale=True,
-    )
-
-    # ── Planning Area Polygons ──
-    try:
-        pa_path = config.data_dir / "raw" / "onemap" / "planning_areas.parquet"
-        if pa_path.exists():
-            pa_df = pd.read_parquet(pa_path)
-            area_fg = FeatureGroup(name="Planning Areas", show=False)
-            for _, row in pa_df.iterrows():
-                try:
-                    folium.GeoJson(
-                        json.loads(row["geojson"]),
-                        style_function=lambda x: {"fillColor": "#3388ff", "color": "#3388ff", "weight": 0.5, "fillOpacity": 0.03},
-                        tooltip=row["pln_area_n"].title(),
-                    ).add_to(area_fg)
-                except Exception:
-                    pass
-            area_fg.add_to(m)
-    except Exception:
-        pass
-
-    # ── MRT Lines (colored) ──
     line_colors = {"EWL": "#009530", "NSL": "#D42E2B", "NEL": "#9900AA",
                    "CCL": "#FA9E0D", "DTL": "#005EC4", "TEL": "#9D5B25", "CGL": "#009530"}
-    line_names = {"EWL": "East-West Line", "NSL": "North-South Line", "NEL": "North East Line",
-                  "CCL": "Circle Line", "DTL": "Downtown Line", "TEL": "Thomson-East Coast Line", "CGL": "Changi Airport Line"}
+    line_names = {"EWL": "East-West", "NSL": "North-South", "NEL": "North East",
+                  "CCL": "Circle", "DTL": "Downtown", "TEL": "Thomson-East Coast", "CGL": "Changi Airport"}
 
+    # MRT lines
     try:
-        lines_data = run_query("""
-            MATCH (a:TransportNode {transport_type: 'mrt'})-[r:CONNECTS_TO]->(b:TransportNode {transport_type: 'mrt'})
-            RETURN a.name AS from_n, a.lat AS f_lat, a.lon AS f_lon,
-                   b.name AS to_n, b.lat AS t_lat, b.lon AS t_lon, r.line AS line
-            LIMIT 150
-        """)
-        mrt_groups = {}
-        for ld in lines_data:
-            line = ld.get("line", "?")
-            if line not in mrt_groups:
-                mrt_groups[line] = FeatureGroup(name=f"{line} — {line_names.get(line, line)}")
-            color = line_colors.get(line, "#888")
+        ld = run_query("MATCH (a:TransportNode {transport_type:'mrt'})-[r:CONNECTS_TO]->(b:TransportNode {transport_type:'mrt'}) RETURN a.lat AS alat, a.lon AS alon, b.lat AS blat, b.lon AS blon, r.line AS line LIMIT 150")
+        groups = {}
+        for row in ld:
+            ln = row.get("line","?")
+            if ln not in groups: groups[ln] = FeatureGroup(name=f"{ln} ({line_names.get(ln,'')})")
             try:
-                folium.PolyLine(
-                    [[float(ld["f_lat"]), float(ld["f_lon"])], [float(ld["t_lat"]), float(ld["t_lon"])]],
-                    color=color, weight=3, opacity=0.75,
-                    tooltip=f"{line}: {ld.get('from_n','')} → {ld.get('to_n','')}"
-                ).add_to(mrt_groups[line])
-            except Exception:
-                pass
-        for fg in mrt_groups.values():
-            fg.add_to(m)
-    except Exception:
-        pass
+                folium.PolyLine([[float(row["alat"]),float(row["alon"])],[float(row["blat"]),float(row["blon"])]],
+                    color=line_colors.get(ln,"#888"), weight=2.5, opacity=0.7).add_to(groups[ln])
+            except: pass
+        for g in groups.values(): g.add_to(m)
+    except: pass
 
-    # ── MRT Stations ──
+    # MRT stations
     try:
-        mrt_data = run_query("MATCH (n:TransportNode {transport_type: 'mrt'}) RETURN n.name AS name, n.lat AS lat, n.lon AS lon, n.planning_area AS area LIMIT 200")
-        station_fg = FeatureGroup(name="MRT Stations")
-        for s in mrt_data:
+        mrts = run_query("MATCH (n:TransportNode {transport_type:'mrt'}) RETURN n.name AS name, n.lat AS lat, n.lon AS lon, n.planning_area AS pa LIMIT 200")
+        fg = FeatureGroup(name="MRT Stations")
+        for s in mrts:
             if s.get("lat") and s.get("lon"):
-                folium.CircleMarker(
-                    [float(s["lat"]), float(s["lon"])], radius=3.5,
+                folium.CircleMarker([float(s["lat"]),float(s["lon"])], radius=3,
                     color="#cc0000", fill=True, fill_color="#cc0000", fill_opacity=0.8,
-                    popup=f"<b>{s['name']}</b><br><small>{s.get('area','')}</small>",
-                    tooltip=s["name"],
-                ).add_to(station_fg)
-        station_fg.add_to(m)
-    except Exception:
-        pass
+                    tooltip=s["name"]).add_to(fg)
+        fg.add_to(m)
+    except: pass
 
-    # ── Highlight entities from last answer ──
-    map_data = st.session_state.map_data
-    if map_data.get("entities"):
-        hl_fg = FeatureGroup(name="🔍 Answer Highlights")
-        for e in map_data["entities"][:10]:
-            lat = e.get("lat")
-            lon = e.get("lon")
-            if lat and lon:
-                folium.Marker(
-                    [float(lat), float(lon)],
-                    icon=folium.Icon(color="orange", icon="star", prefix="fa"),
-                    popup=e.get("name", ""),
-                ).add_to(hl_fg)
-        hl_fg.add_to(m)
+    folium.LayerControl().add_to(m)
+    folium_static(m, height=460)
 
-    folium.LayerControl(collapsed=False).add_to(m)
-    folium_static(m, height=520)
-
-    st.markdown('</div>', unsafe_allow_html=True)
-
-    # ── MRT Line Legend ──
-    st.markdown("""<div class="legend-box"><b>MRT Lines</b>""", unsafe_allow_html=True)
-    cols = st.columns(4)
-    for i, (code, color) in enumerate(line_colors.items()):
-        if code == "CGL": continue  # same color as EWL
-        name = line_names.get(code, code)
-        cols[i % 4].markdown(f'<span class="legend-dot" style="background:{color}"></span> {code}', unsafe_allow_html=True)
-    st.markdown("</div>", unsafe_allow_html=True)
-
-
-# ── Footer ────────────────────────────────────────────────────────
-st.divider()
-st.caption(f"UrbanGraph-SG · GraphRAG on Neo4j · {datetime.now().strftime('%Y-%m-%d %H:%M')} · LLM: DeepSeek")
+    # Legend
+    legend_html = '<small>'
+    for i,(code,color) in enumerate(line_colors.items()):
+        if code == "CGL": continue
+        legend_html += f'<span style="color:{color}">●</span> {code} '
+    legend_html += '</small>'
+    st.markdown(legend_html, unsafe_allow_html=True)
+    st.caption(f"7 MRT lines · 137 stations · Updated {datetime.now().strftime('%H:%M')}")
