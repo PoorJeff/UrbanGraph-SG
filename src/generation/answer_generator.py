@@ -81,18 +81,24 @@ class AnswerGenerator:
                     answer["confidence"] = "HIGH"
                     return answer
 
-        # Step 3: Semantic search (embedding-based)
+        # Step 3: Semantic search (embedding-based, two backends)
+        semantic_data = None
         try:
-            from src.retrieval.semantic_search import get_engine
-            engine = get_engine()
-            if engine.load():
-                semantic_data = engine.search_and_format(query)
-                if semantic_data.get("entities"):
-                    answer = self._generate(query, semantic_data, "semantic")
-                    answer["confidence"] = "MEDIUM"
-                    return answer
+            from src.retrieval.vector_store import get_store
+            store = get_store()
+            semantic_data = store.search_and_format(query)
         except Exception:
             pass
+        if not semantic_data or not semantic_data.get("entities"):
+            try:
+                from src.retrieval.semantic_search import get_engine
+                semantic_data = get_engine().search_and_format(query)
+            except Exception:
+                pass
+        if semantic_data and semantic_data.get("entities"):
+            answer = self._generate(query, semantic_data, "semantic")
+            answer["confidence"] = "MEDIUM"
+            return answer
 
         # Step 4: Local search as last resort
         context_data = local_search(query)

@@ -55,7 +55,7 @@ If any gate fails, STOP and fix before continuing.
 
 | # | Module | Status | Date | pytest | 6-answers | Notes |
 |---|---|---|---|---|---|---|
-| 1 | NLP Semantic Search | ⏳ Pending | - | - | - | - |
+| 1 | NLP Semantic Search | ✅ Done | 2026-08-07 | 37/37 ✅ | 6/6 ✅ | Free-text now works via embeddings |
 | 2 | ChromaDB Vector Store | ⏳ Pending | - | - | - | - |
 | 3 | ML Weather Prediction | ⏳ Pending | - | - | - | - |
 | 4 | Time Series Analysis | ⏳ Pending | - | - | - | - |
