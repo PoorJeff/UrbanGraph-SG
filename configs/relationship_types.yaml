@@ -1,0 +1,76 @@
+# =============================================================================
+# Relationship Type Definitions for Knowledge Graph
+# =============================================================================
+# Maps to §C.2 in UrbanGraph-SG-report.md
+
+relationship_types:
+  CONNECTS_TO:
+    description: "Direct transport connection between two nodes"
+    source_types: ["TransportNode"]
+    target_types: ["TransportNode"]
+    generation: "rule"  # from LTA line data
+    confidence: 1.0
+    properties:
+      - line          # MRT line name or bus service number
+      - distance_km   # approximate distance
+
+  LOCATED_IN:
+    description: "Entity is spatially located within a planning area"
+    source_types: ["TransportNode", "POI", "WeatherStation", "HDBTown"]
+    target_types: ["PlanningArea"]
+    generation: "rule"  # spatial join
+    confidence: 1.0
+
+  NEAR:
+    description: "POI is within 500m of a transport node"
+    source_types: ["POI"]
+    target_types: ["TransportNode"]
+    generation: "rule"  # distance < 500m
+    confidence: 1.0
+    properties:
+      - distance_m
+
+  PART_OF:
+    description: "Bus stop belongs to a bus service route"
+    source_types: ["TransportNode"]
+    target_types: ["TransportNode"]
+    generation: "rule"  # LTA service data
+    confidence: 1.0
+    properties:
+      - service_number
+      - stop_sequence
+
+  RECORDS:
+    description: "Weather station recorded a weather event"
+    source_types: ["WeatherStation"]
+    target_types: ["WeatherEvent"]
+    generation: "rule"  # NEA station mapping
+    confidence: 1.0
+
+  AFFECTS:
+    description: "Weather event affects transport node (e.g., rainfall → MRT ridership)"
+    source_types: ["WeatherEvent", "Holiday"]
+    target_types: ["TransportNode"]
+    generation: "llm_inference"
+    min_confidence: 0.8
+    properties:
+      - evidence       # citation from source text/data
+      - confidence_score
+
+  CORRELATES_WITH:
+    description: "Statistical correlation between two entities"
+    source_types: ["WeatherEvent"]
+    target_types: ["HDBTown"]
+    generation: "llm_inference"
+    min_confidence: 0.7
+    properties:
+      - evidence
+      - correlation_strength
+      - confidence_score
+
+  CONTAINS:
+    description: "Community contains an entity"
+    source_types: ["EntityCommunity"]
+    target_types: ["*"]  # any entity type
+    generation: "algorithm"  # Leiden detection
+    confidence: null  # depends on community detection parameters

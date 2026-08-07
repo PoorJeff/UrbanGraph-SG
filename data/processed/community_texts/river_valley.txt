@@ -1,0 +1,18 @@
+# River Valley Planning Area
+Population: N/A
+
+## Transport Nodes
+- Orchard Stn Exit 13: Orchard Stn Exit 13. located in River Valley planning area. at coordinates (1.3025, 103.8324).
+- Opp Four Seasons Hotel: Opp Four Seasons Hotel. located in River Valley planning area. at coordinates (1.3045, 103.8291).
+- Bef Tomlinson Rd: Bef Tomlinson Rd. located in River Valley planning area. at coordinates (1.3040, 103.8270).
+- Great World Stn Exit 5: Great World Stn Exit 5. located in River Valley planning area. at coordinates (1.2963, 103.8329).
+- St. Thomas Wk: St. Thomas Wk. located in River Valley planning area. at coordinates (1.2959, 103.8362).
+- Opp St. Thomas Wk: Opp St. Thomas Wk. located in River Valley planning area. at coordinates (1.2958, 103.8360).
+- Aft Kim Yam Rd: Aft Kim Yam Rd. located in River Valley planning area. at coordinates (1.2959, 103.8394).
+- Bef Kim Yam Rd: Bef Kim Yam Rd. located in River Valley planning area. at coordinates (1.2958, 103.8396).
+- Bef Zion Full Gospel Ch: Bef Zion Full Gospel Ch. located in River Valley planning area. at coordinates (1.2980, 103.8305).
+- Grange 80 Condo: Grange 80 Condo. located in River Valley planning area. at coordinates (1.2991, 103.8284).
+- Cliveden At Grange: Cliveden At Grange. located in River Valley planning area. at coordinates (1.2993, 103.8267).
+- Bef One Tree Hill: Bef One Tree Hill. located in River Valley planning area. at coordinates (1.3004, 103.8241).
+- Opp Orchard Stn Exit 12: Opp Orchard Stn Exit 12. located in River Valley planning area. at coordinates (1.3025, 103.8298).
+- Aft Orchard Stn Exit 12: Aft Orchard Stn Exit 12. located in River Valley planning area. at coordinates (1.3021, 103.8299).

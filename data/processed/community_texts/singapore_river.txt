@@ -1,0 +1,23 @@
+# Singapore River Planning Area
+Population: N/A
+
+## Transport Nodes
+- Clarke Quay: Clarke Quay. located in Singapore River planning area. at coordinates (1.2904, 103.8471).
+- Clarke Quay Stn Exit E: Clarke Quay Stn Exit E. located in Singapore River planning area. at coordinates (1.2890, 103.8471).
+- Opp Clarke Quay Stn: Opp Clarke Quay Stn. located in Singapore River planning area. at coordinates (1.2888, 103.8475).
+- UE Sq: UE Sq. located in Singapore River planning area. at coordinates (1.2921, 103.8430).
+- Opp UE Sq: Opp UE Sq. located in Singapore River planning area. at coordinates (1.2920, 103.8433).
+- Bef Fort Canning Stn: Bef Fort Canning Stn. located in Singapore River planning area. at coordinates (1.2918, 103.8450).
+- Opp Hong Lim Pk: Opp Hong Lim Pk. located in Singapore River planning area. at coordinates (1.2869, 103.8454).
+- Boat Quay: Boat Quay. located in Singapore River planning area. at coordinates (1.2871, 103.8482).
+- Hong Lim Pk: Hong Lim Pk. located in Singapore River planning area. at coordinates (1.2868, 103.8458).
+- Opp One Upp Pickering: Opp One Upp Pickering. located in Singapore River planning area. at coordinates (1.2860, 103.8463).
+- Grand Copthorne Hotel: Grand Copthorne Hotel. located in Singapore River planning area. at coordinates (1.2908, 103.8344).
+- Hotel Miramar: Hotel Miramar. located in Singapore River planning area. at coordinates (1.2887, 103.8374).
+- Opp Hotel Miramar: Opp Hotel Miramar. located in Singapore River planning area. at coordinates (1.2891, 103.8369).
+- River Pl Condo: River Pl Condo. located in Singapore River planning area. at coordinates (1.2894, 103.8400).
+- Aft Solomon St: Aft Solomon St. located in Singapore River planning area. at coordinates (1.2878, 103.8433).
+- Great World Stn Exit 4: Great World Stn Exit 4. located in Singapore River planning area. at coordinates (1.2961, 103.8323).
+- UE Sq/Bef Mohd Sultan Rd: UE Sq/Bef Mohd Sultan Rd. located in Singapore River planning area. at coordinates (1.2935, 103.8427).
+- Great World Stn Exit 3: Great World Stn Exit 3. located in Singapore River planning area. at coordinates (1.2942, 103.8325).
+- Clarke Quay: Clarke Quay. located in Singapore River planning area. at coordinates (1.2886, 103.8465).

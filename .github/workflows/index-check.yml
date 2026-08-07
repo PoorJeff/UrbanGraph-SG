@@ -1,0 +1,73 @@
+# =============================================================================
+# GraphRAG Index Smoke Test
+# =============================================================================
+# Runs a minimal GraphRAG index to verify the pipeline is functional.
+# Uses sample fixture data to avoid API costs.
+# Runs on manual trigger or schedule (weekly).
+# =============================================================================
+name: Index Check
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 8 * * 1"  # Every Monday at 8 AM UTC
+
+jobs:
+  index-smoke-test:
+    runs-on: ubuntu-latest
+
+    services:
+      neo4j:
+        image: neo4j:5-community
+        env:
+          NEO4J_AUTH: neo4j/testpassword
+        ports:
+          - 7687:7687
+        options: >-
+          --health-cmd "cypher-shell -u neo4j -p testpassword 'RETURN 1'"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements/base.txt -r requirements/graphrag.txt -r requirements/llm.txt -r requirements/dev.txt
+
+      - name: Dry-run entity extraction
+        run: python -m src.graphrag.extract_entities --dry-run --data-dir tests/fixtures
+        env:
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_MODEL: deepseek-chat
+
+      - name: Verify Neo4j connectivity
+        run: |
+          python -c "
+          from neo4j import GraphDatabase
+          driver = GraphDatabase.driver('bolt://localhost:7687', auth=('neo4j', 'testpassword'))
+          driver.verify_connectivity()
+          print('Neo4j connection verified')
+          driver.close()
+          "
+
+      - name: Check pipeline configs
+        run: |
+          python -c "
+          from src.config import config
+          print(f'Data sources: {list(config.data_sources[\"sources\"].keys())}')
+          print(f'Entity types: {list(config.entity_types[\"entity_types\"].keys())}')
+          print(f'Relationship types: {list(config.relationship_types[\"relationship_types\"].keys())}')
+          print(f'Preset questions: {len(config.preset_questions[\"preset_questions\"])}')
+          print('All configs loaded successfully')
+          "
+
+      - name: Report status
+        run: echo "✅ Index smoke test passed"

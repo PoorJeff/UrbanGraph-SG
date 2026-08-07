@@ -1,0 +1,24 @@
+# Bedok Planning Area
+Population: N/A
+
+## Transport Nodes
+- Opp Comfort Driving Ctr: Opp Comfort Driving Ctr. located in Bedok planning area. at coordinates (1.3364, 103.8979).
+- Eunos Technolink: Eunos Technolink. located in Bedok planning area. at coordinates (1.3338, 103.9006).
+- Blk 637: Blk 637. located in Bedok planning area. at coordinates (1.3307, 103.9037).
+- The Leo: The Leo. located in Bedok planning area. at coordinates (1.3371, 103.9037).
+- Empire Technocentre: Empire Technocentre. located in Bedok planning area. at coordinates (1.3368, 103.9040).
+- Kaki Bt Autohub: Kaki Bt Autohub. located in Bedok planning area. at coordinates (1.3368, 103.9010).
+- Opp Kaki Bt Autohub: Opp Kaki Bt Autohub. located in Bedok planning area. at coordinates (1.3368, 103.9011).
+- Opp Blk 322: Opp Blk 322. located in Bedok planning area. at coordinates (1.3288, 103.9055).
+- Blk 646: Blk 646. located in Bedok planning area. at coordinates (1.3310, 103.9063).
+- Opp Blk 646: Opp Blk 646. located in Bedok planning area. at coordinates (1.3309, 103.9066).
+- Bef Kaki Bt Stn Exit B: Bef Kaki Bt Stn Exit B. located in Bedok planning area. at coordinates (1.3352, 103.9099).
+- Kaki Bt Stn Exit A: Kaki Bt Stn Exit A. located in Bedok planning area. at coordinates (1.3355, 103.9099).
+- Blk 660A CP: Blk 660A CP. located in Bedok planning area. at coordinates (1.3347, 103.9074).
+- Opp Blk 660A CP: Opp Blk 660A CP. located in Bedok planning area. at coordinates (1.3349, 103.9075).
+- Kaki Bt Ind Est: Kaki Bt Ind Est. located in Bedok planning area. at coordinates (1.3334, 103.9041).
+- Opp Kaki Bt Ind Est: Opp Kaki Bt Ind Est. located in Bedok planning area. at coordinates (1.3338, 103.9043).
+- Blk 122: Blk 122. located in Bedok planning area. at coordinates (1.3318, 103.9098).
+- Blk 121: Blk 121. located in Bedok planning area. at coordinates (1.3315, 103.9098).
+- Blk 133: Blk 133. located in Bedok planning area. at coordinates (1.3322, 103.9118).
+- Blk 609: Blk 609. located in Bedok planning area. at coordinates (1.3320, 103.9120).

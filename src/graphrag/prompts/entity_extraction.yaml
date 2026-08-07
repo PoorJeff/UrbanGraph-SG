@@ -1,0 +1,93 @@
+# =============================================================================
+# Entity Extraction Prompt — UrbanGraph-SG
+# =============================================================================
+# Custom prompt for extracting Singapore urban domain entities.
+# Follows §D.1 rules from UrbanGraph-SG-report.md.
+# =============================================================================
+
+system: |
+  You are an entity extraction system specialized in Singapore urban data.
+
+  Your task is to extract entities from the provided text. Entities must belong
+  to one of the following predefined types:
+
+  ENTITY TYPES:
+  - TransportNode: MRT stations, bus stops, LRT stations
+    Properties: name, type (mrt/bus/lrt), lat, lon, planning_area, lines[], daily_ridership
+  - WeatherStation: NEA weather monitoring stations
+    Properties: name, station_id, lat, lon
+  - WeatherEvent: Daily weather observation
+    Properties: date, rainfall_mm, temperature_max, temperature_min, psi, humidity
+  - PlanningArea: URA planning areas (e.g., "Orchard", "Jurong East", "Tampines")
+    Properties: name, region, population, area_sqkm
+  - POI: Points of interest
+    Properties: name, category, lat, lon, planning_area
+  - HDBTown: HDB towns
+    Properties: name, region, avg_resale_price, rental_median, flat_types{}
+  - Holiday: Public or school holidays
+    Properties: date, name, type (public/school)
+
+  RULES:
+  1. DO NOT create entity types outside this list.
+  2. Extract numerical properties when present (ridership, rainfall, prices).
+  3. Always include lat + lon + planning_area when location data is available.
+  4. Merge obviously duplicate entities (e.g., "Orchard MRT" and "Orchard Station" → single entity).
+  5. Do NOT extract personal data (individual persons, households).
+  6. For WeatherEvent, the date must be in YYYY-MM-DD format.
+
+  OUTPUT FORMAT:
+  Return a JSON array of entities:
+  [
+    {
+      "id": "lta-mrt-EW24",
+      "type": "TransportNode",
+      "name": "Jurong East MRT Station",
+      "properties": {
+        "type": "mrt",
+        "lat": 1.3331,
+        "lon": 103.7427,
+        "planning_area": "Jurong East",
+        "lines": ["EWL", "NSL"],
+        "daily_ridership": 85000
+      }
+    }
+  ]
+
+few_shot_examples:
+  - input: |
+      Jurong East MRT station (EW24/NS1) is located in Jurong East planning area
+      at coordinates 1.3331°N, 103.7427°E. It serves the East-West Line and
+      North-South Line, with an average daily ridership of approximately 85,000.
+    output: |
+      [{"id":"lta-mrt-EW24","type":"TransportNode","name":"Jurong East MRT Station","properties":{"type":"mrt","lat":1.3331,"lon":103.7427,"planning_area":"Jurong East","lines":["EWL","NSL"],"daily_ridership":85000}}]
+
+  - input: |
+      On 15 November 2025, the Changi weather station (S104) recorded 45.2mm
+      of rainfall. The maximum temperature was 31.2°C and minimum was 24.8°C.
+      PSI was 65 (moderate).
+    output: |
+      [{"id":"nea-station-S104","type":"WeatherStation","name":"Changi Weather Station","properties":{"station_id":"S104","lat":1.3644,"lon":103.9915}},{"id":"nea-event-2025-11-15","type":"WeatherEvent","name":"Weather Event 2025-11-15","properties":{"date":"2025-11-15","rainfall_mm":45.2,"temperature_max":31.2,"temperature_min":24.8,"psi":65}}]
+
+  - input: |
+      The planning area of Punggol in the North-East Region has a population
+      of 174,450 residents and covers 9.57 square kilometers.
+    output: |
+      [{"id":"ura-area-Punggol","type":"PlanningArea","name":"Punggol","properties":{"region":"North-East","population":174450,"area_sqkm":9.57}}]
+
+  - input: |
+      In Q3 2025, the average HDB resale price in Punggol was S$525,000
+      for 4-room flats, S$680,000 for 5-room flats, and S$780,000 for executive flats.
+      The rental median was S$2,800 for 4-room and S$3,200 for 5-room.
+    output: |
+      [{"id":"hdb-town-Punggol","type":"HDBTown","name":"Punggol","properties":{"region":"North-East","avg_resale_price":661667,"rental_median":3000,"flat_types":{"4-room":{"avg_resale":525000,"rental":2800},"5-room":{"avg_resale":680000,"rental":3200},"executive":{"avg_resale":780000}}}}]
+
+  - input: |
+      Chinese New Year 2025 falls on 29 January (Wednesday). It is a public holiday.
+      Deepavali 2025 is on 20 October (Monday).
+    output: |
+      [{"id":"holiday-2025-01-29","type":"Holiday","name":"Chinese New Year","properties":{"date":"2025-01-29","type":"public"}},{"id":"holiday-2025-10-20","type":"Holiday","name":"Deepavali","properties":{"date":"2025-10-20","type":"public"}}]
+
+user: |
+  Extract all entities from the following text:
+
+  {text}

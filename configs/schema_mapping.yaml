@@ -1,0 +1,101 @@
+# =============================================================================
+# Schema Mapping: Raw Data Fields → Standardized Schema
+# =============================================================================
+# Maps raw API response fields to the internal standardized field names.
+
+lta_mrt_stations:
+  source_fields:
+    StationCode: station_code
+    StationName: name
+    Latitude: lat
+    Longitude: lon
+    PlanningArea: planning_area
+  entity_type: TransportNode
+  entity_id_template: "lta-mrt-{station_code}"
+
+lta_bus_stops:
+  source_fields:
+    BusStopCode: bus_stop_code
+    Description: name
+    Latitude: lat
+    Longitude: lon
+    RoadName: road_name
+  entity_type: TransportNode
+  entity_id_template: "lta-bus-{bus_stop_code}"
+
+nea_rainfall:
+  source_fields:
+    station_id: station_id
+    station_name: name
+    value: rainfall_mm
+    reading_time: timestamp
+    latitude: lat
+    longitude: lon
+  entity_type: WeatherStation
+
+nea_temperature:
+  source_fields:
+    station_id: station_id
+    station_name: name
+    value: temperature_c
+    reading_time: timestamp
+
+nea_psi:
+  source_fields:
+    region: region
+    value: psi_value
+    reading_time: timestamp
+
+singstat_population:
+  source_fields:
+    planning_area: planning_area
+    value: population
+    reference_year: year
+  entity_type: PlanningArea
+  entity_id_template: "ura-area-{planning_area}"
+
+onemap_poi:
+  source_fields:
+    UUID: uuid
+    POI_NAME: name
+    POI_CATEGORY: category
+    LATITUDE: lat
+    LONGITUDE: lon
+    PLANNING_AREA: planning_area
+  entity_type: POI
+  entity_id_template: "onemap-poi-{uuid}"
+
+hdb_resale:
+  source_fields:
+    town: town
+    flat_type: flat_type
+    resale_price: resale_price
+    month: transaction_month
+    floor_area_sqm: floor_area_sqm
+    lease_commence_date: lease_commence_date
+  entity_type: HDBTown
+  entity_id_template: "hdb-town-{town}"
+
+hdb_rental:
+  source_fields:
+    town: town
+    flat_type: flat_type
+    rent: rental_median
+    quarter: quarter
+  entity_type: HDBTown
+
+calendar_holidays:
+  source_fields:
+    date: date
+    name: name
+    type: type  # public / school
+  entity_type: Holiday
+  entity_id_template: "holiday-{date}"
+
+# Coordinate validation
+spatial_bounds:
+  singapore:
+    lat_min: 1.15
+    lat_max: 1.48
+    lon_min: 103.60
+    lon_max: 104.10

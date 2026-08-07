@@ -1,0 +1,24 @@
+# Novena Planning Area
+Population: N/A
+
+## Transport Nodes
+- Aft Makepeace Rd: Aft Makepeace Rd. located in Novena planning area. at coordinates (1.3114, 103.8427).
+- Opp Newton FC: Opp Newton FC. located in Novena planning area. at coordinates (1.3123, 103.8407).
+- Opp Newton Stn Exit C: Opp Newton Stn Exit C. located in Novena planning area. at coordinates (1.3140, 103.8388).
+- Chancery Ct: Chancery Ct. located in Novena planning area. at coordinates (1.3166, 103.8363).
+- Anglo-Chinese Sch: Anglo-Chinese Sch. located in Novena planning area. at coordinates (1.3183, 103.8344).
+- Bef Swiss Cottage Est: Bef Swiss Cottage Est. located in Novena planning area. at coordinates (1.3197, 103.8299).
+- Aft Stevens Stn Exit 5: Aft Stevens Stn Exit 5. located in Novena planning area. at coordinates (1.3205, 103.8274).
+- Aft Dunkirk Ave: Aft Dunkirk Ave. located in Novena planning area. at coordinates (1.3219, 103.8234).
+- Bef Goldhill Ave: Bef Goldhill Ave. located in Novena planning area. at coordinates (1.3189, 103.8325).
+- Opp Newton Life Ch: Opp Newton Life Ch. located in Novena planning area. at coordinates (1.3146, 103.8405).
+- Newton Life Ch: Newton Life Ch. located in Novena planning area. at coordinates (1.3145, 103.8408).
+- Raffles Town Club: Raffles Town Club. located in Novena planning area. at coordinates (1.3223, 103.8258).
+- Bef Stevens Stn Exit 4: Bef Stevens Stn Exit 4. located in Novena planning area. at coordinates (1.3226, 103.8262).
+- St. Joseph's Instn: St. Joseph's Instn. located in Novena planning area. at coordinates (1.3249, 103.8274).
+- Bef Wallace Way: Bef Wallace Way. located in Novena planning area. at coordinates (1.3403, 103.8226).
+- LP 57: LP 57. located in Novena planning area. at coordinates (1.3411, 103.8266).
+- Aft Kheam Hock Rd: Aft Kheam Hock Rd. located in Novena planning area. at coordinates (1.3227, 103.8203).
+- Opp Botanic Gdns Stn: Opp Botanic Gdns Stn. located in Novena planning area. at coordinates (1.3233, 103.8163).
+- Opp S'pore Bible Coll: Opp S'pore Bible Coll. located in Novena planning area. at coordinates (1.3254, 103.8140).
+- Aft The Japanese Assn: Aft The Japanese Assn. located in Novena planning area. at coordinates (1.3296, 103.8149).

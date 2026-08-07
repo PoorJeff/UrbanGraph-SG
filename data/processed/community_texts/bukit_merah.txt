@@ -1,0 +1,24 @@
+# Bukit Merah Planning Area
+Population: N/A
+
+## Transport Nodes
+- Maritime Hse: Maritime Hse. located in Bukit Merah planning area. at coordinates (1.2768, 103.8406).
+- Blk 16: Blk 16. located in Bukit Merah planning area. at coordinates (1.2735, 103.8403).
+- Bef Cantonment Rd: Bef Cantonment Rd. located in Bukit Merah planning area. at coordinates (1.2727, 103.8414).
+- Aft Cantonment Rd: Aft Cantonment Rd. located in Bukit Merah planning area. at coordinates (1.2724, 103.8409).
+- Outram Pk Stn Exit 7: Outram Pk Stn Exit 7. located in Bukit Merah planning area. at coordinates (1.2817, 103.8380).
+- Blk 55: Blk 55. located in Bukit Merah planning area. at coordinates (1.2848, 103.8341).
+- Havelock Stn Exit 2: Havelock Stn Exit 2. located in Bukit Merah planning area. at coordinates (1.2869, 103.8336).
+- Havelock Stn Exit 3: Havelock Stn Exit 3. located in Bukit Merah planning area. at coordinates (1.2884, 103.8335).
+- Aft Blk 87: Aft Blk 87. located in Bukit Merah planning area. at coordinates (1.2915, 103.8322).
+- Havelock Stn Exit 5: Havelock Stn Exit 5. located in Bukit Merah planning area. at coordinates (1.2896, 103.8338).
+- Havelock Stn Exit 4: Havelock Stn Exit 4. located in Bukit Merah planning area. at coordinates (1.2898, 103.8341).
+- Bt Merah Int: Bt Merah Int. located in Bukit Merah planning area. at coordinates (1.2821, 103.8172).
+- Bef Neil Rd: Bef Neil Rd. located in Bukit Merah planning area. at coordinates (1.2777, 103.8375).
+- Aft Hosp Dr: Aft Hosp Dr. located in Bukit Merah planning area. at coordinates (1.2783, 103.8376).
+- Outram Pk Stn Exit 6/SGH: Outram Pk Stn Exit 6/SGH. located in Bukit Merah planning area. at coordinates (1.2790, 103.8386).
+- Blk 3: Blk 3. located in Bukit Merah planning area. at coordinates (1.2774, 103.8384).
+- Bef Kampong Bahru Ter: Bef Kampong Bahru Ter. located in Bukit Merah planning area. at coordinates (1.2761, 103.8352).
+- Opp Kampong Bahru Ter: Opp Kampong Bahru Ter. located in Bukit Merah planning area. at coordinates (1.2762, 103.8348).
+- Blk 149: Blk 149. located in Bukit Merah planning area. at coordinates (1.2774, 103.8321).
+- Opp Blk 149: Opp Blk 149. located in Bukit Merah planning area. at coordinates (1.2774, 103.8328).

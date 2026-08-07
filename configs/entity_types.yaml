@@ -1,0 +1,105 @@
+# =============================================================================
+# Entity Type Definitions for Knowledge Graph
+# =============================================================================
+# Maps to §C.1 in UrbanGraph-SG-report.md
+
+entity_types:
+  TransportNode:
+    label: "TransportNode"
+    description: "MRT stations, bus stops, taxi stands"
+    id_template:
+      mrt: "lta-mrt-{station_code}"
+      bus: "lta-bus-{bus_stop_code}"
+    required_properties:
+      - name
+      - lat
+      - lon
+      - planning_area
+    optional_properties:
+      - daily_ridership
+      - opening_year
+      - lines
+      - services
+      - road_name
+    subtype_discriminator: "type"  # mrt | bus
+
+  WeatherStation:
+    label: "WeatherStation"
+    description: "NEA weather monitoring stations"
+    id_template: "nea-station-{station_id}"
+    required_properties:
+      - name
+      - lat
+      - lon
+    optional_properties: []
+
+  WeatherEvent:
+    label: "WeatherEvent"
+    description: "Daily weather observations aggregated per station"
+    id_template: "nea-event-{date}"
+    required_properties:
+      - date
+      - rainfall_mm
+      - temperature_max
+      - temperature_min
+    optional_properties:
+      - psi
+      - humidity
+      - wind_speed
+
+  PlanningArea:
+    label: "PlanningArea"
+    description: "URA planning areas (55 total in Singapore)"
+    id_template: "ura-area-{area_name}"
+    required_properties:
+      - name
+      - region
+      - population
+    optional_properties:
+      - area_sqkm
+      - population_density
+
+  POI:
+    label: "POI"
+    description: "Point of Interest from OneMap"
+    id_template: "onemap-poi-{uuid}"
+    required_properties:
+      - name
+      - category
+      - lat
+      - lon
+    optional_properties:
+      - planning_area
+
+  HDBTown:
+    label: "HDBTown"
+    description: "HDB town with resale and rental statistics"
+    id_template: "hdb-town-{town_name}"
+    required_properties:
+      - name
+      - region
+    optional_properties:
+      - avg_resale_price
+      - rental_median
+      - flat_types
+
+  Holiday:
+    label: "Holiday"
+    description: "Public or school holiday"
+    id_template: "holiday-{date}"
+    required_properties:
+      - date
+      - name
+      - type  # public | school
+    optional_properties: []
+
+  EntityCommunity:
+    label: "EntityCommunity"
+    description: "Community detected by Leiden algorithm"
+    id_template: "community-{id}"
+    required_properties:
+      - title
+      - summary
+      - level
+    optional_properties:
+      - member_count

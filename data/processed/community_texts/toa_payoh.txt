@@ -1,0 +1,24 @@
+# Toa Payoh Planning Area
+Population: N/A
+
+## Transport Nodes
+- Thomson Flyover: Thomson Flyover. located in Toa Payoh planning area. at coordinates (1.3289, 103.8407).
+- Opp Old Police Acad: Opp Old Police Acad. located in Toa Payoh planning area. at coordinates (1.3303, 103.8397).
+- Opp S'pore Polo Club: Opp S'pore Polo Club. located in Toa Payoh planning area. at coordinates (1.3317, 103.8389).
+- SLF Cplx: SLF Cplx. located in Toa Payoh planning area. at coordinates (1.3338, 103.8380).
+- Aft Toa Payoh Rise: Aft Toa Payoh Rise. located in Toa Payoh planning area. at coordinates (1.3370, 103.8374).
+- Mt Alvernia Hosp: Mt Alvernia Hosp. located in Toa Payoh planning area. at coordinates (1.3413, 103.8366).
+- Opp Marymount Convent Sch: Opp Marymount Convent Sch. located in Toa Payoh planning area. at coordinates (1.3406, 103.8389).
+- Marymount Convent Sch: Marymount Convent Sch. located in Toa Payoh planning area. at coordinates (1.3415, 103.8396).
+- Braddell View: Braddell View. located in Toa Payoh planning area. at coordinates (1.3444, 103.8403).
+- Blk 131B: Blk 131B. located in Toa Payoh planning area. at coordinates (1.3388, 103.8426).
+- Toa Payoh Int: Toa Payoh Int. located in Toa Payoh planning area. at coordinates (1.3320, 103.8469).
+- Raffles Girls' Sch: Raffles Girls' Sch. located in Toa Payoh planning area. at coordinates (1.3440, 103.8437).
+- Blk 1004: Blk 1004. located in Toa Payoh planning area. at coordinates (1.3436, 103.8474).
+- Aft Muhajirin Mque: Aft Muhajirin Mque. located in Toa Payoh planning area. at coordinates (1.3433, 103.8513).
+- Blk 219: Blk 219. located in Toa Payoh planning area. at coordinates (1.3431, 103.8562).
+- Opp BCA Acad: Opp BCA Acad. located in Toa Payoh planning area. at coordinates (1.3431, 103.8586).
+- Trellis Twrs: Trellis Twrs. located in Toa Payoh planning area. at coordinates (1.3300, 103.8439).
+- Aft Blk 195: Aft Blk 195. located in Toa Payoh planning area. at coordinates (1.3308, 103.8608).
+- Blk 163: Blk 163. located in Toa Payoh planning area. at coordinates (1.3322, 103.8442).
+- Oleander Twrs: Oleander Twrs. located in Toa Payoh planning area. at coordinates (1.3327, 103.8440).

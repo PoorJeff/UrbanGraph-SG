@@ -1,0 +1,24 @@
+# Ang Mo Kio Planning Area
+Population: N/A
+
+## Transport Nodes
+- Ang Mo Kio Int: Ang Mo Kio Int. located in Ang Mo Kio planning area. at coordinates (1.3697, 103.8486).
+- Blk 207: Blk 207. located in Ang Mo Kio planning area. at coordinates (1.3657, 103.8434).
+- Blk 307A: Blk 307A. located in Ang Mo Kio planning area. at coordinates (1.3666, 103.8443).
+- Opp Al-Muttaqin Mque: Opp Al-Muttaqin Mque. located in Ang Mo Kio planning area. at coordinates (1.3701, 103.8453).
+- Bef Al-Muttaqin Mque: Bef Al-Muttaqin Mque. located in Ang Mo Kio planning area. at coordinates (1.3709, 103.8456).
+- Opp Courts Ang Mo Kio: Opp Courts Ang Mo Kio. located in Ang Mo Kio planning area. at coordinates (1.3737, 103.8450).
+- Courts Ang Mo Kio: Courts Ang Mo Kio. located in Ang Mo Kio planning area. at coordinates (1.3730, 103.8453).
+- Bef Ang Mo Kio Ave 5: Bef Ang Mo Kio Ave 5. located in Ang Mo Kio planning area. at coordinates (1.3766, 103.8450).
+- Bef Ang Mo Kio Lib: Bef Ang Mo Kio Lib. located in Ang Mo Kio planning area. at coordinates (1.3763, 103.8450).
+- Blk 244: Blk 244. located in Ang Mo Kio planning area. at coordinates (1.3673, 103.8340).
+- Blk 310C: Blk 310C. located in Ang Mo Kio planning area. at coordinates (1.3643, 103.8449).
+- Teck Ghee Ct: Teck Ghee Ct. located in Ang Mo Kio planning area. at coordinates (1.3636, 103.8479).
+- Blk 331: Blk 331. located in Ang Mo Kio planning area. at coordinates (1.3617, 103.8509).
+- Aft Ang Mo Kio Ave 10: Aft Ang Mo Kio Ave 10. located in Ang Mo Kio planning area. at coordinates (1.3573, 103.8547).
+- Opp Blk 255: Opp Blk 255. located in Ang Mo Kio planning area. at coordinates (1.3711, 103.8348).
+- Blk 255: Blk 255. located in Ang Mo Kio planning area. at coordinates (1.3709, 103.8348).
+- Mayflower Stn Exit 6: Mayflower Stn Exit 6. located in Ang Mo Kio planning area. at coordinates (1.3705, 103.8365).
+- Mayflower Stn Exit 5: Mayflower Stn Exit 5. located in Ang Mo Kio planning area. at coordinates (1.3705, 103.8368).
+- Mayflower Stn Exit 2: Mayflower Stn Exit 2. located in Ang Mo Kio planning area. at coordinates (1.3745, 103.8376).
+- Bef Mayflower Stn Exit 3: Bef Mayflower Stn Exit 3. located in Ang Mo Kio planning area. at coordinates (1.3743, 103.8377).

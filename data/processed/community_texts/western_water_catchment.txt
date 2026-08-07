@@ -1,0 +1,24 @@
+# Western Water Catchment Planning Area
+Population: N/A
+
+## Transport Nodes
+- Pasir Laba Camp: Pasir Laba Camp. located in Western Water Catchment planning area. at coordinates (1.3309, 103.6738).
+- Hall 11 Blk 55: Hall 11 Blk 55. located in Western Water Catchment planning area. at coordinates (1.3559, 103.6861).
+- Hall 15: Hall 15. located in Western Water Catchment planning area. at coordinates (1.3532, 103.6819).
+- Hall 12: Hall 12. located in Western Water Catchment planning area. at coordinates (1.3519, 103.6805).
+- NIE CP 7: NIE CP 7. located in Western Water Catchment planning area. at coordinates (1.3507, 103.6786).
+- NIE Lib: NIE Lib. located in Western Water Catchment planning area. at coordinates (1.3485, 103.6767).
+- Sch of ADM: Sch of ADM. located in Western Water Catchment planning area. at coordinates (1.3498, 103.6839).
+- Blk 41: Blk 41. located in Western Water Catchment planning area. at coordinates (1.3501, 103.6842).
+- Nanyang Cres Halls: Nanyang Cres Halls. located in Western Water Catchment planning area. at coordinates (1.3551, 103.6845).
+- Bef Nanyang Ave: Bef Nanyang Ave. located in Western Water Catchment planning area. at coordinates (1.3568, 103.6952).
+- Opp Nanyang Ave: Opp Nanyang Ave. located in Western Water Catchment planning area. at coordinates (1.3573, 103.6952).
+- Bef Jln Bahar: Bef Jln Bahar. located in Western Water Catchment planning area. at coordinates (1.3569, 103.6942).
+- Bef Lor Danau: Bef Lor Danau. located in Western Water Catchment planning area. at coordinates (1.3560, 103.6917).
+- Aft Lor Danau: Aft Lor Danau. located in Western Water Catchment planning area. at coordinates (1.3562, 103.6918).
+- PUB Sub-Stn: PUB Sub-Stn. located in Western Water Catchment planning area. at coordinates (1.3559, 103.6890).
+- Opp PUB Sub-Stn: Opp PUB Sub-Stn. located in Western Water Catchment planning area. at coordinates (1.3561, 103.6890).
+- Hall 11: Hall 11. located in Western Water Catchment planning area. at coordinates (1.3543, 103.6869).
+- Halls 8 & 9: Halls 8 & 9. located in Western Water Catchment planning area. at coordinates (1.3515, 103.6857).
+- Lee Wee Nam Lib: Lee Wee Nam Lib. located in Western Water Catchment planning area. at coordinates (1.3479, 103.6805).
+- NIE Blk 2: NIE Blk 2. located in Western Water Catchment planning area. at coordinates (1.3479, 103.6803).

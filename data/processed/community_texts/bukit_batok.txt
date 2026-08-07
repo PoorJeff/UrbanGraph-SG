@@ -1,0 +1,24 @@
+# Bukit Batok Planning Area
+Population: N/A
+
+## Transport Nodes
+- Blk 467B: Blk 467B. located in Bukit Batok planning area. at coordinates (1.3561, 103.7436).
+- Opp Blk 467B: Opp Blk 467B. located in Bukit Batok planning area. at coordinates (1.3558, 103.7434).
+- Blk 451A: Blk 451A. located in Bukit Batok planning area. at coordinates (1.3533, 103.7429).
+- Opp Blk 451A: Opp Blk 451A. located in Bukit Batok planning area. at coordinates (1.3537, 103.7430).
+- Blk 439C: Blk 439C. located in Bukit Batok planning area. at coordinates (1.3573, 103.7389).
+- Dulwich College: Dulwich College. located in Bukit Batok planning area. at coordinates (1.3517, 103.7395).
+- Millennia Institute: Millennia Institute. located in Bukit Batok planning area. at coordinates (1.3510, 103.7396).
+- Blk 460D: Blk 460D. located in Bukit Batok planning area. at coordinates (1.3533, 103.7403).
+- Blk 448B: Blk 448B. located in Bukit Batok planning area. at coordinates (1.3535, 103.7409).
+- Bef Blk 440A: Bef Blk 440A. located in Bukit Batok planning area. at coordinates (1.3546, 103.7389).
+- Blk 461: Blk 461. located in Bukit Batok planning area. at coordinates (1.3550, 103.7394).
+- Blk 461C: Blk 461C. located in Bukit Batok planning area. at coordinates (1.3550, 103.7410).
+- Opp Blk 461C: Opp Blk 461C. located in Bukit Batok planning area. at coordinates (1.3556, 103.7408).
+- Blk 438A: Blk 438A. located in Bukit Batok planning area. at coordinates (1.3572, 103.7409).
+- Blk 464A: Blk 464A. located in Bukit Batok planning area. at coordinates (1.3576, 103.7414).
+- Opp Blk 465A: Opp Blk 465A. located in Bukit Batok planning area. at coordinates (1.3581, 103.7431).
+- Blk 467 CP: Blk 467 CP. located in Bukit Batok planning area. at coordinates (1.3575, 103.7436).
+- Bef Toh Tuck Rise: Bef Toh Tuck Rise. located in Bukit Batok planning area. at coordinates (1.3394, 103.7638).
+- Aft Toh Tuck Rise: Aft Toh Tuck Rise. located in Bukit Batok planning area. at coordinates (1.3391, 103.7636).
+- Opp Toh Tuck Cres: Opp Toh Tuck Cres. located in Bukit Batok planning area. at coordinates (1.3377, 103.7643).

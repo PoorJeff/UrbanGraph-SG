@@ -1,0 +1,276 @@
+{
+  "generated_at": "2026-08-07T03:01:49.501201+00:00",
+  "data_range": "2025-2026",
+  "raw_data": {
+    "calendar": {
+      "school_terms": {
+        "records": 580,
+        "columns": [
+          "date",
+          "year",
+          "term",
+          "is_school_day",
+          "type"
+        ],
+        "missing": {}
+      },
+      "sg_holidays": {
+        "records": 26,
+        "columns": [
+          "date",
+          "name",
+          "type"
+        ],
+        "missing": {}
+      }
+    },
+    "hdb": {},
+    "lta": {
+      "bus_routes": {
+        "records": 26863,
+        "columns": [
+          "ServiceNo",
+          "Operator",
+          "Direction",
+          "StopSequence",
+          "BusStopCode",
+          "Distance",
+          "WD_FirstBus",
+          "WD_LastBus",
+          "SAT_FirstBus",
+          "SAT_LastBus",
+          "SUN_FirstBus",
+          "SUN_LastBus"
+        ],
+        "missing": {}
+      },
+      "bus_services": {
+        "records": 806,
+        "columns": [
+          "ServiceNo",
+          "Operator",
+          "Direction",
+          "Category",
+          "OriginCode",
+          "DestinationCode",
+          "AM_Peak_Freq",
+          "AM_Offpeak_Freq",
+          "PM_Peak_Freq",
+          "PM_Offpeak_Freq",
+          "LoopDesc"
+        ],
+        "missing": {}
+      },
+      "bus_stops": {
+        "records": 5207,
+        "columns": [
+          "BusStopCode",
+          "RoadName",
+          "Description",
+          "Latitude",
+          "Longitude"
+        ],
+        "missing": {}
+      }
+    },
+    "nea": {
+      "humidity": {
+        "records": 79008,
+        "columns": [
+          "date",
+          "timestamp",
+          "station_id",
+          "value"
+        ],
+        "missing": {}
+      },
+      "rainfall": {
+        "records": 75908,
+        "columns": [
+          "date",
+          "timestamp",
+          "station_id",
+          "value"
+        ],
+        "missing": {}
+      },
+      "temperature": {
+        "records": 79008,
+        "columns": [
+          "date",
+          "timestamp",
+          "station_id",
+          "value"
+        ],
+        "missing": {}
+      },
+      "wind_direction": {
+        "records": 83966,
+        "columns": [
+          "date",
+          "timestamp",
+          "station_id",
+          "value"
+        ],
+        "missing": {
+          "value": 167
+        }
+      },
+      "wind_speed": {
+        "records": 83970,
+        "columns": [
+          "date",
+          "timestamp",
+          "station_id",
+          "value"
+        ],
+        "missing": {
+          "value": 161
+        }
+      }
+    },
+    "onemap": {
+      "mrt_stations": {
+        "records": 137,
+        "columns": [
+          "name",
+          "code",
+          "line",
+          "lat",
+          "lon",
+          "station_id",
+          "type",
+          "source"
+        ],
+        "missing": {}
+      },
+      "planning_areas": {
+        "records": 55,
+        "columns": [
+          "pln_area_n",
+          "geojson",
+          "geometry_type"
+        ],
+        "missing": {}
+      },
+      "planning_area_names": {
+        "records": 56,
+        "columns": [
+          "id",
+          "pln_area_n"
+        ],
+        "missing": {}
+      }
+    },
+    "singstat": {
+      "population": {
+        "records": 55,
+        "columns": [
+          "planning_area",
+          "population",
+          "region"
+        ],
+        "missing": {}
+      }
+    },
+    "ura": {}
+  },
+  "processed_data": {
+    "entities": {
+      "holiday": {
+        "count": 26,
+        "columns": [
+          "entity_id",
+          "name",
+          "type",
+          "subtype",
+          "date",
+          "planning_area",
+          "source"
+        ],
+        "planning_area_coverage": {
+          "has_column": true,
+          "total": 26,
+          "with_planning_area": 26,
+          "coverage_pct": 100.0,
+          "unique_areas": 1
+        }
+      },
+      "planningarea": {
+        "count": 55,
+        "columns": [
+          "entity_id",
+          "name",
+          "type",
+          "region",
+          "population",
+          "planning_area",
+          "source"
+        ],
+        "planning_area_coverage": {
+          "has_column": true,
+          "total": 55,
+          "with_planning_area": 55,
+          "coverage_pct": 100.0,
+          "unique_areas": 55
+        }
+      },
+      "transportnode": {
+        "count": 5344,
+        "columns": [
+          "entity_id",
+          "name",
+          "type",
+          "subtype",
+          "lat",
+          "lon",
+          "planning_area",
+          "source",
+          "code",
+          "road_name",
+          "lines"
+        ],
+        "planning_area_coverage": {
+          "has_column": true,
+          "total": 5344,
+          "with_planning_area": 5340,
+          "coverage_pct": 99.9,
+          "unique_areas": 51
+        }
+      },
+      "weatherstation": {
+        "count": 14,
+        "columns": [
+          "entity_id",
+          "name",
+          "station_id",
+          "type",
+          "lat",
+          "lon",
+          "planning_area",
+          "region",
+          "source"
+        ],
+        "planning_area_coverage": {
+          "has_column": true,
+          "total": 14,
+          "with_planning_area": 14,
+          "coverage_pct": 100.0,
+          "unique_areas": 1
+        }
+      }
+    },
+    "total_entities": 5439
+  },
+  "anomalies": [],
+  "summary": {
+    "total_raw_sources": 7,
+    "total_entities": 5439,
+    "anomaly_count": 0,
+    "meets_mvp_target": {
+      "nodes_gt_1000": true,
+      "six_agents": true,
+      "entity_types_complete": true
+    }
+  }
+}

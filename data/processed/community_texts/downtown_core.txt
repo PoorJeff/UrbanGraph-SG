@@ -1,0 +1,24 @@
+# Downtown Core Planning Area
+Population: N/A
+
+## Transport Nodes
+- Bras Basah Cplx: Bras Basah Cplx. located in Downtown Core planning area. at coordinates (1.2970, 103.8530).
+- Opp Natl Lib: Opp Natl Lib. located in Downtown Core planning area. at coordinates (1.2967, 103.8544).
+- Bugis Cube: Bugis Cube. located in Downtown Core planning area. at coordinates (1.2982, 103.8555).
+- Bugis Stn Exit B: Bugis Stn Exit B. located in Downtown Core planning area. at coordinates (1.3008, 103.8561).
+- Bugis Stn Exit A: Bugis Stn Exit A. located in Downtown Core planning area. at coordinates (1.3012, 103.8561).
+- Aft Bugis Stn Exit C: Aft Bugis Stn Exit C. located in Downtown Core planning area. at coordinates (1.2996, 103.8551).
+- Bugis Stn/Parkview Sq: Bugis Stn/Parkview Sq. located in Downtown Core planning area. at coordinates (1.3003, 103.8572).
+- St. John HQ: St. John HQ. located in Downtown Core planning area. at coordinates (1.3020, 103.8633).
+- Golden Mile Cplx: Golden Mile Cplx. located in Downtown Core planning area. at coordinates (1.3032, 103.8650).
+- DUO: DUO. located in Downtown Core planning area. at coordinates (1.2992, 103.8586).
+- The Gateway: The Gateway. located in Downtown Core planning area. at coordinates (1.2991, 103.8589).
+- Plaza Parkroyal: Plaza Parkroyal. located in Downtown Core planning area. at coordinates (1.3004, 103.8604).
+- Bugis Stn Exit D: Bugis Stn Exit D. located in Downtown Core planning area. at coordinates (1.2989, 103.8573).
+- Aft Raffles Hotel: Aft Raffles Hotel. located in Downtown Core planning area. at coordinates (1.2953, 103.8553).
+- Esplanade Stn Exit F: Esplanade Stn Exit F. located in Downtown Core planning area. at coordinates (1.2943, 103.8550).
+- Opp Shaw Twrs: Opp Shaw Twrs. located in Downtown Core planning area. at coordinates (1.2970, 103.8566).
+- Shaw Twrs: Shaw Twrs. located in Downtown Core planning area. at coordinates (1.2971, 103.8569).
+- Aft Beach Rd: Aft Beach Rd. located in Downtown Core planning area. at coordinates (1.2969, 103.8558).
+- Bef Beach Rd: Bef Beach Rd. located in Downtown Core planning area. at coordinates (1.2974, 103.8556).
+- Aft Esplanade Stn Exit D: Aft Esplanade Stn Exit D. located in Downtown Core planning area. at coordinates (1.2901, 103.8546).

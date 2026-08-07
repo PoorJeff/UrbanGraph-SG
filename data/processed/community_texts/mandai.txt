@@ -1,0 +1,19 @@
+# Mandai Planning Area
+Population: N/A
+
+## Transport Nodes
+- Opp Mandai Camp 2: Opp Mandai Camp 2. located in Mandai planning area. at coordinates (1.4105, 103.7745).
+- Aft Mandai Lake Rd: Aft Mandai Lake Rd. located in Mandai planning area. at coordinates (1.4109, 103.7795).
+- LP 162: LP 162. located in Mandai planning area. at coordinates (1.4111, 103.7832).
+- Aft Jln Ulu Sembawang: Aft Jln Ulu Sembawang. located in Mandai planning area. at coordinates (1.4127, 103.7889).
+- Mandai Agrotech Pk: Mandai Agrotech Pk. located in Mandai planning area. at coordinates (1.4153, 103.7974).
+- Bef Mandai Ave: Bef Mandai Ave. located in Mandai planning area. at coordinates (1.4158, 103.8039).
+- Opp Mandai Crematorium & Columbarium: Opp Mandai Crematorium & Columbarium. located in Mandai planning area. at coordinates (1.4156, 103.8095).
+- Aft Sembawang Air Base: Aft Sembawang Air Base. located in Mandai planning area. at coordinates (1.4152, 103.8234).
+- Dieppe Barracks: Dieppe Barracks. located in Mandai planning area. at coordinates (1.4199, 103.8245).
+- Opp Khatib Camp: Opp Khatib Camp. located in Mandai planning area. at coordinates (1.4250, 103.8255).
+- Opp Blk 713: Opp Blk 713. located in Mandai planning area. at coordinates (1.4275, 103.8266).
+- Opp Blk 101: Opp Blk 101. located in Mandai planning area. at coordinates (1.4312, 103.8265).
+- Opp Blk 115B: Opp Blk 115B. located in Mandai planning area. at coordinates (1.4335, 103.8263).
+- Aft Sembawang Ave: Aft Sembawang Ave. located in Mandai planning area. at coordinates (1.4420, 103.8160).
+- Opp Gambas Cres: Opp Gambas Cres. located in Mandai planning area. at coordinates (1.4435, 103.8132).

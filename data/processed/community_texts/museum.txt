@@ -1,0 +1,24 @@
+# Museum Planning Area
+Population: N/A
+
+## Transport Nodes
+- Opp Bencoolen Stn Exit B: Opp Bencoolen Stn Exit B. located in Museum planning area. at coordinates (1.2981, 103.8498).
+- SMU: SMU. located in Museum planning area. at coordinates (1.2962, 103.8496).
+- Armenian Ch: Armenian Ch. located in Museum planning area. at coordinates (1.2931, 103.8497).
+- Bef Stamford Rd: Bef Stamford Rd. located in Museum planning area. at coordinates (1.2941, 103.8502).
+- Cath of The Good Shepherd: Cath of The Good Shepherd. located in Museum planning area. at coordinates (1.2953, 103.8511).
+- Aft Bras Basah Stn Exit A: Aft Bras Basah Stn Exit A. located in Museum planning area. at coordinates (1.2965, 103.8515).
+- Opp Clarke Quay: Opp Clarke Quay. located in Museum planning area. at coordinates (1.2910, 103.8469).
+- Old Hill St Police Stn: Old Hill St Police Stn. located in Museum planning area. at coordinates (1.2908, 103.8486).
+- Aft River Valley Rd: Aft River Valley Rd. located in Museum planning area. at coordinates (1.2946, 103.8439).
+- Fort Canning Stn Exit B: Fort Canning Stn Exit B. located in Museum planning area. at coordinates (1.2922, 103.8450).
+- Opp Haw Par Glass Twr: Opp Haw Par Glass Twr. located in Museum planning area. at coordinates (1.2971, 103.8436).
+- Aft Haw Par Glass Twr: Aft Haw Par Glass Twr. located in Museum planning area. at coordinates (1.2962, 103.8441).
+- Dhoby Ghaut Stn Exit B: Dhoby Ghaut Stn Exit B. located in Museum planning area. at coordinates (1.2983, 103.8453).
+- YMCA: YMCA. located in Museum planning area. at coordinates (1.2981, 103.8478).
+- Dhoby Ghaut Stn: Dhoby Ghaut Stn. located in Museum planning area. at coordinates (1.2993, 103.8453).
+- Aft Dhoby Ghaut Stn: Aft Dhoby Ghaut Stn. located in Museum planning area. at coordinates (1.2990, 103.8465).
+- Bencoolen Stn Exit B: Bencoolen Stn Exit B. located in Museum planning area. at coordinates (1.2982, 103.8494).
+- Sch of The Arts: Sch of The Arts. located in Museum planning area. at coordinates (1.2992, 103.8491).
+- Opp Mohd Sultan Rd: Opp Mohd Sultan Rd. located in Museum planning area. at coordinates (1.2941, 103.8423).
+- Dhoby Ghaut: Dhoby Ghaut. located in Museum planning area. at coordinates (1.2991, 103.8457).

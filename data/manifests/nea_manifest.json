@@ -1,0 +1,41 @@
+{
+  "source": "nea",
+  "timestamp_utc": "2026-08-07T02:37:21.321420+00:00",
+  "files": {
+    "rainfall": {
+      "path": "C:\\Users\\Jzh20\\Desktop\\UrbanGraph-SG\\data\\raw\\nea\\rainfall.parquet",
+      "sha256": "03c2826418f73199de86b9fc5685ae1693074e3231352b79c2890d8c3aa719ee",
+      "size_bytes": 18901
+    },
+    "temperature": {
+      "path": "C:\\Users\\Jzh20\\Desktop\\UrbanGraph-SG\\data\\raw\\nea\\temperature.parquet",
+      "sha256": "538401ec4a9e6d3c2feb30efad8368f6293850af98e9dbf22c7a2c3fe4503b03",
+      "size_bytes": 107157
+    },
+    "humidity": {
+      "path": "C:\\Users\\Jzh20\\Desktop\\UrbanGraph-SG\\data\\raw\\nea\\humidity.parquet",
+      "sha256": "90cb33afa8efd8c23ca48ba5435a1d4e7f08a62f4492985fcf6a38b08da8f10e",
+      "size_bytes": 133343
+    },
+    "wind_speed": {
+      "path": "C:\\Users\\Jzh20\\Desktop\\UrbanGraph-SG\\data\\raw\\nea\\wind_speed.parquet",
+      "sha256": "8b7569c5b3d0243979aefc0b6c861e0578bdb83955b65c42370e4224842c0318",
+      "size_bytes": 128874
+    },
+    "wind_direction": {
+      "path": "C:\\Users\\Jzh20\\Desktop\\UrbanGraph-SG\\data\\raw\\nea\\wind_direction.parquet",
+      "sha256": "c94374012a0e914102bb66a97fffb5e59841418510648786c72006ade19288ae",
+      "size_bytes": 139975
+    }
+  },
+  "metadata": {
+    "date_range": "2026-08-04 to 2026-08-07",
+    "record_counts": {
+      "rainfall": 75908,
+      "temperature": 79008,
+      "humidity": 79008,
+      "wind_speed": 83970,
+      "wind_direction": 83966
+    }
+  }
+}

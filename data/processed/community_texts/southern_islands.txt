@@ -1,0 +1,8 @@
+# Southern Islands Planning Area
+Population: N/A
+
+## Transport Nodes
+- Resorts World Sentosa: Resorts World Sentosa. located in Southern Islands planning area. at coordinates (1.2567, 103.8208).
+- Village Hotel: Village Hotel. located in Southern Islands planning area. at coordinates (1.2536, 103.8204).
+- Opp Village Hotel: Opp Village Hotel. located in Southern Islands planning area. at coordinates (1.2532, 103.8212).
+- Beach Stn Ter: Beach Stn Ter. located in Southern Islands planning area. at coordinates (1.2514, 103.8185).

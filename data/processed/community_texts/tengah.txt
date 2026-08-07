@@ -1,0 +1,24 @@
+# Tengah Planning Area
+Population: N/A
+
+## Transport Nodes
+- Aft Hai Inn See Tp: Aft Hai Inn See Tp. located in Tengah planning area. at coordinates (1.3772, 103.7341).
+- Opp Blk 485A: Opp Blk 485A. located in Tengah planning area. at coordinates (1.3737, 103.7384).
+- Aft Choa Chu Kang Ave 6: Aft Choa Chu Kang Ave 6. located in Tengah planning area. at coordinates (1.3729, 103.7404).
+- Opp Blk 805D: Opp Blk 805D. located in Tengah planning area. at coordinates (1.3720, 103.7438).
+- Blk 111: Blk 111. located in Tengah planning area. at coordinates (1.3564, 103.7343).
+- Tengah CC: Tengah CC. located in Tengah planning area. at coordinates (1.3565, 103.7344).
+- Blk 231B: Blk 231B. located in Tengah planning area. at coordinates (1.3593, 103.7332).
+- Blk 123B: Blk 123B. located in Tengah planning area. at coordinates (1.3598, 103.7342).
+- Blk 224A: Blk 224A. located in Tengah planning area. at coordinates (1.3571, 103.7311).
+- Blk 132B: Blk 132B. located in Tengah planning area. at coordinates (1.3574, 103.7318).
+- Blk 221B: Blk 221B. located in Tengah planning area. at coordinates (1.3576, 103.7293).
+- Blk 215: Blk 215. located in Tengah planning area. at coordinates (1.3572, 103.7294).
+- Blk 220A: Blk 220A. located in Tengah planning area. at coordinates (1.3594, 103.7297).
+- Blk 242: Blk 242. located in Tengah planning area. at coordinates (1.3594, 103.7293).
+- Blk 237A: Blk 237A. located in Tengah planning area. at coordinates (1.3614, 103.7316).
+- Opp Blk 236A: Opp Blk 236A. located in Tengah planning area. at coordinates (1.3611, 103.7310).
+- Blk 238: Blk 238. located in Tengah planning area. at coordinates (1.3619, 103.7335).
+- Blk 324B: Blk 324B. located in Tengah planning area. at coordinates (1.3622, 103.7335).
+- Blk 306B: Blk 306B. located in Tengah planning area. at coordinates (1.3617, 103.7359).
+- Blk 321: Blk 321. located in Tengah planning area. at coordinates (1.3617, 103.7356).

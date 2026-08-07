@@ -1,0 +1,24 @@
+# Rochor Planning Area
+Population: N/A
+
+## Transport Nodes
+- Hotel Grand Pacific: Hotel Grand Pacific. located in Rochor planning area. at coordinates (1.2968, 103.8525).
+- St. Joseph's Ch: St. Joseph's Ch. located in Rochor planning area. at coordinates (1.2977, 103.8532).
+- Queen St Ter: Queen St Ter. located in Rochor planning area. at coordinates (1.3036, 103.8565).
+- Opp Bugis Stn Exit C: Opp Bugis Stn Exit C. located in Rochor planning area. at coordinates (1.3001, 103.8552).
+- Aft Victoria Ln: Aft Victoria Ln. located in Rochor planning area. at coordinates (1.3039, 103.8587).
+- Bef Jln Pisang: Bef Jln Pisang. located in Rochor planning area. at coordinates (1.3035, 103.8586).
+- Bef Sultan Mque: Bef Sultan Mque. located in Rochor planning area. at coordinates (1.3034, 103.8596).
+- Opp Textile Ctr: Opp Textile Ctr. located in Rochor planning area. at coordinates (1.3032, 103.8611).
+- Opp Plaza Parkroyal: Opp Plaza Parkroyal. located in Rochor planning area. at coordinates (1.3009, 103.8607).
+- Opp Duo Residences: Opp Duo Residences. located in Rochor planning area. at coordinates (1.3007, 103.8587).
+- Village Hotel Bugis: Village Hotel Bugis. located in Rochor planning area. at coordinates (1.3017, 103.8575).
+- Bef Bencoolen Stn Exit A: Bef Bencoolen Stn Exit A. located in Rochor planning area. at coordinates (1.2995, 103.8509).
+- Bef Sophia Rd: Bef Sophia Rd. located in Rochor planning area. at coordinates (1.3010, 103.8498).
+- Selegie Ctr: Selegie Ctr. located in Rochor planning area. at coordinates (1.3037, 103.8500).
+- Tekka Ctr: Tekka Ctr. located in Rochor planning area. at coordinates (1.3057, 103.8512).
+- Aft Blk 672B: Aft Blk 672B. located in Rochor planning area. at coordinates (1.3088, 103.8532).
+- Opp Veerasamy Rd: Opp Veerasamy Rd. located in Rochor planning area. at coordinates (1.3065, 103.8562).
+- ibis S'pore on Bencoolen: ibis S'pore on Bencoolen. located in Rochor planning area. at coordinates (1.3015, 103.8525).
+- Opp NAFA Campus 3: Opp NAFA Campus 3. located in Rochor planning area. at coordinates (1.3010, 103.8521).
+- Jalan Besar S42 Boarding: Jalan Besar S42 Boarding. located in Rochor planning area. at coordinates (1.3048, 103.8556).

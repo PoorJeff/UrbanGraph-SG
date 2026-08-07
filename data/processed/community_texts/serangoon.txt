@@ -1,0 +1,24 @@
+# Serangoon Planning Area
+Population: N/A
+
+## Transport Nodes
+- Blk 5022: Blk 5022. located in Serangoon planning area. at coordinates (1.3702, 103.8628).
+- Opp Blk 5022: Opp Blk 5022. located in Serangoon planning area. at coordinates (1.3699, 103.8631).
+- Aft CTE: Aft CTE. located in Serangoon planning area. at coordinates (1.3772, 103.8601).
+- Bef CTE: Bef CTE. located in Serangoon planning area. at coordinates (1.3770, 103.8606).
+- Opp AMK Ind Pk 2: Opp AMK Ind Pk 2. located in Serangoon planning area. at coordinates (1.3779, 103.8627).
+- Aft Blk 5000: Aft Blk 5000. located in Serangoon planning area. at coordinates (1.3776, 103.8626).
+- Blk 5032: Blk 5032. located in Serangoon planning area. at coordinates (1.3722, 103.8633).
+- Extra Space: Extra Space. located in Serangoon planning area. at coordinates (1.3721, 103.8645).
+- Blk 5046: Blk 5046. located in Serangoon planning area. at coordinates (1.3734, 103.8629).
+- Opp Blk 5043: Opp Blk 5043. located in Serangoon planning area. at coordinates (1.3734, 103.8630).
+- Opp Blk 5060: Opp Blk 5060. located in Serangoon planning area. at coordinates (1.3753, 103.8618).
+- Blk 5056: Blk 5056. located in Serangoon planning area. at coordinates (1.3749, 103.8618).
+- Bef Ang Mo Kio Ind Pk 2A: Bef Ang Mo Kio Ind Pk 2A. located in Serangoon planning area. at coordinates (1.3770, 103.8670).
+- Sing Ind Cplx: Sing Ind Cplx. located in Serangoon planning area. at coordinates (1.3757, 103.8646).
+- Opp Techplace 2: Opp Techplace 2. located in Serangoon planning area. at coordinates (1.3785, 103.8655).
+- Techplace 2: Techplace 2. located in Serangoon planning area. at coordinates (1.3783, 103.8669).
+- Serenity Pk: Serenity Pk. located in Serangoon planning area. at coordinates (1.3905, 103.8599).
+- Aft Bartley Rd: Aft Bartley Rd. located in Serangoon planning area. at coordinates (1.3421, 103.8835).
+- Wisma AUPE: Wisma AUPE. located in Serangoon planning area. at coordinates (1.3437, 103.8825).
+- Bef How Sun Rd: Bef How Sun Rd. located in Serangoon planning area. at coordinates (1.3452, 103.8817).

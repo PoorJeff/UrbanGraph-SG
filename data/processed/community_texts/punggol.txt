@@ -1,0 +1,24 @@
+# Punggol Planning Area
+Population: N/A
+
+## Transport Nodes
+- Punggol Int: Punggol Int. located in Punggol planning area. at coordinates (1.4037, 103.9022).
+- Blk 203A: Blk 203A. located in Punggol planning area. at coordinates (1.3985, 103.9042).
+- Blk 102C: Blk 102C. located in Punggol planning area. at coordinates (1.3990, 103.9048).
+- Opp Blk 199C: Opp Blk 199C. located in Punggol planning area. at coordinates (1.4009, 103.9053).
+- Opp Blk 296: Opp Blk 296. located in Punggol planning area. at coordinates (1.4013, 103.9058).
+- Blk 301A: Blk 301A. located in Punggol planning area. at coordinates (1.4040, 103.9066).
+- Blk 604A: Blk 604A. located in Punggol planning area. at coordinates (1.4045, 103.9071).
+- Opp My First Skool PCC10: Opp My First Skool PCC10. located in Punggol planning area. at coordinates (1.4079, 103.9087).
+- My First Skool PCC10: My First Skool PCC10. located in Punggol planning area. at coordinates (1.4077, 103.9088).
+- Aft Soo Teck Stn: Aft Soo Teck Stn. located in Punggol planning area. at coordinates (1.4045, 103.8972).
+- Bef Soo Teck Stn: Bef Soo Teck Stn. located in Punggol planning area. at coordinates (1.4044, 103.8969).
+- Cove Stn Exit B: Cove Stn Exit B. located in Punggol planning area. at coordinates (1.3989, 103.9066).
+- Cove Stn Exit A: Cove Stn Exit A. located in Punggol planning area. at coordinates (1.3986, 103.9067).
+- Meridian Stn Exit B: Meridian Stn Exit B. located in Punggol planning area. at coordinates (1.3974, 103.9086).
+- Meridian Stn Exit A: Meridian Stn Exit A. located in Punggol planning area. at coordinates (1.3965, 103.9093).
+- Coral Edge Stn Exit B: Coral Edge Stn Exit B. located in Punggol planning area. at coordinates (1.3945, 103.9121).
+- Coral Edge Stn Exit A: Coral Edge Stn Exit A. located in Punggol planning area. at coordinates (1.3943, 103.9119).
+- Aft Punggol Ctrl: Aft Punggol Ctrl. located in Punggol planning area. at coordinates (1.3968, 103.9175).
+- Bef Punggol Ctrl: Bef Punggol Ctrl. located in Punggol planning area. at coordinates (1.3972, 103.9182).
+- Aft Punggol Rd: Aft Punggol Rd. located in Punggol planning area. at coordinates (1.3959, 103.9054).

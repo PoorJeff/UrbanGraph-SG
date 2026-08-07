@@ -1,0 +1,24 @@
+# Tuas Planning Area
+Population: N/A
+
+## Transport Nodes
+- Aft Tuas Flyover: Aft Tuas Flyover. located in Tuas planning area. at coordinates (1.3244, 103.6641).
+- Gul Circle Stn Exit B: Gul Circle Stn Exit B. located in Tuas planning area. at coordinates (1.3191, 103.6598).
+- Aft Tuas Ave 5: Aft Tuas Ave 5. located in Tuas planning area. at coordinates (1.3172, 103.6582).
+- Progress Galvanizing: Progress Galvanizing. located in Tuas planning area. at coordinates (1.3133, 103.6549).
+- Opp Progress Galvanizing: Opp Progress Galvanizing. located in Tuas planning area. at coordinates (1.3134, 103.6548).
+- Bef Marinteknik: Bef Marinteknik. located in Tuas planning area. at coordinates (1.3109, 103.6525).
+- Opp Marinteknik: Opp Marinteknik. located in Tuas planning area. at coordinates (1.3111, 103.6526).
+- Aft Ocean Tanker: Aft Ocean Tanker. located in Tuas planning area. at coordinates (1.3080, 103.6498).
+- Opp Ocean Tanker: Opp Ocean Tanker. located in Tuas planning area. at coordinates (1.3085, 103.6502).
+- Bef Tuas Rd: Bef Tuas Rd. located in Tuas planning area. at coordinates (1.3135, 103.6569).
+- Tuas Cres Stn Exit B: Tuas Cres Stn Exit B. located in Tuas planning area. at coordinates (1.3214, 103.6491).
+- Tuas Cres Stn Exit A: Tuas Cres Stn Exit A. located in Tuas planning area. at coordinates (1.3209, 103.6490).
+- Tuas West Rd Stn Exit B: Tuas West Rd Stn Exit B. located in Tuas planning area. at coordinates (1.3299, 103.6400).
+- Tuas West Rd Stn Exit A: Tuas West Rd Stn Exit A. located in Tuas planning area. at coordinates (1.3301, 103.6393).
+- Tuas Ter: Tuas Ter. located in Tuas planning area. at coordinates (1.3450, 103.6392).
+- Aft Tuas Sth Blvd: Aft Tuas Sth Blvd. located in Tuas planning area. at coordinates (1.2700, 103.6172).
+- Kyocera Chemical: Kyocera Chemical. located in Tuas planning area. at coordinates (1.3276, 103.6453).
+- Opp Kyocera Chemical: Opp Kyocera Chemical. located in Tuas planning area. at coordinates (1.3275, 103.6455).
+- Opp Nissin Trspt: Opp Nissin Trspt. located in Tuas planning area. at coordinates (1.3296, 103.6432).
+- Nissin Trspt: Nissin Trspt. located in Tuas planning area. at coordinates (1.3294, 103.6435).

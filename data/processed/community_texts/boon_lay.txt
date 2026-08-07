@@ -1,0 +1,24 @@
+# Boon Lay Planning Area
+Population: N/A
+
+## Transport Nodes
+- Aft Jln Terusan: Aft Jln Terusan. located in Boon Lay planning area. at coordinates (1.3209, 103.7201).
+- Aft Jurong Pier Rd: Aft Jurong Pier Rd. located in Boon Lay planning area. at coordinates (1.3144, 103.7124).
+- SPC Svc Stn: SPC Svc Stn. located in Boon Lay planning area. at coordinates (1.3147, 103.7160).
+- Bef Jurong Port Rd: Bef Jurong Port Rd. located in Boon Lay planning area. at coordinates (1.3147, 103.7180).
+- Aft Jln Buroh: Aft Jln Buroh. located in Boon Lay planning area. at coordinates (1.3152, 103.7196).
+- CWT Distripk: CWT Distripk. located in Boon Lay planning area. at coordinates (1.3170, 103.7199).
+- Opp Corp Pl: Opp Corp Pl. located in Boon Lay planning area. at coordinates (1.3258, 103.7191).
+- Opp Blk 161: Opp Blk 161. located in Boon Lay planning area. at coordinates (1.3299, 103.7210).
+- Aft Jln Buroh: Aft Jln Buroh. located in Boon Lay planning area. at coordinates (1.3159, 103.7094).
+- Bef Jln Buroh: Bef Jln Buroh. located in Boon Lay planning area. at coordinates (1.3160, 103.7099).
+- Opp Jln Pesawat: Opp Jln Pesawat. located in Boon Lay planning area. at coordinates (1.3201, 103.7101).
+- Aft Jln Pesawat: Aft Jln Pesawat. located in Boon Lay planning area. at coordinates (1.3192, 103.7105).
+- Bef Tractor Rd: Bef Tractor Rd. located in Boon Lay planning area. at coordinates (1.3231, 103.7095).
+- Opp Tractor Rd: Opp Tractor Rd. located in Boon Lay planning area. at coordinates (1.3238, 103.7098).
+- UTOC Engrg: UTOC Engrg. located in Boon Lay planning area. at coordinates (1.3262, 103.7089).
+- Opp UTOC Engrg: Opp UTOC Engrg. located in Boon Lay planning area. at coordinates (1.3269, 103.7090).
+- Bef Tukang Innovation Dr: Bef Tukang Innovation Dr. located in Boon Lay planning area. at coordinates (1.3273, 103.7180).
+- Bef Chia Ping Rd: Bef Chia Ping Rd. located in Boon Lay planning area. at coordinates (1.3275, 103.7181).
+- Bef Tukang Innovation Lane: Bef Tukang Innovation Lane. located in Boon Lay planning area. at coordinates (1.3267, 103.7154).
+- Aft Tukang Innovation Lane: Aft Tukang Innovation Lane. located in Boon Lay planning area. at coordinates (1.3269, 103.7157).

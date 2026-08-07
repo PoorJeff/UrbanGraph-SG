@@ -1,0 +1,24 @@
+# Outram Planning Area
+Population: N/A
+
+## Transport Nodes
+- Telok Ayer Stn Exit A: Telok Ayer Stn Exit A. located in Outram planning area. at coordinates (1.2818, 103.8489).
+- Bef Pearl's Hill Terr: Bef Pearl's Hill Terr. located in Outram planning area. at coordinates (1.2815, 103.8409).
+- Chinatown Stn Exit C: Chinatown Stn Exit C. located in Outram planning area. at coordinates (1.2841, 103.8430).
+- Aft Duxton Plain Pk: Aft Duxton Plain Pk. located in Outram planning area. at coordinates (1.2812, 103.8411).
+- Aft Chinatown Stn Exit D: Aft Chinatown Stn Exit D. located in Outram planning area. at coordinates (1.2857, 103.8444).
+- New Bridge Ctr: New Bridge Ctr. located in Outram planning area. at coordinates (1.2829, 103.8425).
+- Chinatown Stn Exit E: Chinatown Stn Exit E. located in Outram planning area. at coordinates (1.2853, 103.8446).
+- Outram Pk Stn Exit 4: Outram Pk Stn Exit 4. located in Outram planning area. at coordinates (1.2803, 103.8403).
+- Opp Chinatown Stn: Opp Chinatown Stn. located in Outram planning area. at coordinates (1.2841, 103.8453).
+- Opp Sri Mariamman Tp: Opp Sri Mariamman Tp. located in Outram planning area. at coordinates (1.2821, 103.8453).
+- Opp Hong Lim Cplx: Opp Hong Lim Cplx. located in Outram planning area. at coordinates (1.2845, 103.8467).
+- Bef The Pinnacle @Duxton: Bef The Pinnacle @Duxton. located in Outram planning area. at coordinates (1.2785, 103.8415).
+- Opp Blk 333: Opp Blk 333. located in Outram planning area. at coordinates (1.2807, 103.8423).
+- Opp Maxwell Stn Exit 3: Opp Maxwell Stn Exit 3. located in Outram planning area. at coordinates (1.2798, 103.8426).
+- Opp Fairfield Meth Ch: Opp Fairfield Meth Ch. located in Outram planning area. at coordinates (1.2798, 103.8438).
+- Tg Pagar Plaza: Tg Pagar Plaza. located in Outram planning area. at coordinates (1.2752, 103.8431).
+- Aft Craig Rd: Aft Craig Rd. located in Outram planning area. at coordinates (1.2778, 103.8435).
+- Bef Craig Rd: Bef Craig Rd. located in Outram planning area. at coordinates (1.2777, 103.8437).
+- Blk 1G: Blk 1G. located in Outram planning area. at coordinates (1.2755, 103.8411).
+- Opp Police Cantonment Cplx: Opp Police Cantonment Cplx. located in Outram planning area. at coordinates (1.2785, 103.8403).

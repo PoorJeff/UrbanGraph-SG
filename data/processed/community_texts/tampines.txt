@@ -1,0 +1,24 @@
+# Tampines Planning Area
+Population: N/A
+
+## Transport Nodes
+- Tampines Nth Int: Tampines Nth Int. located in Tampines planning area. at coordinates (1.3689, 103.9397).
+- Blk 951A: Blk 951A. located in Tampines planning area. at coordinates (1.3443, 103.9356).
+- Blk 953C: Blk 953C. located in Tampines planning area. at coordinates (1.3422, 103.9358).
+- Opp Blk 961A: Opp Blk 961A. located in Tampines planning area. at coordinates (1.3403, 103.9362).
+- Blk 961A: Blk 961A. located in Tampines planning area. at coordinates (1.3403, 103.9363).
+- Blk 962A: Blk 962A. located in Tampines planning area. at coordinates (1.3396, 103.9381).
+- Blk 969C: Blk 969C. located in Tampines planning area. at coordinates (1.3400, 103.9379).
+- Blk 966: Blk 966. located in Tampines planning area. at coordinates (1.3384, 103.9399).
+- Opp Blk 966: Opp Blk 966. located in Tampines planning area. at coordinates (1.3385, 103.9402).
+- Blk 967A: Blk 967A. located in Tampines planning area. at coordinates (1.3411, 103.9397).
+- Tampines Int: Tampines Int. located in Tampines planning area. at coordinates (1.3541, 103.9434).
+- Tampines Concourse Int: Tampines Concourse Int. located in Tampines planning area. at coordinates (1.3574, 103.9416).
+- Blk 879B: Blk 879B. located in Tampines planning area. at coordinates (1.3517, 103.9285).
+- Opp Springfield Sec Sch: Opp Springfield Sec Sch. located in Tampines planning area. at coordinates (1.3508, 103.9295).
+- Springfield Sec Sch: Springfield Sec Sch. located in Tampines planning area. at coordinates (1.3507, 103.9296).
+- Blk 875B: Blk 875B. located in Tampines planning area. at coordinates (1.3529, 103.9291).
+- Tampines West Stn Exit B: Tampines West Stn Exit B. located in Tampines planning area. at coordinates (1.3450, 103.9401).
+- Bef Tampines West Stn: Bef Tampines West Stn. located in Tampines planning area. at coordinates (1.3447, 103.9402).
+- Blk 954D: Blk 954D. located in Tampines planning area. at coordinates (1.3420, 103.9372).
+- Blk 970A: Blk 970A. located in Tampines planning area. at coordinates (1.3417, 103.9373).

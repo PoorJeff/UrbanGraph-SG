@@ -1,0 +1,24 @@
+# Sungei Kadut Planning Area
+Population: N/A
+
+## Transport Nodes
+- Gali Batu Ter: Gali Batu Ter. located in Sungei Kadut planning area. at coordinates (1.3908, 103.7561).
+- Bef Yew Tee Flyover: Bef Yew Tee Flyover. located in Sungei Kadut planning area. at coordinates (1.3912, 103.7545).
+- Aft Yew Tee Flyover: Aft Yew Tee Flyover. located in Sungei Kadut planning area. at coordinates (1.3902, 103.7546).
+- Heavy Veh Pk: Heavy Veh Pk. located in Sungei Kadut planning area. at coordinates (1.3939, 103.7538).
+- Opp Heavy Veh Pk: Opp Heavy Veh Pk. located in Sungei Kadut planning area. at coordinates (1.3930, 103.7541).
+- Yew Tee Ind Est: Yew Tee Ind Est. located in Sungei Kadut planning area. at coordinates (1.3962, 103.7542).
+- Opp Yew Tee Ind Est: Opp Yew Tee Ind Est. located in Sungei Kadut planning area. at coordinates (1.3959, 103.7543).
+- Thong Huat Bros Pte Ltd: Thong Huat Bros Pte Ltd. located in Sungei Kadut planning area. at coordinates (1.4006, 103.7556).
+- Opp Yew Tee Ind Est Blk 1: Opp Yew Tee Ind Est Blk 1. located in Sungei Kadut planning area. at coordinates (1.3977, 103.7550).
+- Da Di Glass: Da Di Glass. located in Sungei Kadut planning area. at coordinates (1.4034, 103.7560).
+- Opp Da Di Glass: Opp Da Di Glass. located in Sungei Kadut planning area. at coordinates (1.4034, 103.7562).
+- Opp Mandai Est: Opp Mandai Est. located in Sungei Kadut planning area. at coordinates (1.4072, 103.7561).
+- Aft Mandai Est: Aft Mandai Est. located in Sungei Kadut planning area. at coordinates (1.4069, 103.7563).
+- Bef Mandai Rd: Bef Mandai Rd. located in Sungei Kadut planning area. at coordinates (1.4096, 103.7557).
+- Aft Mandai Rd: Aft Mandai Rd. located in Sungei Kadut planning area. at coordinates (1.4096, 103.7559).
+- Opp Jln Bumbong: Opp Jln Bumbong. located in Sungei Kadut planning area. at coordinates (1.4142, 103.7552).
+- Aft Jln Bumbong: Aft Jln Bumbong. located in Sungei Kadut planning area. at coordinates (1.4134, 103.7559).
+- Aft LP 234: Aft LP 234. located in Sungei Kadut planning area. at coordinates (1.4186, 103.7546).
+- Bef Jln Bumbong: Bef Jln Bumbong. located in Sungei Kadut planning area. at coordinates (1.4179, 103.7548).
+- Opp Kranji War Memorial: Opp Kranji War Memorial. located in Sungei Kadut planning area. at coordinates (1.4217, 103.7557).

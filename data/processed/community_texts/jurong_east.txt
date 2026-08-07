@@ -1,0 +1,24 @@
+# Jurong East Planning Area
+Population: N/A
+
+## Transport Nodes
+- Cycle & Carriage: Cycle & Carriage. located in Jurong East planning area. at coordinates (1.3226, 103.7475).
+- Opp Cycle & Carriage: Opp Cycle & Carriage. located in Jurong East planning area. at coordinates (1.3233, 103.7477).
+- Aft Jurong Town Hall Rd: Aft Jurong Town Hall Rd. located in Jurong East planning area. at coordinates (1.3238, 103.7430).
+- Bef Jurong Town Hall Rd: Bef Jurong Town Hall Rd. located in Jurong East planning area. at coordinates (1.3241, 103.7442).
+- Carrier S'pore: Carrier S'pore. located in Jurong East planning area. at coordinates (1.3266, 103.7388).
+- Opp Carrier S'pore: Opp Carrier S'pore. located in Jurong East planning area. at coordinates (1.3270, 103.7392).
+- Opp Blk 51: Opp Blk 51. located in Jurong East planning area. at coordinates (1.3202, 103.7371).
+- Bet Blks 50/51: Bet Blks 50/51. located in Jurong East planning area. at coordinates (1.3203, 103.7375).
+- Opp Blk 408: Opp Blk 408. located in Jurong East planning area. at coordinates (1.3177, 103.7488).
+- Blk 408: Blk 408. located in Jurong East planning area. at coordinates (1.3180, 103.7490).
+- Opp Blk 411: Opp Blk 411. located in Jurong East planning area. at coordinates (1.3183, 103.7463).
+- Blk 411: Blk 411. located in Jurong East planning area. at coordinates (1.3185, 103.7464).
+- Opp Blks 34/35: Opp Blks 34/35. located in Jurong East planning area. at coordinates (1.3192, 103.7421).
+- Blk 35: Blk 35. located in Jurong East planning area. at coordinates (1.3193, 103.7425).
+- Opp Blk 47: Opp Blk 47. located in Jurong East planning area. at coordinates (1.3197, 103.7398).
+- Blk 31: Blk 31. located in Jurong East planning area. at coordinates (1.3200, 103.7391).
+- Ayer Rajah CC: Ayer Rajah CC. located in Jurong East planning area. at coordinates (1.3205, 103.7475).
+- Opp Ayer Rajah CC: Opp Ayer Rajah CC. located in Jurong East planning area. at coordinates (1.3203, 103.7473).
+- Blk 407: Blk 407. located in Jurong East planning area. at coordinates (1.3192, 103.7485).
+- Blk 410: Blk 410. located in Jurong East planning area. at coordinates (1.3191, 103.7482).

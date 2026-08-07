@@ -1,0 +1,5 @@
+# Changi Bay Planning Area
+Population: N/A
+
+## Transport Nodes
+- Changi Naval Base: Changi Naval Base. located in Changi Bay planning area. at coordinates (1.3177, 104.0156).

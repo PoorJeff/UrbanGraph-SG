@@ -1,0 +1,17 @@
+# Newton Planning Area
+Population: N/A
+
+## Transport Nodes
+- Bef Winstedt Rd: Bef Winstedt Rd. located in Newton planning area. at coordinates (1.3110, 103.8428).
+- Newton FC: Newton FC. located in Newton planning area. at coordinates (1.3118, 103.8410).
+- Newton Stn Exit C: Newton Stn Exit C. located in Newton planning area. at coordinates (1.3137, 103.8381).
+- Balmoral Plaza: Balmoral Plaza. located in Newton planning area. at coordinates (1.3159, 103.8363).
+- Opp Env Bldg: Opp Env Bldg. located in Newton planning area. at coordinates (1.3110, 103.8358).
+- Env Bldg: Env Bldg. located in Newton planning area. at coordinates (1.3113, 103.8369).
+- Newton Stn Exit A: Newton Stn Exit A. located in Newton planning area. at coordinates (1.3125, 103.8381).
+- Newton Stn Exit B: Newton Stn Exit B. located in Newton planning area. at coordinates (1.3123, 103.8381).
+- Aft Draycott Pk: Aft Draycott Pk. located in Newton planning area. at coordinates (1.3127, 103.8304).
+- Aft Balmoral Rd: Aft Balmoral Rd. located in Newton planning area. at coordinates (1.3126, 103.8319).
+- Opp KK Women & Child Hosp: Opp KK Women & Child Hosp. located in Newton planning area. at coordinates (1.3088, 103.8463).
+- Newton: Newton. located in Newton planning area. at coordinates (1.3123, 103.8388).
+- Newton: Newton. located in Newton planning area. at coordinates (1.3123, 103.8388).

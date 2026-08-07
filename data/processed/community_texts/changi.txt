@@ -1,0 +1,24 @@
+# Changi Planning Area
+Population: N/A
+
+## Transport Nodes
+- Aft Aircraft Flyover: Aft Aircraft Flyover. located in Changi planning area. at coordinates (1.3461, 103.9836).
+- Aft Changi Airport Ter 2: Aft Changi Airport Ter 2. located in Changi planning area. at coordinates (1.3480, 103.9848).
+- Changi Airport Ter 1: Changi Airport Ter 1. located in Changi planning area. at coordinates (1.3611, 103.9908).
+- AirFreight Ter Bldg: AirFreight Ter Bldg. located in Changi planning area. at coordinates (1.3723, 103.9946).
+- CIAS Cargo Ters: CIAS Cargo Ters. located in Changi planning area. at coordinates (1.3727, 103.9957).
+- SATS Cargo Ter: SATS Cargo Ter. located in Changi planning area. at coordinates (1.3736, 103.9944).
+- 3rd Cargo Agents: 3rd Cargo Agents. located in Changi planning area. at coordinates (1.3753, 103.9962).
+- Airline Hse: Airline Hse. located in Changi planning area. at coordinates (1.3782, 103.9969).
+- Opp Airline Hse: Opp Airline Hse. located in Changi planning area. at coordinates (1.3782, 103.9965).
+- Changi Beach CP 4: Changi Beach CP 4. located in Changi planning area. at coordinates (1.3899, 103.9951).
+- Opp Changi Beach CP 3: Opp Changi Beach CP 3. located in Changi planning area. at coordinates (1.3902, 103.9925).
+- Changi Beach CP 5: Changi Beach CP 5. located in Changi planning area. at coordinates (1.3894, 103.9979).
+- Opp Changi Beach CP 5: Opp Changi Beach CP 5. located in Changi planning area. at coordinates (1.3897, 103.9959).
+- SAF Ferry Ter: SAF Ferry Ter. located in Changi planning area. at coordinates (1.3873, 103.9996).
+- Opp SAF Ferry Ter: Opp SAF Ferry Ter. located in Changi planning area. at coordinates (1.3882, 103.9988).
+- Changi Airport Ter 3: Changi Airport Ter 3. located in Changi planning area. at coordinates (1.3574, 103.9872).
+- Changi Airport Ter 2: Changi Airport Ter 2. located in Changi planning area. at coordinates (1.3553, 103.9886).
+- Police Pass Off: Police Pass Off. located in Changi planning area. at coordinates (1.3856, 103.9997).
+- Police Pass Off: Police Pass Off. located in Changi planning area. at coordinates (1.3855, 103.9992).
+- Aft Cargo Bldg D: Aft Cargo Bldg D. located in Changi planning area. at coordinates (1.3815, 103.9982).

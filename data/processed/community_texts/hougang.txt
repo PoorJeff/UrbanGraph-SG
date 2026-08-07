@@ -1,0 +1,24 @@
+# Hougang Planning Area
+Population: N/A
+
+## Transport Nodes
+- Aft Rochdale Rd: Aft Rochdale Rd. located in Hougang planning area. at coordinates (1.3422, 103.8841).
+- Paya Lebar Gdns: Paya Lebar Gdns. located in Hougang planning area. at coordinates (1.3441, 103.8827).
+- Raya Gdn: Raya Gdn. located in Hougang planning area. at coordinates (1.3468, 103.8809).
+- Aft Paya Lebar Cres: Aft Paya Lebar Cres. located in Hougang planning area. at coordinates (1.3490, 103.8802).
+- Blk 161: Blk 161. located in Hougang planning area. at coordinates (1.3517, 103.8786).
+- Blk 158: Blk 158. located in Hougang planning area. at coordinates (1.3519, 103.8803).
+- Opp The Minton: Opp The Minton. located in Hougang planning area. at coordinates (1.3509, 103.8826).
+- The Minton: The Minton. located in Hougang planning area. at coordinates (1.3511, 103.8821).
+- Bef S'pore Girls' Hme: Bef S'pore Girls' Hme. located in Hougang planning area. at coordinates (1.3477, 103.8903).
+- Opp S'pore Girls' Hme: Opp S'pore Girls' Hme. located in Hougang planning area. at coordinates (1.3476, 103.8900).
+- SBST Hougang Depot: SBST Hougang Depot. located in Hougang planning area. at coordinates (1.3451, 103.8912).
+- Opp SBST Hougang Depot: Opp SBST Hougang Depot. located in Hougang planning area. at coordinates (1.3442, 103.8910).
+- Bef Blk 471B: Bef Blk 471B. located in Hougang planning area. at coordinates (1.3775, 103.9007).
+- Opp S'goon Sec Sch: Opp S'goon Sec Sch. located in Hougang planning area. at coordinates (1.3746, 103.9029).
+- Opp Blk 475B: Opp Blk 475B. located in Hougang planning area. at coordinates (1.3759, 103.8996).
+- Blk 181: Blk 181. located in Hougang planning area. at coordinates (1.3462, 103.8878).
+- Blk 178A: Blk 178A. located in Hougang planning area. at coordinates (1.3464, 103.8879).
+- Opp Upp S'goon Shop Ctr: Opp Upp S'goon Shop Ctr. located in Hougang planning area. at coordinates (1.3543, 103.8782).
+- Aft Upp S'goon Shop Ctr: Aft Upp S'goon Shop Ctr. located in Hougang planning area. at coordinates (1.3535, 103.8780).
+- The Helping Hand: The Helping Hand. located in Hougang planning area. at coordinates (1.3571, 103.8816).

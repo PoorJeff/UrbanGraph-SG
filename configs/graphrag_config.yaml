@@ -1,0 +1,60 @@
+# =============================================================================
+# GraphRAG Pipeline Configuration
+# =============================================================================
+
+pipeline:
+  name: "urbangraph-sg"
+
+  # Input data
+  input:
+    entity_description_dir: "data/processed/community_texts"
+    entity_table: "data/graphrag/input/entities.parquet"
+    relationship_table: "data/graphrag/input/relationships.parquet"
+
+  # Entity extraction
+  entity_extraction:
+    enabled: true
+    prompt_version: "v1.0"
+    prompt_file: "configs/graphrag/entity_extraction_prompt.yaml"  # fallback to src/graphrag/prompts/
+    llm_model: "${LLM_MODEL}"
+    max_entities_per_chunk: 50
+    chunk_size: 2000  # tokens
+    chunk_overlap: 200
+    few_shot_examples: 5
+    # When LLM fails, fallback to rule-based extraction from structured data
+    fallback_to_rules: true
+
+  # Relationship extraction
+  relationship_extraction:
+    enabled: true
+    prompt_version: "v1.0"
+    prompt_file: "configs/graphrag/relationship_extraction_prompt.yaml"
+    llm_model: "${LLM_MODEL}"
+    # Deterministic rules run first, LLM only for inference types
+    rule_based_relations: ["CONNECTS_TO", "LOCATED_IN", "NEAR", "PART_OF", "RECORDS"]
+    llm_inferred_relations: ["AFFECTS", "CORRELATES_WITH"]
+    max_relationships_per_pair: 3
+
+  # Community detection
+  community_detection:
+    algorithm: "leiden"
+    max_cluster_size: 20
+    resolution: 1.0
+    random_seed: 42
+    min_community_size: 3
+
+  # Community summarization
+  summarization:
+    prompt_version: "v1.0"
+    prompt_file: "configs/graphrag/summarization_prompt.yaml"
+    llm_model: "${LLM_MODEL}"
+    max_summary_tokens: 500
+    min_summary_tokens: 200
+    representative_entities_count: 5
+
+  # Logging
+  logging:
+    log_dir: "logs/graphrag"
+    track_token_usage: true
+    track_latency: true
+    config_hash_enabled: true

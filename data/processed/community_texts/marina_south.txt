@@ -1,0 +1,11 @@
+# Marina South Planning Area
+Population: N/A
+
+## Transport Nodes
+- Bef Marina Gdns Dr: Bef Marina Gdns Dr. located in Marina South planning area. at coordinates (1.2766, 103.8608).
+- Bef Gdns by the Bay: Bef Gdns by the Bay. located in Marina South planning area. at coordinates (1.2796, 103.8643).
+- Aft Gdns by the Bay: Aft Gdns by the Bay. located in Marina South planning area. at coordinates (1.2797, 103.8648).
+- Gardens by the Bay Stn Exit 2: Gardens by the Bay Stn Exit 2. located in Marina South planning area. at coordinates (1.2799, 103.8689).
+- Gardens by the Bay Stn Exit 1: Gardens by the Bay Stn Exit 1. located in Marina South planning area. at coordinates (1.2796, 103.8699).
+- Gdns by the Bay: Gdns by the Bay. located in Marina South planning area. at coordinates (1.2807, 103.8663).
+- Gardens by the Bay: Gardens by the Bay. located in Marina South planning area. at coordinates (1.2803, 103.8630).

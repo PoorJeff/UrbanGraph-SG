@@ -1,0 +1,24 @@
+# Orchard Planning Area
+Population: N/A
+
+## Transport Nodes
+- Winsland Hse: Winsland Hse. located in Orchard planning area. at coordinates (1.2999, 103.8409).
+- Somerset Stn: Somerset Stn. located in Orchard planning area. at coordinates (1.3003, 103.8388).
+- Orchard Plaza: Orchard Plaza. located in Orchard planning area. at coordinates (1.3007, 103.8410).
+- Concorde Hotel S'pore: Concorde Hotel S'pore. located in Orchard planning area. at coordinates (1.3005, 103.8418).
+- Opp Ngee Ann City: Opp Ngee Ann City. located in Orchard planning area. at coordinates (1.3021, 103.8343).
+- Opp Orchard Stn/ION: Opp Orchard Stn/ION. located in Orchard planning area. at coordinates (1.3032, 103.8325).
+- Bef Cairnhill Rd: Bef Cairnhill Rd. located in Orchard planning area. at coordinates (1.3023, 103.8370).
+- Opp Somerset Stn: Opp Somerset Stn. located in Orchard planning area. at coordinates (1.3015, 103.8385).
+- Orchard Stn/Tang Plaza: Orchard Stn/Tang Plaza. located in Orchard planning area. at coordinates (1.3045, 103.8329).
+- Orchard Stn/Lucky Plaza: Orchard Stn/Lucky Plaza. located in Orchard planning area. at coordinates (1.3038, 103.8342).
+- Somerset Youth Pk: Somerset Youth Pk. located in Orchard planning area. at coordinates (1.3004, 103.8362).
+- Orchard Blvd Stn Exit 1: Orchard Blvd Stn Exit 1. located in Orchard planning area. at coordinates (1.3035, 103.8236).
+- Delfi Orchard: Delfi Orchard. located in Orchard planning area. at coordinates (1.3070, 103.8284).
+- Royal Thai Embassy: Royal Thai Embassy. located in Orchard planning area. at coordinates (1.3059, 103.8305).
+- Aft Cuscaden Rd: Aft Cuscaden Rd. located in Orchard planning area. at coordinates (1.3049, 103.8255).
+- Royal Plaza On Scotts: Royal Plaza On Scotts. located in Orchard planning area. at coordinates (1.3070, 103.8327).
+- 15 Scotts: 15 Scotts. located in Orchard planning area. at coordinates (1.3078, 103.8331).
+- Far East Plaza: Far East Plaza. located in Orchard planning area. at coordinates (1.3073, 103.8332).
+- Orchard: Orchard. located in Orchard planning area. at coordinates (1.3040, 103.8318).
+- Somerset: Somerset. located in Orchard planning area. at coordinates (1.3003, 103.8390).

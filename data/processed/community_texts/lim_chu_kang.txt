@@ -1,0 +1,24 @@
+# Lim Chu Kang Planning Area
+Population: N/A
+
+## Transport Nodes
+- Aft Sg Gedong Camp: Aft Sg Gedong Camp. located in Lim Chu Kang planning area. at coordinates (1.4168, 103.7011).
+- B19 Lim Chu Kang Rd: B19 Lim Chu Kang Rd. located in Lim Chu Kang planning area. at coordinates (1.4196, 103.7022).
+- B20 Lim Chu Kang Rd: B20 Lim Chu Kang Rd. located in Lim Chu Kang planning area. at coordinates (1.4192, 103.7022).
+- Opp Neo Tiew Rd: Opp Neo Tiew Rd. located in Lim Chu Kang planning area. at coordinates (1.4218, 103.7032).
+- Aft Neo Tiew Rd: Aft Neo Tiew Rd. located in Lim Chu Kang planning area. at coordinates (1.4208, 103.7029).
+- Aft Jln Bahtera: Aft Jln Bahtera. located in Lim Chu Kang planning area. at coordinates (1.4240, 103.7042).
+- Opp Jln Bahtera: Opp Jln Bahtera. located in Lim Chu Kang planning area. at coordinates (1.4233, 103.7041).
+- Opp Lim Chu Kang Lane 3: Opp Lim Chu Kang Lane 3. located in Lim Chu Kang planning area. at coordinates (1.4276, 103.7059).
+- Aft Lim Chu Kang Lane 3: Aft Lim Chu Kang Lane 3. located in Lim Chu Kang planning area. at coordinates (1.4262, 103.7054).
+- Bef Lim Chu Kang Lane 3A: Bef Lim Chu Kang Lane 3A. located in Lim Chu Kang planning area. at coordinates (1.4302, 103.7068).
+- Aft Lim Chu Kang Lane 3A: Aft Lim Chu Kang Lane 3A. located in Lim Chu Kang planning area. at coordinates (1.4294, 103.7066).
+- Police Coast Guard: Police Coast Guard. located in Lim Chu Kang planning area. at coordinates (1.4448, 103.7076).
+- Opp Lim Chu Kang Lane 4: Opp Lim Chu Kang Lane 4. located in Lim Chu Kang planning area. at coordinates (1.4332, 103.7078).
+- Aft Lim Chu Kang Lane 4: Aft Lim Chu Kang Lane 4. located in Lim Chu Kang planning area. at coordinates (1.4325, 103.7077).
+- Opp Lim Chu Kang Lane 5: Opp Lim Chu Kang Lane 5. located in Lim Chu Kang planning area. at coordinates (1.4352, 103.7080).
+- Bef Lim Chu Kang Lane 5: Bef Lim Chu Kang Lane 5. located in Lim Chu Kang planning area. at coordinates (1.4350, 103.7082).
+- Aft Lim Chu Kang Lane 6: Aft Lim Chu Kang Lane 6. located in Lim Chu Kang planning area. at coordinates (1.4377, 103.7080).
+- Bef Lim Chu Kang Lane 6: Bef Lim Chu Kang Lane 6. located in Lim Chu Kang planning area. at coordinates (1.4366, 103.7081).
+- B03 Lim Chu Kang Rd: B03 Lim Chu Kang Rd. located in Lim Chu Kang planning area. at coordinates (1.4389, 103.7079).
+- Aft Lim Chu Kang Lane 8: Aft Lim Chu Kang Lane 8. located in Lim Chu Kang planning area. at coordinates (1.4384, 103.7080).

@@ -1,0 +1,24 @@
+# Bukit Panjang Planning Area
+Population: N/A
+
+## Transport Nodes
+- Opp Beauty World Ctr: Opp Beauty World Ctr. located in Bukit Panjang planning area. at coordinates (1.3434, 103.7768).
+- Southaven II: Southaven II. located in Bukit Panjang planning area. at coordinates (1.3458, 103.7733).
+- Springdale Condo: Springdale Condo. located in Bukit Panjang planning area. at coordinates (1.3482, 103.7711).
+- Opp The Hillside: Opp The Hillside. located in Bukit Panjang planning area. at coordinates (1.3522, 103.7700).
+- Opp Hume Stn Exit 1: Opp Hume Stn Exit 1. located in Bukit Panjang planning area. at coordinates (1.3557, 103.7689).
+- The Rail Mall: The Rail Mall. located in Bukit Panjang planning area. at coordinates (1.3594, 103.7674).
+- Hillview Stn Exit A: Hillview Stn Exit A. located in Bukit Panjang planning area. at coordinates (1.3630, 103.7677).
+- St. Joseph's Ch (Bt Timah): St. Joseph's Ch (Bt Timah). located in Bukit Panjang planning area. at coordinates (1.3671, 103.7661).
+- Assumption Eng Sch: Assumption Eng Sch. located in Bukit Panjang planning area. at coordinates (1.3687, 103.7650).
+- Cashew Stn: Cashew Stn. located in Bukit Panjang planning area. at coordinates (1.3704, 103.7639).
+- Bef Hazel Pk Terr: Bef Hazel Pk Terr. located in Bukit Panjang planning area. at coordinates (1.3734, 103.7630).
+- Aft Cashew Terr: Aft Cashew Terr. located in Bukit Panjang planning area. at coordinates (1.3712, 103.7667).
+- Cashew Pk Condo: Cashew Pk Condo. located in Bukit Panjang planning area. at coordinates (1.3716, 103.7676).
+- Bt Panjang Pr Sch: Bt Panjang Pr Sch. located in Bukit Panjang planning area. at coordinates (1.3733, 103.7701).
+- Opp Bt Panjang Pr Sch: Opp Bt Panjang Pr Sch. located in Bukit Panjang planning area. at coordinates (1.3732, 103.7703).
+- Aft Dairy Farm Cres: Aft Dairy Farm Cres. located in Bukit Panjang planning area. at coordinates (1.3637, 103.7692).
+- Bef Dairy Farm Cres: Bef Dairy Farm Cres. located in Bukit Panjang planning area. at coordinates (1.3635, 103.7690).
+- Aft Dairy Farm Hts: Aft Dairy Farm Hts. located in Bukit Panjang planning area. at coordinates (1.3648, 103.7730).
+- Bef Dairy Farm Hts: Bef Dairy Farm Hts. located in Bukit Panjang planning area. at coordinates (1.3646, 103.7726).
+- The Linear: The Linear. located in Bukit Panjang planning area. at coordinates (1.3765, 103.7625).

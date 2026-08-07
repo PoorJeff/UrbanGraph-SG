@@ -1,0 +1,21 @@
+{
+  "source": "calendar",
+  "timestamp_utc": "2026-08-07T02:46:23.620236+00:00",
+  "files": {
+    "holidays": {
+      "path": "C:\\Users\\Jzh20\\Desktop\\UrbanGraph-SG\\data\\raw\\calendar\\sg_holidays.parquet",
+      "sha256": "9fd98103a159795b5c83409ec3a1cf7152b0ca1bdd326292f07b4b00807d7f81",
+      "size_bytes": 2569
+    },
+    "school_terms": {
+      "path": "C:\\Users\\Jzh20\\Desktop\\UrbanGraph-SG\\data\\raw\\calendar\\school_terms.parquet",
+      "sha256": "47232e1af7e44699e2a00b54e89443160650a6e19a1e1b9c51ed2728afa29ded",
+      "size_bytes": 6626
+    }
+  },
+  "metadata": {
+    "years": "2025-2026",
+    "holiday_count": 26,
+    "school_term_days": 580
+  }
+}

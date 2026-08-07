@@ -1,0 +1,18 @@
+# GraphRAG + Neo4j + graph processing
+
+# Microsoft GraphRAG
+graphrag>=1.0.0
+
+# Neo4j
+neo4j>=5.20.0
+
+# Graph algorithms
+networkx>=3.2.0
+python-igraph>=0.11.0
+leidenalg>=0.10.0
+
+# Community detection extras
+scikit-learn>=1.4.0
+
+# Text processing for entity descriptions
+jinja2>=3.1.0

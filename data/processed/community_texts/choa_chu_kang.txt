@@ -1,0 +1,24 @@
+# Choa Chu Kang Planning Area
+Population: N/A
+
+## Transport Nodes
+- Opp Hai Inn See Tp: Opp Hai Inn See Tp. located in Choa Chu Kang planning area. at coordinates (1.3773, 103.7343).
+- Blk 485B: Blk 485B. located in Choa Chu Kang planning area. at coordinates (1.3737, 103.7389).
+- Blk 804B: Blk 804B. located in Choa Chu Kang planning area. at coordinates (1.3725, 103.7428).
+- Blk 805D: Blk 805D. located in Choa Chu Kang planning area. at coordinates (1.3721, 103.7444).
+- Opp Blk 635A: Opp Blk 635A. located in Choa Chu Kang planning area. at coordinates (1.3862, 103.7565).
+- Choa Chu Kang Int: Choa Chu Kang Int. located in Choa Chu Kang planning area. at coordinates (1.3859, 103.7458).
+- Junction 10: Junction 10. located in Choa Chu Kang planning area. at coordinates (1.3810, 103.7604).
+- Opp Blk 632 CP: Opp Blk 632 CP. located in Choa Chu Kang planning area. at coordinates (1.3844, 103.7580).
+- Bef Yew Tee Flyover: Bef Yew Tee Flyover. located in Choa Chu Kang planning area. at coordinates (1.3879, 103.7554).
+- Blk 464: Blk 464. located in Choa Chu Kang planning area. at coordinates (1.3768, 103.7362).
+- Opp Blk 464: Opp Blk 464. located in Choa Chu Kang planning area. at coordinates (1.3766, 103.7363).
+- Blk 296A: Blk 296A. located in Choa Chu Kang planning area. at coordinates (1.3768, 103.7407).
+- Opp Blk 296A: Opp Blk 296A. located in Choa Chu Kang planning area. at coordinates (1.3765, 103.7409).
+- Choa Chu Kang Mkt: Choa Chu Kang Mkt. located in Choa Chu Kang planning area. at coordinates (1.3765, 103.7442).
+- Opp Choa Chu Kang Mkt: Opp Choa Chu Kang Mkt. located in Choa Chu Kang planning area. at coordinates (1.3763, 103.7446).
+- Aft Hong San Terr: Aft Hong San Terr. located in Choa Chu Kang planning area. at coordinates (1.3772, 103.7468).
+- Opp Hong San Terr: Opp Hong San Terr. located in Choa Chu Kang planning area. at coordinates (1.3772, 103.7476).
+- Opp Blk 203: Opp Blk 203. located in Choa Chu Kang planning area. at coordinates (1.3809, 103.7498).
+- Blk 204: Blk 204. located in Choa Chu Kang planning area. at coordinates (1.3805, 103.7493).
+- Blk 113: Blk 113. located in Choa Chu Kang planning area. at coordinates (1.3777, 103.7509).

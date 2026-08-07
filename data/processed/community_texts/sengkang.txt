@@ -1,0 +1,24 @@
+# Sengkang Planning Area
+Population: N/A
+
+## Transport Nodes
+- Opp Serenity Pk: Opp Serenity Pk. located in Sengkang planning area. at coordinates (1.3909, 103.8597).
+- Buangkok Int: Buangkok Int. located in Sengkang planning area. at coordinates (1.3837, 103.8923).
+- Blk 266/Opp The Rivervale: Blk 266/Opp The Rivervale. located in Sengkang planning area. at coordinates (1.3816, 103.8972).
+- Opp Blk 266/The Rivervale: Opp Blk 266/The Rivervale. located in Sengkang planning area. at coordinates (1.3815, 103.8975).
+- Opp Blk 110: Opp Blk 110. located in Sengkang planning area. at coordinates (1.3840, 103.8996).
+- Blk 111: Blk 111. located in Sengkang planning area. at coordinates (1.3846, 103.9006).
+- Blk 227D: Blk 227D. located in Sengkang planning area. at coordinates (1.3871, 103.9016).
+- Blk 124: Blk 124. located in Sengkang planning area. at coordinates (1.3873, 103.9019).
+- Blk 231: Blk 231. located in Sengkang planning area. at coordinates (1.3898, 103.9016).
+- Blk 126A: Blk 126A. located in Sengkang planning area. at coordinates (1.3899, 103.9019).
+- St. Anne's Ch: St. Anne's Ch. located in Sengkang planning area. at coordinates (1.3927, 103.9013).
+- Blk 298A: Blk 298A. located in Sengkang planning area. at coordinates (1.3949, 103.9019).
+- Blk 190C: Blk 190C. located in Sengkang planning area. at coordinates (1.3950, 103.9024).
+- Bef Punggol Rd: Bef Punggol Rd. located in Sengkang planning area. at coordinates (1.3953, 103.9054).
+- Blk 309D: Blk 309D. located in Sengkang planning area. at coordinates (1.3904, 103.8857).
+- Anchor Green Pr Sch: Anchor Green Pr Sch. located in Sengkang planning area. at coordinates (1.3907, 103.8860).
+- Sengkang Int: Sengkang Int. located in Sengkang planning area. at coordinates (1.3918, 103.8959).
+- Bef Begonia Rd: Bef Begonia Rd. located in Sengkang planning area. at coordinates (1.3901, 103.8626).
+- Opp Dedap Rd: Opp Dedap Rd. located in Sengkang planning area. at coordinates (1.3893, 103.8655).
+- Opp The Greenwich: Opp The Greenwich. located in Sengkang planning area. at coordinates (1.3880, 103.8704).

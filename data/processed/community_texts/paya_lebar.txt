@@ -1,0 +1,24 @@
+# Paya Lebar Planning Area
+Population: N/A
+
+## Transport Nodes
+- Bef KPE: Bef KPE. located in Paya Lebar planning area. at coordinates (1.3632, 103.9067).
+- Aft Jln Telawi: Aft Jln Telawi. located in Paya Lebar planning area. at coordinates (1.3647, 103.9082).
+- LP 137: LP 137. located in Paya Lebar planning area. at coordinates (1.3651, 103.9089).
+- Aft Greenwich Dr: Aft Greenwich Dr. located in Paya Lebar planning area. at coordinates (1.3681, 103.9098).
+- Bef Greenwich Dr: Bef Greenwich Dr. located in Paya Lebar planning area. at coordinates (1.3675, 103.9100).
+- Schenker: Schenker. located in Paya Lebar planning area. at coordinates (1.3719, 103.9114).
+- Opp Schenker: Opp Schenker. located in Paya Lebar planning area. at coordinates (1.3713, 103.9115).
+- Aft Buangkok East Dr: Aft Buangkok East Dr. located in Paya Lebar planning area. at coordinates (1.3740, 103.9123).
+- Bef Buangkok East Dr: Bef Buangkok East Dr. located in Paya Lebar planning area. at coordinates (1.3742, 103.9129).
+- Bef TPE: Bef TPE. located in Paya Lebar planning area. at coordinates (1.3765, 103.9134).
+- Aft Old Tampines Rd: Aft Old Tampines Rd. located in Paya Lebar planning area. at coordinates (1.3769, 103.9139).
+- Aft Goldhill Memorial Ctr: Aft Goldhill Memorial Ctr. located in Paya Lebar planning area. at coordinates (1.3795, 103.9159).
+- Bef Goldhill Memorial Ctr: Bef Goldhill Memorial Ctr. located in Paya Lebar planning area. at coordinates (1.3792, 103.9157).
+- Air Force Museum: Air Force Museum. located in Paya Lebar planning area. at coordinates (1.3461, 103.8988).
+- Paya Lebar Air Base: Paya Lebar Air Base. located in Paya Lebar planning area. at coordinates (1.3449, 103.8991).
+- Bef RSAF Roundabout: Bef RSAF Roundabout. located in Paya Lebar planning area. at coordinates (1.3520, 103.8994).
+- Bef Tampines Ind Dr: Bef Tampines Ind Dr. located in Paya Lebar planning area. at coordinates (1.3799, 103.9186).
+- Aft Tampines Ind Dr: Aft Tampines Ind Dr. located in Paya Lebar planning area. at coordinates (1.3799, 103.9182).
+- Aft Tampines Ind Dr: Aft Tampines Ind Dr. located in Paya Lebar planning area. at coordinates (1.3761, 103.9200).
+- Bef Tampines Ind Dr: Bef Tampines Ind Dr. located in Paya Lebar planning area. at coordinates (1.3761, 103.9198).

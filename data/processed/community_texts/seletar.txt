@@ -1,0 +1,24 @@
+# Seletar Planning Area
+Population: N/A
+
+## Transport Nodes
+- Aft Mornington Cres: Aft Mornington Cres. located in Seletar planning area. at coordinates (1.4072, 103.8721).
+- Aft Battersea Rd: Aft Battersea Rd. located in Seletar planning area. at coordinates (1.4076, 103.8723).
+- Bef Seletar A'space Rise: Bef Seletar A'space Rise. located in Seletar planning area. at coordinates (1.4056, 103.8668).
+- Aft Seletar A'space Rise: Aft Seletar A'space Rise. located in Seletar planning area. at coordinates (1.4057, 103.8667).
+- Aft Baker St: Aft Baker St. located in Seletar planning area. at coordinates (1.4089, 103.8712).
+- Bef Baker St: Bef Baker St. located in Seletar planning area. at coordinates (1.4089, 103.8710).
+- Rolls Royce Pte Ltd: Rolls Royce Pte Ltd. located in Seletar planning area. at coordinates (1.4038, 103.8634).
+- Opp Rolls Royce Pte Ltd: Opp Rolls Royce Pte Ltd. located in Seletar planning area. at coordinates (1.4040, 103.8635).
+- Bef Piccadilly Circus/TPE: Bef Piccadilly Circus/TPE. located in Seletar planning area. at coordinates (1.4022, 103.8714).
+- Aft Piccadilly Circus/TPE: Aft Piccadilly Circus/TPE. located in Seletar planning area. at coordinates (1.4022, 103.8722).
+- Bef West Camp Rd: Bef West Camp Rd. located in Seletar planning area. at coordinates (1.4058, 103.8600).
+- Aft West Camp Rd: Aft West Camp Rd. located in Seletar planning area. at coordinates (1.4061, 103.8602).
+- Opp Youth Flying Club: Opp Youth Flying Club. located in Seletar planning area. at coordinates (1.4146, 103.8619).
+- Youth Flying Club: Youth Flying Club. located in Seletar planning area. at coordinates (1.4144, 103.8621).
+- Opp JTC Aviation Two: Opp JTC Aviation Two. located in Seletar planning area. at coordinates (1.4204, 103.8635).
+- ST Aerospace: ST Aerospace. located in Seletar planning area. at coordinates (1.4189, 103.8628).
+- Bef Shell Aviation: Bef Shell Aviation. located in Seletar planning area. at coordinates (1.4233, 103.8662).
+- Aft Shell Aviation: Aft Shell Aviation. located in Seletar planning area. at coordinates (1.4231, 103.8663).
+- Aft Seletar A'space Lane: Aft Seletar A'space Lane. located in Seletar planning area. at coordinates (1.4108, 103.8618).
+- Bef Seletar A'space Lane: Bef Seletar A'space Lane. located in Seletar planning area. at coordinates (1.4107, 103.8619).

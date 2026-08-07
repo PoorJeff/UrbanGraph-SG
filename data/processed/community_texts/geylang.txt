@@ -1,0 +1,24 @@
+# Geylang Planning Area
+Population: N/A
+
+## Transport Nodes
+- Biotronik: Biotronik. located in Geylang planning area. at coordinates (1.3228, 103.8740).
+- Kolam Ayer Ind Est: Kolam Ayer Ind Est. located in Geylang planning area. at coordinates (1.3271, 103.8703).
+- Bef Siemens Ctr: Bef Siemens Ctr. located in Geylang planning area. at coordinates (1.3283, 103.8705).
+- Opp Blk 125: Opp Blk 125. located in Geylang planning area. at coordinates (1.3232, 103.8812).
+- Blk 125: Blk 125. located in Geylang planning area. at coordinates (1.3232, 103.8815).
+- Opp Canossa Catholic Pr: Opp Canossa Catholic Pr. located in Geylang planning area. at coordinates (1.3264, 103.8803).
+- Canossa Catholic Pr: Canossa Catholic Pr. located in Geylang planning area. at coordinates (1.3266, 103.8805).
+- Opp Aljunied Pk: Opp Aljunied Pk. located in Geylang planning area. at coordinates (1.3293, 103.8794).
+- Aljunied Pk: Aljunied Pk. located in Geylang planning area. at coordinates (1.3293, 103.8798).
+- Cycle & Carriage: Cycle & Carriage. located in Geylang planning area. at coordinates (1.3338, 103.8984).
+- Aft Regent Motors: Aft Regent Motors. located in Geylang planning area. at coordinates (1.3337, 103.8985).
+- Opp HDB CP: Opp HDB CP. located in Geylang planning area. at coordinates (1.3323, 103.8950).
+- HDB CP: HDB CP. located in Geylang planning area. at coordinates (1.3319, 103.8944).
+- Opp Traffic Police: Opp Traffic Police. located in Geylang planning area. at coordinates (1.3307, 103.8909).
+- Traffic Police: Traffic Police. located in Geylang planning area. at coordinates (1.3306, 103.8913).
+- Gulab Bldg: Gulab Bldg. located in Geylang planning area. at coordinates (1.3295, 103.8740).
+- Cencon Bldg: Cencon Bldg. located in Geylang planning area. at coordinates (1.3308, 103.8777).
+- Opp Jln Muhibbah: Opp Jln Muhibbah. located in Geylang planning area. at coordinates (1.3316, 103.8806).
+- Aft Jln Belangkas: Aft Jln Belangkas. located in Geylang planning area. at coordinates (1.3322, 103.8833).
+- Sky Green Condo: Sky Green Condo. located in Geylang planning area. at coordinates (1.3329, 103.8865).

@@ -1,0 +1,24 @@
+# Bukit Timah Planning Area
+Population: N/A
+
+## Transport Nodes
+- Viz Holland: Viz Holland. located in Bukit Timah planning area. at coordinates (1.3085, 103.8026).
+- Leedon Green: Leedon Green. located in Bukit Timah planning area. at coordinates (1.3122, 103.8037).
+- Empress Rd Mkt/FC: Empress Rd Mkt/FC. located in Bukit Timah planning area. at coordinates (1.3161, 103.8060).
+- Farrer Rd Stn Exit B: Farrer Rd Stn Exit B. located in Bukit Timah planning area. at coordinates (1.3178, 103.8077).
+- Aft Hyll on Holland: Aft Hyll on Holland. located in Bukit Timah planning area. at coordinates (1.3112, 103.8012).
+- Fairlodge: Fairlodge. located in Bukit Timah planning area. at coordinates (1.3115, 103.8017).
+- Opp Holland Village: Opp Holland Village. located in Bukit Timah planning area. at coordinates (1.3126, 103.7945).
+- Aft East Sussex Lane: Aft East Sussex Lane. located in Bukit Timah planning area. at coordinates (1.3147, 103.7901).
+- Aft Coronation Rd West: Aft Coronation Rd West. located in Bukit Timah planning area. at coordinates (1.3147, 103.7907).
+- Aft Tan Boon Chong Ave: Aft Tan Boon Chong Ave. located in Bukit Timah planning area. at coordinates (1.3162, 103.7885).
+- Opp Tan Boon Chong Ave: Opp Tan Boon Chong Ave. located in Bukit Timah planning area. at coordinates (1.3162, 103.7890).
+- Cold Storage Jelita: Cold Storage Jelita. located in Bukit Timah planning area. at coordinates (1.3179, 103.7859).
+- Opp Cold Storage Jelita: Opp Cold Storage Jelita. located in Bukit Timah planning area. at coordinates (1.3183, 103.7856).
+- Hse No. 578: Hse No. 578. located in Bukit Timah planning area. at coordinates (1.3180, 103.7879).
+- Hse No. 589: Hse No. 589. located in Bukit Timah planning area. at coordinates (1.3186, 103.7884).
+- Hse No. 532: Hse No. 532. located in Bukit Timah planning area. at coordinates (1.3199, 103.7892).
+- Opp Hse No. 516: Opp Hse No. 516. located in Bukit Timah planning area. at coordinates (1.3203, 103.7896).
+- Opp Regent Villa: Opp Regent Villa. located in Bukit Timah planning area. at coordinates (1.3212, 103.7901).
+- Regent Villa: Regent Villa. located in Bukit Timah planning area. at coordinates (1.3224, 103.7910).
+- Opp Dynasty Gdn II: Opp Dynasty Gdn II. located in Bukit Timah planning area. at coordinates (1.3232, 103.7914).

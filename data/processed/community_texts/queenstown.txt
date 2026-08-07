@@ -1,0 +1,24 @@
+# Queenstown Planning Area
+Population: N/A
+
+## Transport Nodes
+- Opp Cycle & Carriage: Opp Cycle & Carriage. located in Queenstown planning area. at coordinates (1.2919, 103.8134).
+- Opp SIS Bldg: Opp SIS Bldg. located in Queenstown planning area. at coordinates (1.2919, 103.8144).
+- Aft Dawson Pl: Aft Dawson Pl. located in Queenstown planning area. at coordinates (1.2923, 103.8115).
+- Opp Grace Ably of God Ch: Opp Grace Ably of God Ch. located in Queenstown planning area. at coordinates (1.2943, 103.8159).
+- Bef Margaret Dr: Bef Margaret Dr. located in Queenstown planning area. at coordinates (1.2967, 103.8122).
+- Aft Tanglin Rd: Aft Tanglin Rd. located in Queenstown planning area. at coordinates (1.2967, 103.8155).
+- Opp Ghim Moh Ter: Opp Ghim Moh Ter. located in Queenstown planning area. at coordinates (1.3111, 103.7892).
+- Ghim Moh Ter: Ghim Moh Ter. located in Queenstown planning area. at coordinates (1.3111, 103.7893).
+- Aft Queenstown NPC HQ: Aft Queenstown NPC HQ. located in Queenstown planning area. at coordinates (1.2894, 103.8023).
+- Blk 166/Aft Mei Chin Rd: Blk 166/Aft Mei Chin Rd. located in Queenstown planning area. at coordinates (1.2901, 103.8020).
+- Opp Queen's Cl: Opp Queen's Cl. located in Queenstown planning area. at coordinates (1.2912, 103.8005).
+- Blk 19: Blk 19. located in Queenstown planning area. at coordinates (1.2925, 103.8000).
+- Aft C'wealth Dr: Aft C'wealth Dr. located in Queenstown planning area. at coordinates (1.2962, 103.7995).
+- Opp Blessed Sacrament Ch: Opp Blessed Sacrament Ch. located in Queenstown planning area. at coordinates (1.2955, 103.7995).
+- Opp Queenstown Polyclinic: Opp Queenstown Polyclinic. located in Queenstown planning area. at coordinates (1.2987, 103.8003).
+- Queenstown Polyclinic: Queenstown Polyclinic. located in Queenstown planning area. at coordinates (1.2988, 103.8010).
+- Opp Queensway Sec Sch: Opp Queensway Sec Sch. located in Queenstown planning area. at coordinates (1.3027, 103.8012).
+- Queensway Sec Sch: Queensway Sec Sch. located in Queenstown planning area. at coordinates (1.3024, 103.8016).
+- Blk 97: Blk 97. located in Queenstown planning area. at coordinates (1.3062, 103.8017).
+- Opp Blk 95: Opp Blk 95. located in Queenstown planning area. at coordinates (1.3054, 103.8019).

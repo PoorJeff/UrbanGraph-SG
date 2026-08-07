@@ -1,0 +1,8 @@
+source_id,target_id,relation_type,properties
+lta-mrt-EW24,lta-mrt-NS24,CONNECTS_TO,"{""line"":""NSL"",""distance_km"":12.5}"
+lta-mrt-NS24,lta-mrt-NS22,CONNECTS_TO,"{""line"":""NSL"",""distance_km"":1.5}"
+lta-mrt-NS22,lta-mrt-EW14,CONNECTS_TO,"{""line"":""NSL"",""distance_km"":3.2}"
+lta-mrt-EW14,lta-mrt-NE3,CONNECTS_TO,"{""line"":""EWL"",""distance_km"":1.8}"
+lta-mrt-EW14,lta-mrt-NE3,CONNECTS_TO,"{""line"":""NEL"",""distance_km"":1.8}"
+nea-station-S104,nea-event-2025-11-15,RECORDS,"{}"
+nea-station-S44,nea-event-2025-11-15,RECORDS,"{}"

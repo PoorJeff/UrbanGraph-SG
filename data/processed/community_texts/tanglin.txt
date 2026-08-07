@@ -1,0 +1,24 @@
+# Tanglin Planning Area
+Population: N/A
+
+## Transport Nodes
+- Opp Orchard Blvd Stn: Opp Orchard Blvd Stn. located in Tanglin planning area. at coordinates (1.3039, 103.8233).
+- British Council: British Council. located in Tanglin planning area. at coordinates (1.3054, 103.8218).
+- Opp British Council: Opp British Council. located in Tanglin planning area. at coordinates (1.3061, 103.8212).
+- Aft Tomlinson Rd: Aft Tomlinson Rd. located in Tanglin planning area. at coordinates (1.3060, 103.8257).
+- Opp Blk 95: Opp Blk 95. located in Tanglin planning area. at coordinates (1.2968, 103.8117).
+- Bef Tanglin Rd: Bef Tanglin Rd. located in Tanglin planning area. at coordinates (1.2968, 103.8147).
+- Opp Holland Hill Lodge: Opp Holland Hill Lodge. located in Tanglin planning area. at coordinates (1.3095, 103.8033).
+- Opp Leedon Green: Opp Leedon Green. located in Tanglin planning area. at coordinates (1.3131, 103.8044).
+- Spanish Village: Spanish Village. located in Tanglin planning area. at coordinates (1.3155, 103.8057).
+- Farrer Rd Stn Exit A: Farrer Rd Stn Exit A. located in Tanglin planning area. at coordinates (1.3175, 103.8079).
+- CSC Dempsey Clubhse: CSC Dempsey Clubhse. located in Tanglin planning area. at coordinates (1.3069, 103.8119).
+- Opp Peirce Rd: Opp Peirce Rd. located in Tanglin planning area. at coordinates (1.3082, 103.8104).
+- Aft Peirce Rd: Aft Peirce Rd. located in Tanglin planning area. at coordinates (1.3084, 103.8094).
+- Great Eastern Mansions: Great Eastern Mansions. located in Tanglin planning area. at coordinates (1.3099, 103.8072).
+- Lien Twrs: Lien Twrs. located in Tanglin planning area. at coordinates (1.3100, 103.8055).
+- Sommerville Pk: Sommerville Pk. located in Tanglin planning area. at coordinates (1.3106, 103.8052).
+- Napier Stn Exit 2: Napier Stn Exit 2. located in Tanglin planning area. at coordinates (1.3065, 103.8193).
+- Napier Stn Exit 1: Napier Stn Exit 1. located in Tanglin planning area. at coordinates (1.3067, 103.8201).
+- Aft Min of Foreign Affairs: Aft Min of Foreign Affairs. located in Tanglin planning area. at coordinates (1.3063, 103.8143).
+- Bef Tyersall Ave: Bef Tyersall Ave. located in Tanglin planning area. at coordinates (1.3067, 103.8145).

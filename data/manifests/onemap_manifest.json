@@ -1,0 +1,24 @@
+{
+  "source": "onemap",
+  "timestamp_utc": "2026-08-07T02:32:40.264372+00:00",
+  "files": {
+    "planning_areas": {
+      "path": "C:\\Users\\Jzh20\\Desktop\\UrbanGraph-SG\\data\\raw\\onemap\\planning_areas.parquet",
+      "sha256": "e219f3962147a7c8bb37287f6e4384ede4a3257bd7113b128520a7b422bea8cd",
+      "size_bytes": 594767
+    },
+    "planning_area_names": {
+      "path": "C:\\Users\\Jzh20\\Desktop\\UrbanGraph-SG\\data\\raw\\onemap\\planning_area_names.parquet",
+      "sha256": "c636a2031c9af3c9acc9d8283f9dbbbbe7e29ceb31aa5852c76ff9b5e7782267",
+      "size_bytes": 2652
+    },
+    "mrt_stations": {
+      "path": "C:\\Users\\Jzh20\\Desktop\\UrbanGraph-SG\\data\\raw\\onemap\\mrt_stations.parquet",
+      "sha256": "920d27b0c35bac19d7672f87537f60ca9fcf49e0ec768e9bf17678fb5ef444d5",
+      "size_bytes": 9659
+    }
+  },
+  "metadata": {
+    "record_counts": {}
+  }
+}

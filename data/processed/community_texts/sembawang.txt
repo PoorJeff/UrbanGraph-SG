@@ -1,0 +1,24 @@
+# Sembawang Planning Area
+Population: N/A
+
+## Transport Nodes
+- Aft W'lands Ind Pk E3: Aft W'lands Ind Pk E3. located in Sembawang planning area. at coordinates (1.4549, 103.8011).
+- Aft W'lands Ind Pk E7: Aft W'lands Ind Pk E7. located in Sembawang planning area. at coordinates (1.4522, 103.8022).
+- Yew Huat Scaffolding Work: Yew Huat Scaffolding Work. located in Sembawang planning area. at coordinates (1.4485, 103.8043).
+- Seagate: Seagate. located in Sembawang planning area. at coordinates (1.4463, 103.8072).
+- Old Chang Kee Bldg: Old Chang Kee Bldg. located in Sembawang planning area. at coordinates (1.4498, 103.8052).
+- Jordon Food Ind: Jordon Food Ind. located in Sembawang planning area. at coordinates (1.4482, 103.8070).
+- Blk 15: Blk 15. located in Sembawang planning area. at coordinates (1.4480, 103.8095).
+- Opp Blk 20: Opp Blk 20. located in Sembawang planning area. at coordinates (1.4507, 103.8103).
+- Opp Blk 22: Opp Blk 22. located in Sembawang planning area. at coordinates (1.4533, 103.8109).
+- Opp W'lands Spectrum 1: Opp W'lands Spectrum 1. located in Sembawang planning area. at coordinates (1.4531, 103.8079).
+- Opp Nylect Engrg: Opp Nylect Engrg. located in Sembawang planning area. at coordinates (1.4517, 103.8055).
+- Aft Attap Valley Rd: Aft Attap Valley Rd. located in Sembawang planning area. at coordinates (1.4561, 103.7981).
+- Bef British American Tobacco: Bef British American Tobacco. located in Sembawang planning area. at coordinates (1.4576, 103.8021).
+- Opp British American Tobacco: Opp British American Tobacco. located in Sembawang planning area. at coordinates (1.4579, 103.8030).
+- Aft Senoko Cres: Aft Senoko Cres. located in Sembawang planning area. at coordinates (1.4620, 103.8038).
+- Aft Senoko Dr: Aft Senoko Dr. located in Sembawang planning area. at coordinates (1.4623, 103.8039).
+- Bef Senoko Cres: Bef Senoko Cres. located in Sembawang planning area. at coordinates (1.4646, 103.8060).
+- Masterdon: Masterdon. located in Sembawang planning area. at coordinates (1.4640, 103.8053).
+- Bef Senoko Ave: Bef Senoko Ave. located in Sembawang planning area. at coordinates (1.4665, 103.8091).
+- MaxSteel Enterprise: MaxSteel Enterprise. located in Sembawang planning area. at coordinates (1.4661, 103.8086).

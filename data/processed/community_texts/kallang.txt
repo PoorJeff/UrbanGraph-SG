@@ -1,0 +1,24 @@
+# Kallang Planning Area
+Population: N/A
+
+## Transport Nodes
+- Opp Blk 461: Opp Blk 461. located in Kallang planning area. at coordinates (1.3055, 103.8605).
+- Blk 461: Blk 461. located in Kallang planning area. at coordinates (1.3053, 103.8607).
+- Sultan Plaza: Sultan Plaza. located in Kallang planning area. at coordinates (1.3029, 103.8616).
+- Lavender Stn Exit B: Lavender Stn Exit B. located in Kallang planning area. at coordinates (1.3071, 103.8622).
+- Lavender Stn Exit A/ICA: Lavender Stn Exit A/ICA. located in Kallang planning area. at coordinates (1.3076, 103.8633).
+- Blk 8: Blk 8. located in Kallang planning area. at coordinates (1.3050, 103.8636).
+- Bef Crawford Bridge: Bef Crawford Bridge. located in Kallang planning area. at coordinates (1.3077, 103.8643).
+- Southbank: Southbank. located in Kallang planning area. at coordinates (1.3065, 103.8645).
+- Opp Blk 4: Opp Blk 4. located in Kallang planning area. at coordinates (1.3057, 103.8654).
+- Opp St. John HQ: Opp St. John HQ. located in Kallang planning area. at coordinates (1.3021, 103.8630).
+- Opp Golden Mile Cplx: Opp Golden Mile Cplx. located in Kallang planning area. at coordinates (1.3034, 103.8648).
+- Aft Farrer Pk Stn Exit G: Aft Farrer Pk Stn Exit G. located in Kallang planning area. at coordinates (1.3131, 103.8564).
+- Sri Vadapathira K Tp: Sri Vadapathira K Tp. located in Kallang planning area. at coordinates (1.3150, 103.8578).
+- Bef Tai Hoe Hotel: Bef Tai Hoe Hotel. located in Kallang planning area. at coordinates (1.3097, 103.8574).
+- Bef S'goon Rd: Bef S'goon Rd. located in Kallang planning area. at coordinates (1.3156, 103.8590).
+- Aft Kempas Rd: Aft Kempas Rd. located in Kallang planning area. at coordinates (1.3154, 103.8595).
+- Aft Allenby Rd: Aft Allenby Rd. located in Kallang planning area. at coordinates (1.3104, 103.8587).
+- Hoa Nam Bldg: Hoa Nam Bldg. located in Kallang planning area. at coordinates (1.3128, 103.8599).
+- Aft King George's Ave: Aft King George's Ave. located in Kallang planning area. at coordinates (1.3082, 103.8589).
+- Arc 380: Arc 380. located in Kallang planning area. at coordinates (1.3135, 103.8605).

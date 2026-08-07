@@ -1,0 +1,24 @@
+# Woodlands Planning Area
+Population: N/A
+
+## Transport Nodes
+- Blk 325: Blk 325. located in Woodlands planning area. at coordinates (1.4310, 103.7801).
+- Opp Blk 325: Opp Blk 325. located in Woodlands planning area. at coordinates (1.4308, 103.7803).
+- Fuchun CC: Fuchun CC. located in Woodlands planning area. at coordinates (1.4292, 103.7749).
+- Opp Fuchun CC: Opp Fuchun CC. located in Woodlands planning area. at coordinates (1.4291, 103.7745).
+- Woodlands Int: Woodlands Int. located in Woodlands planning area. at coordinates (1.4368, 103.7857).
+- Woodlands Int: Woodlands Int. located in Woodlands planning area. at coordinates (1.4369, 103.7859).
+- Blk 188A: Blk 188A. located in Woodlands planning area. at coordinates (1.4385, 103.7743).
+- Aft W'lands Ctr Rd: Aft W'lands Ctr Rd. located in Woodlands planning area. at coordinates (1.4387, 103.7741).
+- W'lands Train Checkpt: W'lands Train Checkpt. located in Woodlands planning area. at coordinates (1.4429, 103.7693).
+- Blk 137: Blk 137. located in Woodlands planning area. at coordinates (1.4386, 103.7768).
+- Opp Blk 137: Opp Blk 137. located in Woodlands planning area. at coordinates (1.4389, 103.7769).
+- Blk 25: Blk 25. located in Woodlands planning area. at coordinates (1.4418, 103.7711).
+- Bef BKE: Bef BKE. located in Woodlands planning area. at coordinates (1.4396, 103.7701).
+- W'lands Checkpt: W'lands Checkpt. located in Woodlands planning area. at coordinates (1.4446, 103.7677).
+- W'lands Checkpt: W'lands Checkpt. located in Woodlands planning area. at coordinates (1.4469, 103.7693).
+- Blk 23: Blk 23. located in Woodlands planning area. at coordinates (1.4413, 103.7737).
+- Marsiling CC: Marsiling CC. located in Woodlands planning area. at coordinates (1.4410, 103.7725).
+- Opp Marsiling Lane Mkt/FC: Opp Marsiling Lane Mkt/FC. located in Woodlands planning area. at coordinates (1.4439, 103.7764).
+- Marsiling Lane Mkt/FC: Marsiling Lane Mkt/FC. located in Woodlands planning area. at coordinates (1.4438, 103.7768).
+- Aft Marsiling Lane: Aft Marsiling Lane. located in Woodlands planning area. at coordinates (1.4463, 103.7770).

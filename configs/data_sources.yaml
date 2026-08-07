@@ -1,0 +1,139 @@
+# =============================================================================
+# Data Source Configuration
+# =============================================================================
+# Defines all external data sources, their API endpoints, and access patterns.
+
+sources:
+  lta:
+    name: "LTA DataMall"
+    base_url: "https://datamall.lta.gov.sg/content/datamall/en/"
+    auth_header: "AccountKey"
+    auth_env: "LTA_ACCOUNT_KEY"
+    rate_limit: 500  # requests per minute
+    endpoints:
+      mrt_stations:
+        path: "/ltaodataservice/TrainStation"
+        method: GET
+        output: "data/raw/lta/mrt_stations.parquet"
+        schedule: "once"  # static data
+      bus_stops:
+        path: "/ltaodataservice/BusStops"
+        method: GET
+        output: "data/raw/lta/bus_stops.parquet"
+        schedule: "weekly"
+      bus_services:
+        path: "/ltaodataservice/BusServices"
+        method: GET
+        output: "data/raw/lta/bus_services.parquet"
+        schedule: "weekly"
+      bus_routes:
+        path: "/ltaodataservice/BusRoutes"
+        method: GET
+        output: "data/raw/lta/bus_routes.parquet"
+        schedule: "weekly"
+      bus_arrival:
+        path: "/ltaodataservice/BusArrivalv2"
+        method: GET
+        params:
+          BusStopCode: "{bus_stop_code}"
+        output: "data/raw/lta/bus_arrival/"
+        schedule: "hourly"
+      taxi_availability:
+        path: "/ltaodataservice/TaxiAvail"
+        method: GET
+        output: "data/raw/lta/taxi_availability/"
+        schedule: "hourly"
+      traffic_speed:
+        path: "/ltaodataservice/TrafficSpeedBandsv2"
+        method: GET
+        output: "data/raw/lta/traffic_speed/"
+        schedule: "hourly"
+
+  nea:
+    name: "NEA Weather (via data.gov.sg)"
+    base_url: "https://api.data.gov.sg/v1"
+    auth_required: false
+    endpoints:
+      rainfall:
+        path: "/environment/rainfall"
+        method: GET
+        output: "data/raw/nea/rainfall.parquet"
+        schedule: "daily"
+      temperature:
+        path: "/environment/air-temperature"
+        method: GET
+        output: "data/raw/nea/temperature.parquet"
+        schedule: "daily"
+      psi:
+        path: "/environment/psi"
+        method: GET
+        output: "data/raw/nea/psi.parquet"
+        schedule: "daily"
+      wind:
+        path: "/environment/wind-speed"
+        method: GET
+        output: "data/raw/nea/wind.parquet"
+        schedule: "daily"
+
+  singstat:
+    name: "SingStat (via data.gov.sg)"
+    base_url: "https://api.data.gov.sg/v1"
+    auth_required: false
+    endpoints:
+      population:
+        path: "/singstat/population/resident"
+        method: GET
+        output: "data/raw/singstat/population.parquet"
+        schedule: "monthly"
+      household_income:
+        path: "/singstat/household-income"
+        method: GET
+        output: "data/raw/singstat/household.parquet"
+        schedule: "monthly"
+
+  onemap:
+    name: "OneMap API"
+    base_url: "https://developers.onemap.sg"
+    auth_header: "Authorization"
+    auth_env: "ONEMAP_API_TOKEN"
+    endpoints:
+      planning_areas:
+        path: "/privateapi/popapi/getAllPlanningarea"
+        method: GET
+        output: "data/raw/onemap/planning_areas.json"
+        schedule: "once"
+      poi:
+        path: "/privateapi/poiapi/searchNearbyPOI"
+        method: GET
+        params:
+          lat: "{lat}"
+          lng: "{lng}"
+          radius: "1000"
+        output: "data/raw/onemap/poi.parquet"
+        schedule: "once"
+
+  hdb:
+    name: "HDB (via data.gov.sg)"
+    base_url: "https://api.data.gov.sg/v1"
+    auth_required: false
+    endpoints:
+      resale_prices:
+        path: "/hdb/resale-price"
+        method: GET
+        output: "data/raw/hdb/resale_prices.parquet"
+        schedule: "monthly"
+      rental_median:
+        path: "/hdb/rental-median"
+        method: GET
+        output: "data/raw/hdb/rental_median.parquet"
+        schedule: "monthly"
+
+retry:
+  max_attempts: 3
+  backoff_base: 1   # seconds
+  backoff_multiplier: 5
+  max_backoff: 30   # seconds
+
+timeout:
+  connect: 10   # seconds
+  read: 30      # seconds

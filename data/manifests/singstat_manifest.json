@@ -1,0 +1,17 @@
+{
+  "source": "singstat",
+  "timestamp_utc": "2026-08-07T02:48:57.308095+00:00",
+  "files": {
+    "population": {
+      "path": "C:\\Users\\Jzh20\\Desktop\\UrbanGraph-SG\\data\\raw\\singstat\\population.parquet",
+      "sha256": "f1a429612600ea1ab76f9c5f0a6f0c5e9ab103993050eb0d0f7657df82db299c",
+      "size_bytes": 3235
+    }
+  },
+  "metadata": {
+    "population_source": "api",
+    "record_counts": {
+      "population": 55
+    }
+  }
+}

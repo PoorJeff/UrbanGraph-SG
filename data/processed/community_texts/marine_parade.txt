@@ -1,0 +1,24 @@
+# Marine Parade Planning Area
+Population: N/A
+
+## Transport Nodes
+- Bef Old Airport Rd: Bef Old Airport Rd. located in Marine Parade planning area. at coordinates (1.3087, 103.8902).
+- Aft Tg Katong Stn Exit 2: Aft Tg Katong Stn Exit 2. located in Marine Parade planning area. at coordinates (1.3008, 103.8974).
+- Bef Tg Katong Stn Exit 3: Bef Tg Katong Stn Exit 3. located in Marine Parade planning area. at coordinates (1.3014, 103.8974).
+- Opp Tg Katong Girls' Sch: Opp Tg Katong Girls' Sch. located in Marine Parade planning area. at coordinates (1.3073, 103.8955).
+- Tg Katong Girls' Sch: Tg Katong Girls' Sch. located in Marine Parade planning area. at coordinates (1.3080, 103.8952).
+- Tg Katong Sec Sch: Tg Katong Sec Sch. located in Marine Parade planning area. at coordinates (1.3095, 103.8966).
+- Maranatha Hall: Maranatha Hall. located in Marine Parade planning area. at coordinates (1.3094, 103.8994).
+- Opp Tg Katong Sec Sch: Opp Tg Katong Sec Sch. located in Marine Parade planning area. at coordinates (1.3077, 103.8985).
+- Tg Katong Sec Sch: Tg Katong Sec Sch. located in Marine Parade planning area. at coordinates (1.3074, 103.8986).
+- Tg Katong Pr Sch: Tg Katong Pr Sch. located in Marine Parade planning area. at coordinates (1.3051, 103.8997).
+- Opp Tg Katong Pr Sch: Opp Tg Katong Pr Sch. located in Marine Parade planning area. at coordinates (1.3039, 103.9001).
+- Aft East Coast Rd: Aft East Coast Rd. located in Marine Parade planning area. at coordinates (1.3089, 103.9082).
+- Aft Lor Nangka: Aft Lor Nangka. located in Marine Parade planning area. at coordinates (1.3124, 103.9069).
+- KiddiWinkie S/H @ Mountbatten: KiddiWinkie S/H @ Mountbatten. located in Marine Parade planning area. at coordinates (1.3010, 103.8865).
+- Bef Fort Rd: Bef Fort Rd. located in Marine Parade planning area. at coordinates (1.3007, 103.8864).
+- Opp Santa Fe Mansions: Opp Santa Fe Mansions. located in Marine Parade planning area. at coordinates (1.3005, 103.8895).
+- Aft Margate Rd: Aft Margate Rd. located in Marine Parade planning area. at coordinates (1.3005, 103.8883).
+- Bet Hse No. 767/767A: Bet Hse No. 767/767A. located in Marine Parade planning area. at coordinates (1.3006, 103.8926).
+- Bef Walton Rd: Bef Walton Rd. located in Marine Parade planning area. at coordinates (1.3006, 103.8930).
+- Bef Tg Katong Rd: Bef Tg Katong Rd. located in Marine Parade planning area. at coordinates (1.3017, 103.8960).

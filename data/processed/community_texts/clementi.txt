@@ -1,0 +1,24 @@
+# Clementi Planning Area
+Population: N/A
+
+## Transport Nodes
+- Blk 109: Blk 109. located in Clementi planning area. at coordinates (1.3218, 103.7709).
+- Blk 116: Blk 116. located in Clementi planning area. at coordinates (1.3240, 103.7722).
+- Clementi N'hood Pk: Clementi N'hood Pk. located in Clementi planning area. at coordinates (1.3253, 103.7742).
+- Bet Clementi Loop: Bet Clementi Loop. located in Clementi planning area. at coordinates (1.3267, 103.7640).
+- Opp Clementi Loop: Opp Clementi Loop. located in Clementi planning area. at coordinates (1.3265, 103.7643).
+- Opp Kent Ridge Ter: Opp Kent Ridge Ter. located in Clementi planning area. at coordinates (1.2949, 103.7694).
+- Tentera Diraja Mque: Tentera Diraja Mque. located in Clementi planning area. at coordinates (1.2979, 103.7696).
+- The Japanese Pr Sch: The Japanese Pr Sch. located in Clementi planning area. at coordinates (1.3008, 103.7699).
+- Opp Blk 420A: Opp Blk 420A. located in Clementi planning area. at coordinates (1.3098, 103.7682).
+- Opp Nan Hua High Sch: Opp Nan Hua High Sch. located in Clementi planning area. at coordinates (1.3078, 103.7699).
+- Clementi Int: Clementi Int. located in Clementi planning area. at coordinates (1.3149, 103.7641).
+- Opp Varsity Pk: Opp Varsity Pk. located in Clementi planning area. at coordinates (1.2939, 103.7669).
+- Varsity Pk: Varsity Pk. located in Clementi planning area. at coordinates (1.2938, 103.7671).
+- Waseda S Snr High Sch: Waseda S Snr High Sch. located in Clementi planning area. at coordinates (1.2967, 103.7669).
+- Opp Waseda S Snr High Sch: Opp Waseda S Snr High Sch. located in Clementi planning area. at coordinates (1.2969, 103.7671).
+- Kent Ridge Sec Sch: Kent Ridge Sec Sch. located in Clementi planning area. at coordinates (1.3017, 103.7657).
+- Opp Kent Ridge Sec Sch: Opp Kent Ridge Sec Sch. located in Clementi planning area. at coordinates (1.3015, 103.7661).
+- Blk 726 Clementi West Mkt: Blk 726 Clementi West Mkt. located in Clementi planning area. at coordinates (1.3042, 103.7646).
+- Blk 601: Blk 601. located in Clementi planning area. at coordinates (1.3048, 103.7645).
+- Opp Regent Pk: Opp Regent Pk. located in Clementi planning area. at coordinates (1.3173, 103.7624).

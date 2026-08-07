@@ -1,0 +1,8 @@
+entity_id,type,name,lat,lon,planning_area,extra
+lta-mrt-EW24,lta_mrt,Jurong East MRT,1.3331,103.7427,Jurong East,lines:EWL|NSL
+lta-mrt-NS24,lta_mrt,Dhoby Ghaut MRT,1.2991,103.8457,Museum,lines:NSL|NEL|CCL
+lta-mrt-NS22,lta_mrt,Orchard MRT,1.3040,103.8318,Orchard,lines:NSL
+lta-mrt-EW14,lta_mrt,Raffles Place MRT,1.2839,103.8515,Downtown Core,lines:EWL|NSL
+lta-mrt-NE3,lta_mrt,Outram Park MRT,1.2804,103.8391,Outram,lines:EWL|NEL
+nea-station-S104,nea_weather,Changi Weather Station,1.3644,103.9915,Changi,
+nea-station-S44,nea_weather,Newton Weather Station,1.3123,103.8374,Newton,

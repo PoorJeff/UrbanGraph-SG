@@ -1,0 +1,9 @@
+# Straits View Planning Area
+Population: N/A
+
+## Transport Nodes
+- Aft Marina Gdns Dr: Aft Marina Gdns Dr. located in Straits View planning area. at coordinates (1.2750, 103.8595).
+- Opp Marina Sth Pier Stn: Opp Marina Sth Pier Stn. located in Straits View planning area. at coordinates (1.2716, 103.8630).
+- Marina Sth Pier Stn: Marina Sth Pier Stn. located in Straits View planning area. at coordinates (1.2713, 103.8629).
+- Marina Bay Cruise Ctr: Marina Bay Cruise Ctr. located in Straits View planning area. at coordinates (1.2666, 103.8599).
+- Marina South Pier: Marina South Pier. located in Straits View planning area. at coordinates (1.2709, 103.8632).

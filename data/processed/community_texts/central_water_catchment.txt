@@ -1,0 +1,24 @@
+# Central Water Catchment Planning Area
+Population: N/A
+
+## Transport Nodes
+- Aft Wallace Way: Aft Wallace Way. located in Central Water Catchment planning area. at coordinates (1.3405, 103.8223).
+- LP 52: LP 52. located in Central Water Catchment planning area. at coordinates (1.3413, 103.8271).
+- Aft Sime Rd: Aft Sime Rd. located in Central Water Catchment planning area. at coordinates (1.3380, 103.8193).
+- Mandai Camp 2: Mandai Camp 2. located in Central Water Catchment planning area. at coordinates (1.4105, 103.7755).
+- Bef Mandai Lake Rd: Bef Mandai Lake Rd. located in Central Water Catchment planning area. at coordinates (1.4106, 103.7797).
+- LP 159: LP 159. located in Central Water Catchment planning area. at coordinates (1.4108, 103.7832).
+- Bef Jln Ulu Sembawang: Bef Jln Ulu Sembawang. located in Central Water Catchment planning area. at coordinates (1.4124, 103.7893).
+- Opp Mandai Agrotech Pk: Opp Mandai Agrotech Pk. located in Central Water Catchment planning area. at coordinates (1.4150, 103.7976).
+- Aft Mandai Ave: Aft Mandai Ave. located in Central Water Catchment planning area. at coordinates (1.4160, 103.8020).
+- Mandai Crematorium: Mandai Crematorium. located in Central Water Catchment planning area. at coordinates (1.4118, 103.8058).
+- Opp Mandai Crematorium: Opp Mandai Crematorium. located in Central Water Catchment planning area. at coordinates (1.4131, 103.8053).
+- Opp Upp Seletar Resvr: Opp Upp Seletar Resvr. located in Central Water Catchment planning area. at coordinates (1.4054, 103.8089).
+- Upp Seletar Resvr: Upp Seletar Resvr. located in Central Water Catchment planning area. at coordinates (1.4056, 103.8080).
+- Opp Bird Paradise: Opp Bird Paradise. located in Central Water Catchment planning area. at coordinates (1.4094, 103.7797).
+- Bird Paradise: Bird Paradise. located in Central Water Catchment planning area. at coordinates (1.4100, 103.7787).
+- S'pore Zoo: S'pore Zoo. located in Central Water Catchment planning area. at coordinates (1.4046, 103.7894).
+- MacRitchie Resvr: MacRitchie Resvr. located in Central Water Catchment planning area. at coordinates (1.3422, 103.8360).
+- Opp MacRitchie Resvr: Opp MacRitchie Resvr. located in Central Water Catchment planning area. at coordinates (1.3418, 103.8362).
+- Opp Andrew Rd: Opp Andrew Rd. located in Central Water Catchment planning area. at coordinates (1.3406, 103.8327).
+- Bef SLE: Bef SLE. located in Central Water Catchment planning area. at coordinates (1.3916, 103.8182).

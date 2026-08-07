@@ -1,0 +1,72 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+*.egg
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data (large files)
+data/raw/**/*.parquet
+data/raw/**/*.csv
+data/raw/**/*.geojson
+data/processed/**/*.parquet
+data/processed/**/*.csv
+data/graphrag/**/*.parquet
+data/graphrag/**/*.csv
+
+# Keep directory structure
+!data/raw/**/.gitkeep
+!data/processed/**/.gitkeep
+!data/graphrag/**/.gitkeep
+
+# Neo4j
+data/neo4j/
+neo4j_data/
+neo4j_logs/
+
+# Docker
+docker-compose.override.yml
+
+# Logs
+logs/
+*.log
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Ruff
+.ruff_cache/
+
+# pytest
+.pytest_cache/
+htmlcov/
+.coverage
+
+# Secrets
+*.key
+*.pem
+secrets/
+scripts/
+
+# OS generated files
+Desktop.ini

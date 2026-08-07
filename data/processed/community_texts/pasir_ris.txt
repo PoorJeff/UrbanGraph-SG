@@ -1,0 +1,24 @@
+# Pasir Ris Planning Area
+Population: N/A
+
+## Transport Nodes
+- Pasir Ris Int: Pasir Ris Int. located in Pasir Ris planning area. at coordinates (1.3737, 103.9484).
+- Opp Blk 515: Opp Blk 515. located in Pasir Ris planning area. at coordinates (1.3738, 103.9427).
+- Blk 515: Blk 515. located in Pasir Ris planning area. at coordinates (1.3737, 103.9435).
+- Opp Blk 571: Opp Blk 571. located in Pasir Ris planning area. at coordinates (1.3727, 103.9456).
+- Blk 571: Blk 571. located in Pasir Ris planning area. at coordinates (1.3730, 103.9455).
+- Opp Pasir Ris Int/Mall: Opp Pasir Ris Int/Mall. located in Pasir Ris planning area. at coordinates (1.3723, 103.9485).
+- Pasir Ris Int/Mall: Pasir Ris Int/Mall. located in Pasir Ris planning area. at coordinates (1.3724, 103.9487).
+- Blk 541: Blk 541. located in Pasir Ris planning area. at coordinates (1.3694, 103.9513).
+- Pasir Ris Town Pk: Pasir Ris Town Pk. located in Pasir Ris planning area. at coordinates (1.3696, 103.9516).
+- Blk 115: Blk 115. located in Pasir Ris planning area. at coordinates (1.3691, 103.9551).
+- Blk 425: Blk 425. located in Pasir Ris planning area. at coordinates (1.3694, 103.9551).
+- Ris Grandeur: Ris Grandeur. located in Pasir Ris planning area. at coordinates (1.3738, 103.9404).
+- Opp Ris Grandeur: Opp Ris Grandeur. located in Pasir Ris planning area. at coordinates (1.3741, 103.9408).
+- Blk 633: Blk 633. located in Pasir Ris planning area. at coordinates (1.3781, 103.9413).
+- Elias Mall: Elias Mall. located in Pasir Ris planning area. at coordinates (1.3773, 103.9415).
+- Aft Pasir Ris Dr 3: Aft Pasir Ris Dr 3. located in Pasir Ris planning area. at coordinates (1.3803, 103.9427).
+- Bef Pasir Ris Dr 3: Bef Pasir Ris Dr 3. located in Pasir Ris planning area. at coordinates (1.3801, 103.9427).
+- Aft Pasir Ris Ave: Aft Pasir Ris Ave. located in Pasir Ris planning area. at coordinates (1.3804, 103.9455).
+- Bef Pasir Ris Ave: Bef Pasir Ris Ave. located in Pasir Ris planning area. at coordinates (1.3804, 103.9464).
+- Bef Pasir Ris Rd: Bef Pasir Ris Rd. located in Pasir Ris planning area. at coordinates (1.3806, 103.9482).

@@ -1,0 +1,11 @@
+# LLM SDK - supports DeepSeek, OpenAI, Ollama
+
+# OpenAI-compatible API (covers DeepSeek, OpenAI, Ollama, local models)
+openai>=1.30.0
+
+# Optional: LangChain for advanced prompt chaining
+# langchain>=0.2.0
+# langchain-openai>=0.1.0
+
+# Token counting
+tiktoken>=0.7.0

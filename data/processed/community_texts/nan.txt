@@ -1,0 +1,6 @@
+# nan Planning Area
+## Transport Nodes
+- Johor Bahru Checkpt: Johor Bahru Checkpt. located in nan planning area. at coordinates (1.4649, 103.7655).
+- Johor Bahru Checkpt: Johor Bahru Checkpt. located in nan planning area. at coordinates (1.4654, 103.7683).
+- Larkin Ter: Larkin Ter. located in nan planning area. at coordinates (1.4939, 103.7440).
+- JB Sentral Bus Ter: JB Sentral Bus Ter. located in nan planning area. at coordinates (1.4635, 103.7644).

@@ -1,0 +1,25 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Which MRT lines pass through Jurong East station?",
+      "domain": "transport",
+      "retrieval_mode": "cypher",
+      "expected_answer_contains": ["NSL", "EWL"]
+    },
+    {
+      "id": "q2",
+      "text": "How many MRT stations are there in the knowledge graph?",
+      "domain": "metadata",
+      "retrieval_mode": "cypher",
+      "expected_answer_contains": []
+    },
+    {
+      "id": "q3",
+      "text": "What is near Orchard MRT station?",
+      "domain": "spatial",
+      "retrieval_mode": "local",
+      "expected_answer_contains": ["Orchard"]
+    }
+  ]
+}

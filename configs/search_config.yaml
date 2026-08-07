@@ -1,0 +1,50 @@
+# =============================================================================
+# Search & Retrieval Configuration
+# =============================================================================
+
+local_search:
+  top_k_entities: 5
+  max_hops: 2
+  context_window_tokens: 4000
+  search_timeout_seconds: 10
+  # Text embedding for entity name matching
+  embedding_model: "text-embedding-3-small"  # or local: all-MiniLM-L6-v2
+  similarity_threshold: 0.7
+
+global_search:
+  top_k_communities: 5
+  map_reduce: true
+  map_context_tokens: 2000
+  reduce_context_tokens: 4000
+  search_timeout_seconds: 15
+
+cypher_query:
+  max_rows: 1000
+  query_timeout_seconds: 5
+  forbidden_keywords:
+    - "DELETE"
+    - "DETACH DELETE"
+    - "DROP"
+    - "REMOVE"
+    - "SET"
+    - "CREATE"
+    - "MERGE"
+  allowed_keywords:
+    - "MATCH"
+    - "RETURN"
+    - "WHERE"
+    - "WITH"
+    - "ORDER BY"
+    - "LIMIT"
+    - "SKIP"
+    - "COUNT"
+    - "COLLECT"
+    - "DISTINCT"
+
+answer_generation:
+  max_answer_tokens: 500
+  temperature: 0.1  # low temperature for factual accuracy
+  prompt_file: "src/generation/prompts/answer_prompt.yaml"
+  # Confidence thresholds
+  high_confidence_threshold: 0.8
+  medium_confidence_threshold: 0.5

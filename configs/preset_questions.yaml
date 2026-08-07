@@ -1,0 +1,111 @@
+# =============================================================================
+# Preset Questions for Streamlit UI
+# =============================================================================
+# Maps to §J in UrbanGraph-SG-report.md
+# Each question has: text, domain, expected retrieval mode, and evaluation criteria
+
+preset_questions:
+  - id: 1
+    text: "What are all MRT stations in the CBD planning area?"
+    domain: "transport"
+    retrieval_mode: "cypher"
+    eval_criteria: "Returns complete list with accurate count"
+    expected_entities: ["Raffles Place", "Telok Ayer", "Downtown", "Marina Bay"]
+
+  - id: 2
+    text: "How does heavy rainfall affect MRT ridership in Orchard area?"
+    domain: "transport × weather"
+    retrieval_mode: "local"
+    eval_criteria: "Specific numbers with source citations"
+    expected_entities: ["Orchard MRT", "Orchard", "Rainfall Events"]
+
+  - id: 3
+    text: "Which planning area has the highest HDB resale price, and how is it connected to MRT accessibility?"
+    domain: "housing × transport"
+    retrieval_mode: "global"
+    eval_criteria: "Clear ranking with causal inference"
+    expected_entities: []
+
+  - id: 4
+    text: "During which months does Singapore experience the most rainfall, and how does this correlate with bus ridership changes?"
+    domain: "weather × transport"
+    retrieval_mode: "global"
+    eval_criteria: "Time series with correlation strength"
+    expected_entities: []
+
+  - id: 5
+    text: "Find all POIs within 500m of Jurong East MRT station"
+    domain: "spatial"
+    retrieval_mode: "cypher"
+    eval_criteria: "Returns complete POI list"
+    expected_entities: ["Jurong East MRT"]
+
+  - id: 6
+    text: "Compare the transport connectivity of Tampines versus Jurong East"
+    domain: "transport"
+    retrieval_mode: "global"
+    eval_criteria: "Comparative data presented side by side"
+    expected_entities: ["Tampines", "Jurong East"]
+
+  - id: 7
+    text: "On public holidays, do MRT stations near Orchard Road see higher or lower ridership?"
+    domain: "transport × calendar"
+    retrieval_mode: "local"
+    eval_criteria: "Directional conclusion (higher/lower/unchanged)"
+    expected_entities: ["Orchard Road", "Orchard MRT", "Somerset MRT"]
+
+  - id: 8
+    text: "What is the average HDB resale price in Punggol, and how has it changed?"
+    domain: "housing"
+    retrieval_mode: "cypher"
+    eval_criteria: "Numerical value with time range"
+    expected_entities: ["Punggol"]
+
+  - id: 9
+    text: "Which MRT lines pass through Bishan station?"
+    domain: "transport"
+    retrieval_mode: "cypher"
+    eval_criteria: "List all lines"
+    expected_entities: ["Bishan MRT"]
+
+  - id: 10
+    text: "Is there a relationship between high PSI (haze) days and taxi demand?"
+    domain: "weather × transport"
+    retrieval_mode: "local"
+    eval_criteria: "Evidence-supported answer OR honest 'no data'"
+    expected_entities: []
+
+  - id: 11
+    text: "List all bus stops along Orchard Road"
+    domain: "transport"
+    retrieval_mode: "cypher"
+    eval_criteria: "Complete list returned"
+    expected_entities: ["Orchard Road"]
+
+  - id: 12
+    text: "Which areas in Singapore have the lowest population but the highest MRT station density?"
+    domain: "population × transport"
+    retrieval_mode: "global"
+    eval_criteria: "Ranked comparison"
+    expected_entities: []
+
+  - id: 13
+    text: "How many MRT stations are there in total in the knowledge graph?"
+    domain: "metadata"
+    retrieval_mode: "cypher"
+    eval_criteria: "Exact number"
+    expected_entities: []
+
+  - id: 14
+    text: "During school holidays, which MRT stations see the biggest change in passenger patterns?"
+    domain: "transport × calendar"
+    retrieval_mode: "global"
+    eval_criteria: "Specific station names with change magnitude"
+    expected_entities: []
+
+  - id: 15
+    text: "If I want to live near an MRT station in a planning area with HDB resale prices below S$500K, which areas should I consider?"
+    domain: "housing × transport"
+    retrieval_mode: "cypher"
+    eval_criteria: "Returns filtered list of qualifying areas"
+    expected_entities: []

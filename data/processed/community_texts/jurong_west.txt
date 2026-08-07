@@ -1,0 +1,24 @@
+# Jurong West Planning Area
+Population: N/A
+
+## Transport Nodes
+- Aft Corp Pl: Aft Corp Pl. located in Jurong West planning area. at coordinates (1.3243, 103.7218).
+- Blk 216B: Blk 216B. located in Jurong West planning area. at coordinates (1.3504, 103.7127).
+- Opp Blk 216B: Opp Blk 216B. located in Jurong West planning area. at coordinates (1.3507, 103.7128).
+- Corp Pl: Corp Pl. located in Jurong West planning area. at coordinates (1.3259, 103.7193).
+- Blk 161: Blk 161. located in Jurong West planning area. at coordinates (1.3303, 103.7212).
+- Opp Blk 178: Opp Blk 178. located in Jurong West planning area. at coordinates (1.3329, 103.7204).
+- Blk 178: Blk 178. located in Jurong West planning area. at coordinates (1.3333, 103.7205).
+- Opp Taman Jurong Greens: Opp Taman Jurong Greens. located in Jurong West planning area. at coordinates (1.3368, 103.7178).
+- Taman Jurong Greens: Taman Jurong Greens. located in Jurong West planning area. at coordinates (1.3369, 103.7181).
+- Opp Lakepoint Condo: Opp Lakepoint Condo. located in Jurong West planning area. at coordinates (1.3400, 103.7161).
+- Lakepoint Condo: Lakepoint Condo. located in Jurong West planning area. at coordinates (1.3401, 103.7163).
+- Opp S'pore A'space Mfg: Opp S'pore A'space Mfg. located in Jurong West planning area. at coordinates (1.3421, 103.7160).
+- Blk 203: Blk 203. located in Jurong West planning area. at coordinates (1.3436, 103.7160).
+- Opp Blk 203: Opp Blk 203. located in Jurong West planning area. at coordinates (1.3445, 103.7163).
+- Blk 216 CP: Blk 216 CP. located in Jurong West planning area. at coordinates (1.3497, 103.7124).
+- Blk 213: Blk 213. located in Jurong West planning area. at coordinates (1.3496, 103.7125).
+- Bef Quality Rd: Bef Quality Rd. located in Jurong West planning area. at coordinates (1.3362, 103.7103).
+- Aft Quality Rd: Aft Quality Rd. located in Jurong West planning area. at coordinates (1.3360, 103.7104).
+- Aft Chin Bee Ave: Aft Chin Bee Ave. located in Jurong West planning area. at coordinates (1.3339, 103.7103).
+- Bef Chin Bee Ave: Bef Chin Bee Ave. located in Jurong West planning area. at coordinates (1.3342, 103.7105).

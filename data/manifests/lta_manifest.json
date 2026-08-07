@@ -1,0 +1,29 @@
+{
+  "source": "lta",
+  "timestamp_utc": "2026-08-07T02:31:25.787466+00:00",
+  "files": {
+    "bus_stops": {
+      "path": "C:\\Users\\Jzh20\\Desktop\\UrbanGraph-SG\\data\\raw\\lta\\bus_stops.parquet",
+      "sha256": "9d9d206777c45fe3dd4a84451344a9c6aa6ef1cd59023671ba694a9e1a2be4a0",
+      "size_bytes": 196052
+    },
+    "bus_services": {
+      "path": "C:\\Users\\Jzh20\\Desktop\\UrbanGraph-SG\\data\\raw\\lta\\bus_services.parquet",
+      "sha256": "0c1d9369025625678dc91f2470876fcdd13ce392526126038a58c225bb93445e",
+      "size_bytes": 24008
+    },
+    "bus_routes": {
+      "path": "C:\\Users\\Jzh20\\Desktop\\UrbanGraph-SG\\data\\raw\\lta\\bus_routes.parquet",
+      "sha256": "e93e4539a3803beb4c5958a957ee261ea4e7dc4f790db2e5d00f073c8db680be",
+      "size_bytes": 290983
+    }
+  },
+  "metadata": {
+    "api_base": "https://datamall2.mytransport.sg/ltaodataservice",
+    "record_counts": {
+      "bus_stops": 5207,
+      "bus_services": 806,
+      "bus_routes": 26863
+    }
+  }
+}
