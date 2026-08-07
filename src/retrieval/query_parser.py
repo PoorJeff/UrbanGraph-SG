@@ -157,6 +157,17 @@ def link_entities(query: str) -> dict[str, Any]:
         for f in found
     )
 
+    # Filter: remove Holiday entities unless query is about holidays
+    q_lower = query.lower()
+    has_holiday_intent = any(kw in q_lower for kw in ["holiday","假期","festival","public holiday"])
+    if not has_holiday_intent:
+        found = [e for e in found if e.get("label","") != "Holiday"]
+
+    # 1E: Ambiguity resolution — MRT > PlanningArea > Bus
+    type_priority = {"mrt": 0, "planning_area": 0, "bus": 1}
+    found.sort(key=lambda e: type_priority.get(e.get("tt",""), type_priority.get(e.get("label","").lower(), 99)))
+    ambiguous = len(set(e["name"].lower() for e in found)) < len(found)
+
     return {
         "entities": found[:5],
         "unmatched_tokens": unmatched,

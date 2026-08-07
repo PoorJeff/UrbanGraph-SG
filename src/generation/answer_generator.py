@@ -32,8 +32,9 @@ class AnswerGenerator:
         prompt_path = Path(__file__).parent / "prompts" / "answer_prompt.yaml"
         with open(prompt_path, "r", encoding="utf-8") as f:
             self.prompt = yaml.safe_load(f)
+        self._context_cache: dict[str, Any] = {}  # multi-turn memory
 
-    def answer(self, query: str, retrieval_mode: str = "auto") -> dict[str, Any]:
+    def answer(self, query: str, retrieval_mode: str = "auto", context: dict[str, Any] | None = None) -> dict[str, Any]:
         """Answer a user question about Singapore urban data.
 
         Args:
@@ -42,25 +43,36 @@ class AnswerGenerator:
 
         Returns:
             dict with answer_text, confidence, sources_used, graph_entities, tokens
+            Also returns 'context' dict for multi-turn conversation memory.
         """
+        # Step 0: Multi-turn context injection
+        merged_query = query
+        effective_context = context or self._context_cache
+        if effective_context and effective_context.get("intent") and effective_context.get("entities"):
+            merged, _ = self._merge_context(query, effective_context)
+            if merged and merged != query:
+                merged_query = merged
+
         # Step 1: Direct preset mapping (exact known questions)
-        direct = self._try_direct_preset(query)
+        direct = self._try_direct_preset(merged_query)
         if direct:
+            self._save_context(direct, merged_query)
             return direct
 
         # Step 1.5: NEW 4-layer query parser (NER + Intent + Slot Fill + Execute)
         try:
             from src.retrieval.query_parser import parse_and_execute
-            parsed = parse_and_execute(query)
+            parsed = parse_and_execute(merged_query)
             if parsed and parsed.get("results"):
                 data = self._format_cypher_result(parsed, f"Parsed: {parsed.get('template','?')}")
-                answer = self._generate(query, data, "cypher")
+                answer = self._generate(merged_query, data, "cypher")
                 answer["confidence"] = "HIGH"
+                self._save_context(answer, merged_query)
                 return answer
         except Exception:
             pass
 
-        # Step 2: Cypher keyword matching (fallback)
+        # Step 2: Cypher keyword matching (fallback) — also saves context
         from src.retrieval.cypher_agent import run_preset
         q = query.lower()
         cypher_data = None
@@ -114,9 +126,58 @@ class AnswerGenerator:
 
         # Step 4: Local search as last resort
         context_data = local_search(query)
-        answer = self._generate(query, context_data, "local")
+        answer = self._generate(merged_query, context_data, "local")
         answer["confidence"] = self._assess_confidence(context_data, "local")
+        if next_ctx: answer["next_context"] = next_ctx
         return answer
+
+    def _merge_context(self, query: str, ctx: dict) -> tuple[str, dict]:
+        """Merge previous conversation context into the current query."""
+        prev_intent = ctx.get("intent", "")
+        prev_entities = ctx.get("entities", [])
+        q = query.lower().strip()
+
+        # Follow-up detection
+        followup_markers = ["what about", "and what about", "how about",
+                           "那", "and", "also", "too"]
+        is_followup = any(m in q for m in followup_markers) or len(q.split()) <= 3
+
+        if not is_followup or not prev_intent:
+            return query, {}
+
+        # Extract new entity from follow-up query
+        from src.retrieval.query_parser import link_entities
+        linked = link_entities(query)
+        new_entities = [e for e in linked["entities"] if e.get("confidence", 0) > 0.8]
+
+        if not new_entities:
+            return query, {}
+
+        # Build merged query: "previous_intent for new_entity"
+        new_name = new_entities[0]["name"]
+        intent_templates = {
+            "DESCRIBE": f"What is the population of {new_name}?",
+            "LIST": f"Which MRT lines pass through {new_name}?",
+            "COUNT": f"How many MRT stations are in {new_name}?",
+            "LOCATE": f"Which planning area is {new_name} in?",
+        }
+        merged = intent_templates.get(prev_intent, query)
+        next_ctx = {"intent": prev_intent, "entities": [{"name": new_name}]}
+        return merged, next_ctx
+
+    def _save_context(self, result: dict[str, Any], query: str):
+        """Save context for next turn."""
+        try:
+            from src.retrieval.query_parser import link_entities, classify_intent
+            linked = link_entities(query)
+            intent = classify_intent(query, linked["entities"])
+            self._context_cache = {
+                "intent": intent.get("intent", ""),
+                "entities": [{"name": e["name"]} for e in linked["entities"][:3]],
+                "query": query,
+            }
+        except Exception:
+            self._context_cache = {}
 
     def _try_direct_preset(self, query: str) -> dict[str, Any] | None:
         """Direct preset lookup. Bypasses ALL routing logic for reliability."""

@@ -147,6 +147,8 @@ def get_kpi():
 
 if "chat" not in st.session_state: st.session_state.chat = []
 if "hl" not in st.session_state: st.session_state.hl = []
+if "ctx" not in st.session_state: st.session_state.ctx = {}
+if "hl" not in st.session_state: st.session_state.hl = []
 
 N, E, M, B, H = get_kpi()
 
@@ -385,7 +387,10 @@ with tabs[1]:
     if query:
         st.session_state.chat.append({"role": "user", "content": query})
         with st.spinner("Retrieving from knowledge graph + vector store..."):
-            r = get_gen().answer(query)
+            ctx = dict(st.session_state.ctx) if st.session_state.ctx else None
+            r = get_gen().answer(query, context=ctx)
+            if hasattr(get_gen(), '_context_cache') and get_gen()._context_cache:
+                st.session_state.ctx = dict(get_gen()._context_cache)
         st.session_state.chat.append({"role": "assistant", "content": r["answer_text"],
             "confidence": r.get("confidence","MEDIUM"), "mode": r.get("retrieval_mode",""),
             "sources": r.get("sources_used",[]), "entities": r.get("entities",[])})
