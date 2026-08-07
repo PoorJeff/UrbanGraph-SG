@@ -43,12 +43,24 @@ class AnswerGenerator:
         Returns:
             dict with answer_text, confidence, sources_used, graph_entities, tokens
         """
-        # Step 1: Direct preset mapping
+        # Step 1: Direct preset mapping (exact known questions)
         direct = self._try_direct_preset(query)
         if direct:
             return direct
 
-        # Step 2: Cypher keyword matching
+        # Step 1.5: NEW 4-layer query parser (NER + Intent + Slot Fill + Execute)
+        try:
+            from src.retrieval.query_parser import parse_and_execute
+            parsed = parse_and_execute(query)
+            if parsed and parsed.get("results"):
+                data = self._format_cypher_result(parsed, f"Parsed: {parsed.get('template','?')}")
+                answer = self._generate(query, data, "cypher")
+                answer["confidence"] = "HIGH"
+                return answer
+        except Exception:
+            pass
+
+        # Step 2: Cypher keyword matching (fallback)
         from src.retrieval.cypher_agent import run_preset
         q = query.lower()
         cypher_data = None
