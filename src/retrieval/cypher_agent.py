@@ -97,7 +97,7 @@ PRESET_QUERIES: dict[str, str] = {
     "jurong_east_to_city_hall_path": "MATCH p = shortestPath((a:TransportNode {name: 'Jurong East'})-[:CONNECTS_TO*]-(b:TransportNode {name: 'City Hall'})) RETURN length(p) AS hops, [n IN nodes(p) | n.name] AS stations",
 
     # ── Holiday ──
-    "next_holiday": "MATCH (h:Holiday) WHERE h.date >= date() RETURN h.name AS holiday, h.date AS date ORDER BY h.date LIMIT 3",
+    "next_holiday": "MATCH (h:Holiday) WHERE h.date >= '2025-01-01' RETURN h.name AS holiday, h.date AS date ORDER BY h.date LIMIT 3",
     "holidays_count": "MATCH (h:Holiday) RETURN count(h) AS total_holidays",
 
     # ── Weather ──
