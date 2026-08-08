@@ -24,8 +24,7 @@ st.set_page_config(page_title="UrbanGraph-SG", page_icon="🇸🇬", layout="wid
 # ═══════════════════════════════════════════════════════
 TOKEN_CSS = """
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-html, body, [class*="css"] { font-family: 'Inter', -apple-system, system-ui, sans-serif; }
+html, body, [class*="css"] { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
 .main { background: #ffffff; }
 .main .block-container { padding: 1rem 2rem; max-width: 100%; }
 header { visibility: hidden; }
@@ -134,13 +133,12 @@ PRESETS = [
 ]
 
 _gen = None
+@st.cache_resource
 def get_gen():
-    global _gen
-    if _gen is None:
-        _gen = AnswerGenerator()
-    return _gen
+    return AnswerGenerator()
 
-def get_kpi():
+@st.cache_data(ttl=3600)
+def get_kpi_cached():
     try:
         nodes = run_query("MATCH (n) RETURN count(n) AS c")[0]["c"]
         edges = run_query("MATCH ()-[r]->() RETURN count(r) AS c")[0]["c"]
@@ -150,6 +148,9 @@ def get_kpi():
         return nodes, edges, mrt, bus, hdb
     except Exception:
         return 5532, 10964, 137, 5207, 24
+
+def get_kpi():
+    return get_kpi_cached()
 
 if "chat" not in st.session_state: st.session_state.chat = []
 if "hl" not in st.session_state: st.session_state.hl = []
