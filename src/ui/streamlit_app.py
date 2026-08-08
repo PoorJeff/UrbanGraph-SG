@@ -17,8 +17,6 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 from src.generation.answer_generator import AnswerGenerator
 from src.graph.neo4j_client import run_query
 
-st.set_page_config(page_title="UrbanGraph-SG", page_icon="🇸🇬", layout="wide")
-
 # ═══════════════════════════════════════════════════════
 # DESIGN TOKENS
 # ═══════════════════════════════════════════════════════

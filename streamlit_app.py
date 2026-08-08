@@ -1,8 +1,4 @@
-"""UrbanGraph-SG — Streamlit Cloud Entry Point.
-
-Inject Streamlit secrets into environment variables (backward compat
-with config.py's Pydantic Settings), then run the real dashboard.
-"""
+"""UrbanGraph-SG — Streamlit Cloud Entry Point."""
 
 import os
 import sys
@@ -10,19 +6,17 @@ from pathlib import Path
 
 import streamlit as st
 
+st.set_page_config(page_title="UrbanGraph-SG", page_icon="🇸🇬", layout="wide")
+
 SECRET_ENV_MAP = {
     "LLM_BASE_URL": "LLM_BASE_URL",
     "LLM_API_KEY": "LLM_API_KEY",
     "LLM_MODEL": "LLM_MODEL",
-    "LTA_ACCOUNT_KEY": "LTA_ACCOUNT_KEY",
-    "ONEMAP_API_TOKEN": "ONEMAP_API_TOKEN",
     "NEO4J_URI": "NEO4J_URI",
     "NEO4J_USER": "NEO4J_USER",
     "NEO4J_PASSWORD": "NEO4J_PASSWORD",
     "LOG_LEVEL": "LOG_LEVEL",
     "DATA_DIR": "DATA_DIR",
-    "DATA_START_YEAR": "DATA_START_YEAR",
-    "DATA_END_YEAR": "DATA_END_YEAR",
 }
 
 for secret_key, env_var in SECRET_ENV_MAP.items():
