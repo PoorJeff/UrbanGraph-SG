@@ -43,7 +43,28 @@ def get_driver() -> Driver:
 
     logger.info("Connecting to Neo4j at %s (user: %s)", uri, user)
 
-    # Try Bolt first
+    # AuraDB: Bolt port blocked in some regions — skip straight to HTTP
+    if ".databases.neo4j.io" in uri:
+        instance_id = _extract_instance_id(uri)
+        if instance_id:
+            _HTTP_AUTH = _build_auth_header(user, password)
+            _HTTP_BASE = f"https://{instance_id}.databases.neo4j.io/db/{instance_id}/query/v2"
+            _USE_HTTP = True
+            try:
+                resp = requests.post(
+                    _HTTP_BASE,
+                    headers={"Content-Type": "application/json", "Authorization": _HTTP_AUTH},
+                    json={"statement": "RETURN 1 AS ok"},
+                    timeout=15,
+                )
+                resp.raise_for_status()
+                logger.info("Neo4j AuraDB HTTP API connected")
+                return _DRIVER
+            except Exception as e:
+                _USE_HTTP = False
+                raise RuntimeError(f"AuraDB HTTP API connection failed: {e}")
+
+    # Local Neo4j or other: use Bolt
     try:
         _DRIVER = GraphDatabase.driver(
             uri,
@@ -56,41 +77,9 @@ def get_driver() -> Driver:
         logger.info("Neo4j Bolt connection verified")
         return _DRIVER
     except (ServiceUnavailable, AuthError, OSError) as e:
-        logger.warning("Bolt connection failed: %s", e)
+        logger.error("Bolt connection failed: %s", e)
         _DRIVER = None
-        if ".databases.neo4j.io" in uri:
-            logger.info("AuraDB detected, trying HTTP Query API fallback...")
-        else:
-            raise
-
-    # Fallback: HTTP Query API for AuraDB
-    instance_id = _extract_instance_id(uri)
-    if not instance_id:
-        raise RuntimeError(f"Cannot determine AuraDB instance ID from URI: {uri}")
-
-    _HTTP_AUTH = _build_auth_header(user, password)
-    _HTTP_BASE = f"https://{instance_id}.databases.neo4j.io/db/{instance_id}/query/v2"
-    _USE_HTTP = True
-
-    # Verify HTTP API works
-    try:
-        resp = requests.post(
-            _HTTP_BASE,
-            headers={
-                "Content-Type": "application/json",
-                "Authorization": _HTTP_AUTH,
-            },
-            json={"statement": "RETURN 1 AS ok"},
-            timeout=15,
-        )
-        resp.raise_for_status()
-        logger.info("Neo4j HTTP API connection verified")
-    except Exception as e:
-        logger.error("HTTP API also failed: %s", e)
-        _USE_HTTP = False
-        raise RuntimeError(f"Neither Bolt nor HTTP API can connect: {e}")
-
-    return _DRIVER
+        raise
 
 
 def _extract_instance_id(uri: str) -> str | None:

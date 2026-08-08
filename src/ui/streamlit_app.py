@@ -169,9 +169,14 @@ def get_kpi():
 if "chat" not in st.session_state: st.session_state.chat = []
 if "hl" not in st.session_state: st.session_state.hl = []
 if "ctx" not in st.session_state: st.session_state.ctx = {}
-if "hl" not in st.session_state: st.session_state.hl = []
+if "kpi_loaded" not in st.session_state: st.session_state.kpi_loaded = False
 
-N, E, M, B, H = get_kpi()
+# Immediate fallback — no Neo4j call at module load
+_FALLBACK = (5532, 10964, 137, 5207, 24)
+if st.session_state.kpi_loaded:
+    N, E, M, B, H = get_kpi()  # returns cached instantly
+else:
+    N, E, M, B, H = _FALLBACK
 
 # ═══════════════════════════════════════════════════════
 # HERO HEADER
@@ -866,3 +871,9 @@ with tabs[4]:
                 st.success("Report generated! Click above to download.")
             except Exception as e:
                 st.error(f"Export failed: {e}")
+
+# Trigger KPI load after first render (non-blocking: page shows instantly with fallback)
+if not st.session_state.kpi_loaded:
+    get_kpi_cached()  # fetches from Neo4j, caches for 1h
+    st.session_state.kpi_loaded = True
+    st.rerun()
