@@ -518,6 +518,8 @@ with tabs[2]:
                     plot_weather_dashboard()
                     st.success("Analysis refreshed! Charts updated.")
                     st.rerun()
+                except ImportError:
+                    st.info("ML modules not installed on cloud. Run locally with `pip install scikit-learn sentence-transformers`.")
                 except Exception as e:
                     st.error(f"Analysis failed: {e}")
 
@@ -646,6 +648,8 @@ with tabs[3]:
                         "dim": 32,
                     }
                     st.rerun()
+                except ImportError:
+                    st.info("Graph ML modules not installed on cloud. Run locally with `pip install scikit-learn sentence-transformers`.")
                 except Exception as e:
                     st.error(f"Training failed: {e}")
 
