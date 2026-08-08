@@ -189,11 +189,11 @@ with tabs[0]:
     # ── Search + Spatial Query Bar ──
     s1, s2, s3 = st.columns([3, 1, 1])
     with s1:
-        search_term = st.text_input("", placeholder="Search station or area (e.g. Orchard, Bedok, Bishan)...", label_visibility="collapsed", key="map_search")
+        search_term = st.text_input("Search", placeholder="Search station or area (e.g. Orchard, Bedok, Bishan)...", label_visibility="collapsed", key="map_search")
     with s2:
         radius = st.selectbox("Nearby radius", ["500m", "1km", "2km"], key="radius_sel", label_visibility="collapsed")
     with s3:
-        do_search = st.button("Find", use_container_width=True, key="map_find_btn")
+        do_search = st.button("Find", width="stretch", key="map_find_btn")
 
     # ── Context Bar ──
     # Initialize session state for map
@@ -381,7 +381,7 @@ with tabs[1]:
             cols = st.columns(2)
             for j, q in enumerate(questions):
                 with cols[j % 2]:
-                    if st.button(q[:80], key=f"cat_{i}_{j}", use_container_width=True,
+                    if st.button(q[:80], key=f"cat_{i}_{j}", width="stretch",
                        help=f"Domain: {cat_name}"):
                         selected_preset = q
 
@@ -478,7 +478,7 @@ with tabs[2]:
     # ── Fix #5: Run Analysis button ──
     c_run, c_space = st.columns([2, 5])
     with c_run:
-        if st.button("🔄 Refresh Analysis", type="primary", use_container_width=True):
+        if st.button("🔄 Refresh Analysis", type="primary", width="stretch"):
             with st.spinner("Re-running ML pipeline..."):
                 try:
                     from src.ml.weather_predictor import WeatherPredictor
@@ -552,7 +552,7 @@ with tabs[2]:
     for i, (f, cap) in enumerate(charts_primary):
         p = fig_dir / f
         if p.exists():
-            with cols[i]: st.image(str(p), caption=cap, use_container_width=True)
+            with cols[i]: st.image(str(p), caption=cap, width="stretch")
 
     st.divider()
     st.subheader("Time Series & Correlations")
@@ -584,7 +584,7 @@ with tabs[2]:
     for i, (f, cap) in enumerate(charts2):
         p = fig_dir / f
         if p.exists():
-            with cols2[i % 3]: st.image(str(p), caption=cap, use_container_width=True)
+            with cols2[i % 3]: st.image(str(p), caption=cap, width="stretch")
 
 
 # ═══════════════ TAB 3: GRAPH ML ═══════════════
@@ -599,7 +599,7 @@ with tabs[3]:
     with col_title:
         st.subheader("🔬 Graph Machine Learning — Node2Vec Embeddings")
     with col_btn:
-        if st.button("🔄 Train Embeddings", type="primary", use_container_width=True):
+        if st.button("🔄 Train Embeddings", type="primary", width="stretch"):
             with st.spinner("Training Node2Vec on transport graph..."):
                 try:
                     from src.ml.graph_ml import GraphMLEngine
@@ -703,7 +703,7 @@ with tabs[3]:
         if embp.exists():
             col_viz, col_info = st.columns([2, 1])
             with col_viz:
-                st.image(str(embp), caption="t-SNE Projection of Transport Node Embeddings — MRT (red) vs Bus (blue)", use_container_width=True)
+                st.image(str(embp), caption="t-SNE Projection of Transport Node Embeddings — MRT (red) vs Bus (blue)", width="stretch")
             with col_info:
                 st.info("**How to read:**\n\n"
                         "• Dots close together = similar structural role\n"
@@ -779,7 +779,7 @@ with tabs[4]:
                         "RMSE": f"{metrics.get('RMSE', 0):.1f}",
                         "CV R²": f"{metrics.get('CV_R2_mean', 0):.4f}±{metrics.get('CV_R2_std', 0):.4f}",
                     })
-                st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
+                st.dataframe(pd.DataFrame(rows), width="stretch", hide_index=True)
         else:
             st.info("Run 'Refresh Analysis' in the Analytics tab to generate model card")
 
@@ -825,13 +825,13 @@ with tabs[4]:
                 for f, cap in cat_data["files"]:
                     p = fig_dir / f
                     if p.exists():
-                        st.image(str(p), caption=cap, use_container_width=True)
+                        st.image(str(p), caption=cap, width="stretch")
 
     # ── Fix #5: Export Report ──
     st.divider()
     col_export, col_space = st.columns([2, 5])
     with col_export:
-        if st.button("📥 Export Report Summary", use_container_width=True):
+        if st.button("📥 Export Report Summary", width="stretch"):
             try:
                 export = {
                     "project": "UrbanGraph-SG",
@@ -847,7 +847,7 @@ with tabs[4]:
                 }
                 export_str = json.dumps(export, indent=2, default=str)
                 st.download_button("⬇️ Download JSON Report", export_str, "urbangraph_report.json", "application/json",
-                    use_container_width=True, key="dl_report")
+                    width="stretch", key="dl_report")
                 st.success("Report generated! Click above to download.")
             except Exception as e:
                 st.error(f"Export failed: {e}")
