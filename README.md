@@ -357,13 +357,12 @@ The project includes an automated evaluation framework (`src/evaluation/`) and p
 
 ## Screenshots
 
-<!-- Add screenshots after running the app: streamlit run src/ui/streamlit_app.py -->
-
 | | | |
 |---|---|---|
-| ![Home](screenshots/home.png) | ![Query](screenshots/query.png) | ![Map](screenshots/map.png) |
-
-*To add: open http://localhost:8502, press F12 or use Snipping Tool, save to `screenshots/`*
+| ![Explore](screenshots/01_explore.png) | ![Query](screenshots/02_query.png) | ![Analytics](screenshots/03_analytics.png) |
+| **Explore** — Map + KPI + Search | **Query** — Chat + Confidence + Sources | **Analytics** — ML Models + Charts |
+| ![Graph ML](screenshots/04_graph_ml.png) | ![Report](screenshots/05_report.png) | |
+| **Graph ML** — Node2Vec + Link Prediction | **Report** — Health + Model Card + Export | |
 
 ## Author
 
