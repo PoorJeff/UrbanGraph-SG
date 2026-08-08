@@ -14,8 +14,23 @@ from streamlit_folium import folium_static
 from folium import FeatureGroup
 
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
-from src.generation.answer_generator import AnswerGenerator
-from src.graph.neo4j_client import run_query
+
+# Lazy imports — avoid heavy deps/network at module load
+_run_query = None
+def _lazy_run_query(query, params=None):
+    global _run_query
+    if _run_query is None:
+        from src.graph.neo4j_client import run_query as rq
+        _run_query = rq
+    return __lazy_run_query(query, params)
+
+_gen = None
+def get_gen():
+    global _gen
+    if _gen is None:
+        from src.generation.answer_generator import AnswerGenerator
+        _gen = AnswerGenerator()
+    return _gen
 
 # ═══════════════════════════════════════════════════════
 # DESIGN TOKENS
@@ -133,16 +148,17 @@ PRESETS = [
 _gen = None
 @st.cache_resource
 def get_gen():
+    from src.generation.answer_generator import AnswerGenerator
     return AnswerGenerator()
 
 @st.cache_data(ttl=3600)
 def get_kpi_cached():
     try:
-        nodes = run_query("MATCH (n) RETURN count(n) AS c")[0]["c"]
-        edges = run_query("MATCH ()-[r]->() RETURN count(r) AS c")[0]["c"]
-        mrt = run_query("MATCH (n:TransportNode {transport_type:'mrt'}) RETURN count(n) AS c")[0]["c"]
-        bus = run_query("MATCH (n:TransportNode {transport_type:'bus'}) RETURN count(n) AS c")[0]["c"]
-        hdb = run_query("MATCH (pa:PlanningArea) WHERE pa.avg_resale_price IS NOT NULL RETURN count(pa) AS c")[0]["c"]
+        nodes = _lazy_run_query("MATCH (n) RETURN count(n) AS c")[0]["c"]
+        edges = _lazy_run_query("MATCH ()-[r]->() RETURN count(r) AS c")[0]["c"]
+        mrt = _lazy_run_query("MATCH (n:TransportNode {transport_type:'mrt'}) RETURN count(n) AS c")[0]["c"]
+        bus = _lazy_run_query("MATCH (n:TransportNode {transport_type:'bus'}) RETURN count(n) AS c")[0]["c"]
+        hdb = _lazy_run_query("MATCH (pa:PlanningArea) WHERE pa.avg_resale_price IS NOT NULL RETURN count(pa) AS c")[0]["c"]
         return nodes, edges, mrt, bus, hdb
     except Exception:
         return 5532, 10964, 137, 5207, 24
@@ -204,7 +220,7 @@ with tabs[0]:
     # Process search
     if do_search and search_term:
         try:
-            results = run_query("""
+            results = _lazy_run_query("""
                 MATCH (n) WHERE toLower(n.name) CONTAINS toLower($q) AND n.lat IS NOT NULL
                 RETURN n.name AS name, n.lat AS lat, n.lon AS lon, labels(n)[0] AS type,
                        n.transport_type AS tt, n.population AS pop
@@ -220,7 +236,7 @@ with tabs[0]:
                 center_lat = float(r["lat"])
                 dist_lat_deg = dist_m / 111320.0
                 dist_lon_deg = dist_m / (111320.0 * math.cos(math.radians(center_lat)))
-                nearby = run_query("""
+                nearby = _lazy_run_query("""
                     MATCH (n) WHERE n.lat IS NOT NULL AND n.lat > $min_lat AND n.lat < $max_lat
                     AND n.lon > $min_lon AND n.lon < $max_lon AND n.name <> $center_name
                     RETURN n.name AS name, labels(n)[0] AS type, n.lat AS lat, n.lon AS lon,
@@ -244,7 +260,7 @@ with tabs[0]:
         try:
             # Get lines for MRT stations
             if sel.get("tt") == "mrt":
-                lines = run_query("""
+                lines = _lazy_run_query("""
                     MATCH (n:TransportNode {name: $name})-[r:CONNECTS_TO]-(neighbor)
                     RETURN DISTINCT r.line AS line, collect(neighbor.name)[0..3] AS neighbors
                 """, {"name": sel["name"]})
@@ -252,7 +268,7 @@ with tabs[0]:
                     pinfo.append(f'{l["line"]}: connected to {", ".join(l["neighbors"])}')
 
             # Get planning area
-            pa = run_query("MATCH (n {name: $name})-[:LOCATED_IN]->(pa:PlanningArea) RETURN pa.name AS area, pa.population AS pop", {"name": sel["name"]})
+            pa = _lazy_run_query("MATCH (n {name: $name})-[:LOCATED_IN]->(pa:PlanningArea) RETURN pa.name AS area, pa.population AS pop", {"name": sel["name"]})
             if pa:
                 pinfo.append(f"Planning Area: {pa[0]['area']}" + (f" (pop: {pa[0]['pop']:,})" if pa[0].get("pop") else ""))
         except: pass
@@ -268,7 +284,7 @@ with tabs[0]:
 
     # Layer 1: MRT Lines
     try:
-        ld = run_query("MATCH (a:TransportNode {transport_type:'mrt'})-[r:CONNECTS_TO]->(b:TransportNode {transport_type:'mrt'}) RETURN a.lat AS al, a.lon AS ao, b.lat AS bl, b.lon AS bo, r.line AS l LIMIT 150")
+        ld = _lazy_run_query("MATCH (a:TransportNode {transport_type:'mrt'})-[r:CONNECTS_TO]->(b:TransportNode {transport_type:'mrt'}) RETURN a.lat AS al, a.lon AS ao, b.lat AS bl, b.lon AS bo, r.line AS l LIMIT 150")
         mrt_line_grps = {}
         for row in ld:
             ln = row.get("l","?")
@@ -280,7 +296,7 @@ with tabs[0]:
 
     # Layer 2: MRT Stations
     try:
-        mrts = run_query("MATCH (n:TransportNode {transport_type:'mrt'}) RETURN n.name AS n, n.lat AS la, n.lon AS lo LIMIT 200")
+        mrts = _lazy_run_query("MATCH (n:TransportNode {transport_type:'mrt'}) RETURN n.name AS n, n.lat AS la, n.lon AS lo LIMIT 200")
         mrt_station_fg = FeatureGroup(name="🔴 MRT Stations")
         for s in mrts:
             if s.get("la") and s.get("lo"):
@@ -292,7 +308,7 @@ with tabs[0]:
 
     # Layer 3: Bus Stops (sampled for performance)
     try:
-        buses = run_query("MATCH (n:TransportNode {transport_type:'bus'}) WHERE n.lat IS NOT NULL RETURN n.name AS n, n.lat AS la, n.lon AS lo LIMIT 3000")
+        buses = _lazy_run_query("MATCH (n:TransportNode {transport_type:'bus'}) WHERE n.lat IS NOT NULL RETURN n.name AS n, n.lat AS la, n.lon AS lo LIMIT 3000")
         bus_fg = FeatureGroup(name="🔵 Bus Stops")
         for b in buses:
             if b.get("la") and b.get("lo"):
@@ -721,7 +737,7 @@ with tabs[4]:
     st.subheader("System Health")
     h1, h2, h3, h4 = st.columns(4)
     try:
-        neo = run_query("RETURN 1 AS ok")[0]["ok"]
+        neo = _lazy_run_query("RETURN 1 AS ok")[0]["ok"]
         with h1: st.success(f"✅ Neo4j — Connected")
     except Exception:
         with h1: st.error(f"❌ Neo4j — Offline")
@@ -836,7 +852,7 @@ with tabs[4]:
                     "project": "UrbanGraph-SG",
                     "exported_at": str(datetime.now()),
                     "system_status": {
-                        "neo4j": "connected" if run_query("RETURN 1") else "offline",
+                        "neo4j": "connected" if _lazy_run_query("RETURN 1") else "offline",
                         "chromadb": count if 'count' in dir() else "unknown",
                         "llm_model": get_gen().llm.model,
                     },
