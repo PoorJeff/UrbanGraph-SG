@@ -42,6 +42,12 @@ def _load_entity_index():
     logger.info("Entity index loaded: %d entities in %.0fms", len(_ENTITY_INDEX), (time.time()-t0)*1000)
 
 
+def get_entity_index() -> dict[str, dict]:
+    """Return the in-memory entity index for highlight matching."""
+    _load_entity_index()
+    return dict(_ENTITY_INDEX)
+
+
 def _normalize(name: str) -> str:
     n = name.lower().strip()
     for s in ["mrt station","lrt station","mrt","lrt","station","bus stop","terminal","interchange","stn","int"]:
@@ -149,21 +155,13 @@ def link_entities(query: str) -> dict[str, Any]:
 
         unmatched.append(token)
 
-    # 1E: Ambiguity resolution — MRT > PlanningArea > Bus
-    # Sort: MRT first, then PlanningArea, then others
-    type_priority = {"mrt": 0, "Mrt Station": 0, "planning_area": 1, "PlanningArea": 1, "bus": 2}
-    ambiguous = any(
-        sum(1 for e in found if _normalize(e["name"]) == _normalize(f["name"])) > 1
-        for f in found
-    )
-
-    # Filter: remove Holiday entities unless query is about holidays
+    # 1E: Filter Holiday entities unless query is about holidays
     q_lower = query.lower()
     has_holiday_intent = any(kw in q_lower for kw in ["holiday","假期","festival","public holiday"])
     if not has_holiday_intent:
         found = [e for e in found if e.get("label","") != "Holiday"]
 
-    # 1E: Ambiguity resolution — MRT > PlanningArea > Bus
+    # 1F: Ambiguity resolution — MRT > PlanningArea > Bus
     type_priority = {"mrt": 0, "planning_area": 0, "bus": 1}
     found.sort(key=lambda e: type_priority.get(e.get("tt",""), type_priority.get(e.get("label","").lower(), 99)))
     ambiguous = len(set(e["name"].lower() for e in found)) < len(found)

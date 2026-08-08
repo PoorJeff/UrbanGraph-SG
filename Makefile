@@ -56,7 +56,7 @@ ingest-singstat:
 	python -m src.ingestion.singstat
 
 ingest-geo:
-	python -m src.ingestion.ura_onemap
+	python -m src.ingestion.onemap
 
 ingest-hdb:
 	python -m src.ingestion.hdb
@@ -68,7 +68,7 @@ ingest-all:
 	python -m src.ingestion.lta --data_types all
 	python -m src.ingestion.nea
 	python -m src.ingestion.singstat
-	python -m src.ingestion.ura_onemap
+	python -m src.ingestion.onemap
 	python -m src.ingestion.hdb
 	python -m src.ingestion.calendar
 

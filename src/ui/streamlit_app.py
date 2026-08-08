@@ -3,7 +3,7 @@ UrbanGraph-SG — Modern Urban Intelligence Dashboard
 Design inspired by: Grafana, Neo4j Bloom, Singapore OneMap
 """
 
-import sys, json
+import sys, json, math
 from pathlib import Path
 from datetime import datetime
 
@@ -133,7 +133,12 @@ PRESETS = [
     "How many HDB transactions are in the database?",
 ]
 
-def get_gen(): return AnswerGenerator()
+_gen = None
+def get_gen():
+    global _gen
+    if _gen is None:
+        _gen = AnswerGenerator()
+    return _gen
 
 def get_kpi():
     try:
@@ -143,7 +148,8 @@ def get_kpi():
         bus = run_query("MATCH (n:TransportNode {transport_type:'bus'}) RETURN count(n) AS c")[0]["c"]
         hdb = run_query("MATCH (pa:PlanningArea) WHERE pa.avg_resale_price IS NOT NULL RETURN count(pa) AS c")[0]["c"]
         return nodes, edges, mrt, bus, hdb
-    except: return 5532, 10964, 137, 5207, 24
+    except Exception:
+        return 5532, 10964, 137, 5207, 24
 
 if "chat" not in st.session_state: st.session_state.chat = []
 if "hl" not in st.session_state: st.session_state.hl = []
@@ -212,15 +218,17 @@ with tabs[0]:
                 st.session_state.selected_station = {"name": r["name"], "type": r.get("type",""), "lat": r["lat"], "lon": r["lon"], "pop": r.get("pop"), "tt": r.get("tt")}
                 # Find nearby entities
                 dist_m = {"500m": 500, "1km": 1000, "2km": 2000}.get(radius, 1000)
-                dist_deg = dist_m / 111000.0
+                center_lat = float(r["lat"])
+                dist_lat_deg = dist_m / 111320.0
+                dist_lon_deg = dist_m / (111320.0 * math.cos(math.radians(center_lat)))
                 nearby = run_query("""
                     MATCH (n) WHERE n.lat IS NOT NULL AND n.lat > $min_lat AND n.lat < $max_lat
                     AND n.lon > $min_lon AND n.lon < $max_lon AND n.name <> $center_name
                     RETURN n.name AS name, labels(n)[0] AS type, n.lat AS lat, n.lon AS lon,
                            n.transport_type AS tt
                     ORDER BY n.name LIMIT 30
-                """, {"min_lat": r["lat"] - dist_deg, "max_lat": r["lat"] + dist_deg,
-                      "min_lon": r["lon"] - dist_deg, "max_lon": r["lon"] + dist_deg,
+                """, {"min_lat": r["lat"] - dist_lat_deg, "max_lat": r["lat"] + dist_lat_deg,
+                      "min_lon": r["lon"] - dist_lon_deg, "max_lon": r["lon"] + dist_lon_deg,
                       "center_name": r["name"]})
                 st.session_state.nearby_entities = nearby
                 st.session_state.map_center = [float(r["lat"]), float(r["lon"])]
@@ -394,15 +402,23 @@ with tabs[1]:
         st.session_state.chat.append({"role": "assistant", "content": r["answer_text"],
             "confidence": r.get("confidence","MEDIUM"), "mode": r.get("retrieval_mode",""),
             "sources": r.get("sources_used",[]), "entities": r.get("entities",[])})
-        # Map highlights
+        # Map highlights using entity index cache (avoids ~5000 node Neo4j query per request)
         hl = []
         try:
-            names = run_query("MATCH (n) WHERE n.name IS NOT NULL AND n.lat IS NOT NULL RETURN n.name AS n, n.lat AS la, n.lon AS lo, labels(n)[0] AS l LIMIT 5000")
-            for n in names:
-                if str(n["n"]).lower() in r["answer_text"].lower() and len(str(n["n"])) > 3:
-                    hl.append({"name":n["n"],"lat":float(n["la"]),"lon":float(n["lo"]),"label":n.get("l","")})
-                    if len(hl) >= 8: break
-        except: pass
+            from src.retrieval.query_parser import get_entity_index
+            entity_index = get_entity_index()
+            answer_lower = r["answer_text"].lower()
+            for e in entity_index.values():
+                name = e["name"]
+                if len(name) > 3 and name.lower() in answer_lower:
+                    lat = e.get("lat")
+                    lon = e.get("lon")
+                    if lat and lon:
+                        hl.append({"name": name, "lat": float(lat), "lon": float(lon), "label": e.get("label", "")})
+                        if len(hl) >= 8:
+                            break
+        except Exception:
+            pass
         st.session_state.hl = hl
         st.rerun()
 
@@ -708,7 +724,7 @@ with tabs[4]:
     try:
         neo = run_query("RETURN 1 AS ok")[0]["ok"]
         with h1: st.success(f"✅ Neo4j — Connected")
-    except:
+    except Exception:
         with h1: st.error(f"❌ Neo4j — Offline")
     try:
         from src.retrieval.vector_store import get_store
@@ -716,18 +732,18 @@ with tabs[4]:
         vs._ensure_client()
         count = vs.collection.count() if vs.collection else 0
         with h2: st.success(f"✅ ChromaDB — {count:,} entities indexed")
-    except:
+    except Exception:
         with h2: st.warning("⚠️ ChromaDB — Not connected")
     try:
         g = get_gen()
         with h3: st.success(f"✅ LLM — {g.llm.model}")
-    except:
+    except Exception:
         with h3: st.error("❌ LLM — API unreachable")
     try:
         import psutil, os
         mem = psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024
         with h4: st.info(f"💾 Memory — {mem:.0f} MB")
-    except:
+    except Exception:
         with h4: st.info("💾 Memory — N/A")
 
     st.divider()

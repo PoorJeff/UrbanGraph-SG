@@ -1,4 +1,0 @@
-  File "<string>", line 34
-    print(f'\nSilhouette score: {sil:.3f} ({
-                                           ^
-SyntaxError: '{' was never closed

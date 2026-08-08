@@ -53,13 +53,7 @@ class AnswerGenerator:
             if merged and merged != query:
                 merged_query = merged
 
-        # Step 1: Direct preset mapping (exact known questions)
-        direct = self._try_direct_preset(merged_query)
-        if direct:
-            self._save_context(direct, merged_query)
-            return direct
-
-        # Step 1.5: NEW 4-layer query parser (NER + Intent + Slot Fill + Execute)
+        # Step 1: 4-layer NER parser (primary routing — handles broadest range)
         try:
             from src.retrieval.query_parser import parse_and_execute
             parsed = parse_and_execute(merged_query)
@@ -72,38 +66,11 @@ class AnswerGenerator:
         except Exception:
             pass
 
-        # Step 2: Cypher keyword matching (fallback) — also saves context
-        from src.retrieval.cypher_agent import run_preset
-        q = query.lower()
-        cypher_data = None
-
-        # Try keyword → preset matching (simplified, no full _cypher_retrieve)
-        for keyword, preset_id in [
-            ("station_count", ["mrt station", "total mrt"]),
-            ("bus_stop_count", ["bus stop", "total bus"]),
-            ("circle_line_stations", ["circle line"]),
-            ("mrt_count_cbd", ["cbd", "downtown"]),
-            ("areas_with_most_mrt", ["most mrt", "highest mrt count"]),
-            ("areas_with_least_mrt", ["least mrt", "fewest mrt"]),
-            ("mrt_lines_bishan", ["bishan"]),
-            ("lines_at_jurong_east", ["jurong east"]),
-            ("lines_at_woodlands", ["woodlands"]),
-            ("stations_most_connections", ["most connection", "most interchange"]),
-            ("hdb_highest_prices", ["hdb price", "most expensive", "highest hdb"]),
-            ("largest_population", ["largest population", "most populated"]),
-            ("smallest_population", ["smallest population", "least populated"]),
-        ]:
-            if keyword == "station_count" and ("cbd" in q or "downtown" in q or "circle" in q):
-                continue  # skip generic when specific area mentioned
-            if keyword == "bus_stop_count" and ("orchard road" in q):
-                continue
-            if any(p in q for p in preset_id):
-                r = run_preset(keyword)
-                if r.get("results"):
-                    data = self._format_cypher_result(r)
-                    answer = self._generate(query, data, "cypher")
-                    answer["confidence"] = "HIGH"
-                    return answer
+        # Step 2: Direct preset mapping (hardcoded fallback for 22 verified questions)
+        direct = self._try_direct_preset(merged_query)
+        if direct:
+            self._save_context(direct, merged_query)
+            return direct
 
         # Step 3: Semantic search (embedding-based, two backends)
         semantic_data = None

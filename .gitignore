@@ -54,8 +54,8 @@ logs/
 # Jupyter
 .ipynb_checkpoints/
 
-# Ruff
-.ruff_cache/
+# ChromaDB (local vector DB, regenerated from Neo4j)
+chroma_db/
 
 # pytest
 .pytest_cache/
@@ -67,6 +67,7 @@ htmlcov/
 *.pem
 secrets/
 scripts/test_apis.py
+.streamlit/secrets.toml
 
 # OS generated files
 Desktop.ini

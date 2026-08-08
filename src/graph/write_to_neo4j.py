@@ -195,7 +195,6 @@ def _load_relationships(df: pd.DataFrame) -> int:
                 params["line"] = str(line_val)
 
         queries.append((query, params))
-        queries.append((query, params))
 
     count = batch_execute(queries)
     logger.info("Loaded %d relationships", count)
