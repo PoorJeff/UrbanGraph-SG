@@ -22,99 +22,110 @@ def _lazy_run_query(query, params=None):
     if _run_query is None:
         from src.graph.neo4j_client import run_query as rq
         _run_query = rq
-    return __lazy_run_query(query, params)
-
-_gen = None
-def get_gen():
-    global _gen
-    if _gen is None:
-        from src.generation.answer_generator import AnswerGenerator
-        _gen = AnswerGenerator()
-    return _gen
+    return _run_query(query, params)
 
 # ═══════════════════════════════════════════════════════
-# DESIGN TOKENS
+# DESIGN TOKENS — Dark Mode Dashboard
 # ═══════════════════════════════════════════════════════
 TOKEN_CSS = """
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 html, body, [class*="css"] { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
-.main { background: #ffffff; }
+body { background: #0a0e17; }
+.main { background: #0a0e17; }
 .main .block-container { padding: 1rem 2rem; max-width: 100%; }
 header { visibility: hidden; }
 footer { visibility: hidden; }
 
-/* Typography — dark on white for max contrast */
-h1, h2, h3, h4 { color: #0f172a; }
+/* Typography */
+h1, h2, h3, h4 { color: #e2e8f0; }
 h3 { font-size: 1.4rem !important; margin: 0 !important; padding: 0 !important; font-weight: 700; }
-p, li, label, .stCaption { color: #475569; }
-.stCaption { font-size: 0.8rem; }
+p, li, label, .stCaption { color: #94a3b8; }
+.stCaption { font-size: 0.8rem; color: #64748b; }
 
-/* KPI Cards — white card with colored left border */
-.kpi-row { display: flex; gap: 14px; margin: 14px 0; }
-.kpi-card { flex: 1; background: #ffffff; border-radius: 10px; padding: 18px 22px;
-    border: 1px solid #e2e8f0; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-    transition: box-shadow 0.15s; }
-.kpi-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-.kpi-card .kpi-num { font-size: 2rem; font-weight: 800; color: #0f172a; line-height: 1.2; }
-.kpi-card .kpi-label { font-size: 0.7rem; color: #94a3b8; margin-top: 3px;
+/* KPI Cards — glass dark surface with glow border */
+.kpi-row { display: flex; gap: 12px; margin: 12px 0; }
+.kpi-card { flex: 1; background: #1a2332; border-radius: 12px; padding: 16px 20px;
+    border: 1px solid #1e293b; text-align: center;
+    transition: all 0.2s ease; position: relative; overflow: hidden; }
+.kpi-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--kpi-glow), transparent); opacity: 0; transition: opacity 0.2s; }
+.kpi-card:hover { border-color: #334155; transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+.kpi-card:hover::before { opacity: 1; }
+.kpi-card .kpi-num { font-size: 2rem; font-weight: 800; color: #e2e8f0; line-height: 1.2; }
+.kpi-card .kpi-label { font-size: 0.68rem; color: #64748b; margin-top: 4px;
     text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; }
-.kpi-accent1 .kpi-num { color: #DC2626; }
-.kpi-accent2 .kpi-num { color: #16a34a; }
-.kpi-accent3 .kpi-num { color: #2563eb; }
-.kpi-accent4 .kpi-num { color: #ea580c; }
-.kpi-accent5 .kpi-num { color: #9333ea; }
+.kpi-accent1 { --kpi-glow: #f87171; } .kpi-accent1 .kpi-num { color: #f87171; }
+.kpi-accent2 { --kpi-glow: #34d399; } .kpi-accent2 .kpi-num { color: #34d399; }
+.kpi-accent3 { --kpi-glow: #38bdf8; } .kpi-accent3 .kpi-num { color: #38bdf8; }
+.kpi-accent4 { --kpi-glow: #fb923c; } .kpi-accent4 .kpi-num { color: #fb923c; }
+.kpi-accent5 { --kpi-glow: #a78bfa; } .kpi-accent5 .kpi-num { color: #a78bfa; }
 
-/* Buttons */
-.stButton button { background: #DC2626 !important; color: white !important; border: none !important;
+/* Buttons — cyan accent */
+.stButton button { background: #38bdf8 !important; color: #0a0e17 !important; border: none !important;
     border-radius: 8px !important; font-weight: 600 !important; font-size: 0.85rem !important;
-    padding: 8px 20px !important; transition: all 0.15s; letter-spacing: 0.3px; }
-.stButton button:hover { background: #b91c1c !important; transform: translateY(-1px);
-    box-shadow: 0 4px 14px rgba(220,38,38,0.25); }
+    padding: 8px 20px !important; transition: all 0.2s; letter-spacing: 0.3px; }
+.stButton button:hover { background: #0ea5e9 !important; transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(56,189,248,0.3); }
 
 /* Text inputs */
 .stTextInput input, .stSelectbox div[data-baseweb="select"] > div {
-    background: #ffffff !important; border: 1.5px solid #e2e8f0 !important;
-    border-radius: 8px !important; color: #0f172a !important; font-weight: 500 !important;
+    background: #1a2332 !important; border: 1px solid #1e293b !important;
+    border-radius: 8px !important; color: #e2e8f0 !important; font-weight: 500 !important;
     padding: 8px 12px !important; }
 .stTextInput input:focus, .stSelectbox div[data-baseweb="select"] > div:focus-within {
-    border-color: #DC2626 !important; box-shadow: 0 0 0 3px rgba(220,38,38,0.1) !important; }
+    border-color: #38bdf8 !important; box-shadow: 0 0 0 3px rgba(56,189,248,0.15) !important; }
 .stSelectbox svg { color: #64748b !important; }
-.stTextInput input::placeholder { color: #94a3b8 !important; }
+.stTextInput input::placeholder { color: #475569 !important; }
 
 /* Chat */
 .stChatMessage { background: transparent !important; }
-[data-testid="stChatMessage"] { background: #f8fafc !important; border-radius: 10px !important;
-    padding: 10px 16px !important; margin: 6px 0 !important; border: 1px solid #e2e8f0; }
+[data-testid="stChatMessage"] { background: #1a2332 !important; border-radius: 10px !important;
+    padding: 10px 16px !important; margin: 6px 0 !important; border: 1px solid #1e293b; }
 
-/* Tabs — clean underline style */
+/* Tabs */
 .stTabs [data-baseweb="tab-list"] { gap: 0; background: transparent;
-    border-bottom: 2px solid #e2e8f0; }
+    border-bottom: 2px solid #1e293b; }
 .stTabs [data-baseweb="tab"] { background: transparent; color: #64748b; border-radius: 0;
     padding: 8px 22px; font-weight: 600; font-size: 0.85rem; border: none;
     margin-bottom: -2px; }
-.stTabs [data-baseweb="tab"]:hover { color: #0f172a; }
-.stTabs [data-baseweb="tab"][aria-selected="true"] { background: transparent; color: #DC2626;
-    border-bottom: 2px solid #DC2626; }
+.stTabs [data-baseweb="tab"]:hover { color: #94a3b8; }
+.stTabs [data-baseweb="tab"][aria-selected="true"] { background: transparent; color: #38bdf8;
+    border-bottom: 2px solid #38bdf8; }
 
 /* Dataframe */
-.stDataFrame { background: #ffffff !important; border-radius: 8px !important;
-    border: 1px solid #e2e8f0 !important; }
-.stDataFrame th { background: #f8fafc !important; color: #0f172a !important;
-    font-weight: 700; font-size: 0.8rem; }
-.stDataFrame td { color: #334155 !important; font-size: 0.82rem; }
+.stDataFrame { background: #1a2332 !important; border-radius: 8px !important;
+    border: 1px solid #1e293b !important; }
+.stDataFrame th { background: #0f172a !important; color: #94a3b8 !important;
+    font-weight: 700; font-size: 0.78rem; }
+.stDataFrame td { color: #cbd5e1 !important; font-size: 0.82rem; }
 
 /* Metrics */
-[data-testid="stMetricValue"] { color: #0f172a !important; font-size: 1.6rem !important;
+[data-testid="stMetricValue"] { color: #e2e8f0 !important; font-size: 1.6rem !important;
     font-weight: 800 !important; }
 [data-testid="stMetricLabel"] { color: #64748b !important; font-weight: 600; }
 
-/* Info box */
-.stAlert { background: #eff6ff !important; border: 1px solid #bfdbfe !important;
-    border-radius: 8px !important; color: #1e40af !important; }
+/* Info/Warning/Success — dark variants */
+.stAlert { background: #0f2744 !important; border: 1px solid #1e3a5f !important;
+    border-radius: 8px !important; color: #93c5fd !important; }
+.st-emotion-cache-1qib2hy { background: #0f2744 !important; color: #93c5fd !important; }
+div[data-testid="stNotification"] { background: #1a2332 !important; border: 1px solid #1e293b !important; }
 
-.stImage { border-radius: 8px; border: 1px solid #e2e8f0; }
+.stImage { border-radius: 8px; border: 1px solid #1e293b; }
+.stExpander { background: #1a2332 !important; border: 1px solid #1e293b !important;
+    border-radius: 8px !important; }
+.stExpander details summary { color: #e2e8f0 !important; }
 
-hr { border-color: #e2e8f0 !important; margin: 20px 0 !important; }
+hr { border-color: #1e293b !important; margin: 20px 0 !important; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0e17; }
+::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+
+/* Embed/iframe containers */
+[data-testid="stEmbeddedIframe"] { border: 1px solid #1e293b !important; border-radius: 8px !important; }
 </style>"""
 st.markdown(TOKEN_CSS, unsafe_allow_html=True)
 
@@ -177,10 +188,19 @@ N, E, M, B, H = get_kpi()
 # ═══════════════════════════════════════════════════════
 c_title, c_search = st.columns([3, 2])
 with c_title:
-    st.markdown("### 🎯 UrbanGraph-SG")
-    st.caption("GraphRAG-powered Singapore knowledge navigator — 11 CS/AI domains • Neo4j + DeepSeek + ChromaDB")
+    st.markdown("### 🌏 UrbanGraph-SG")
+    st.caption("GraphRAG-powered Singapore knowledge navigator — Neo4j + DeepSeek + ChromaDB")
 with c_search:
-    st.markdown("")  # spacer for alignment
+    header_query = st.text_input("Quick question", placeholder="e.g. MRT stations in Bedok...",
+                                  label_visibility="collapsed", key="header_query")
+    if header_query:
+        st.session_state.chat.append({"role": "user", "content": header_query})
+        with st.spinner("..."):
+            r = get_gen().answer(header_query)
+        st.session_state.chat.append({"role": "assistant", "content": r["answer_text"],
+            "confidence": r.get("confidence","MEDIUM"), "mode": r.get("retrieval_mode",""),
+            "sources": r.get("sources_used",[])})
+        st.rerun()
 
 # KPI Row
 st.markdown(f"""
@@ -277,7 +297,7 @@ with tabs[0]:
 
     # ── Map ──
     mp = folium.Map(location=st.session_state.map_center, zoom_start=st.session_state.map_zoom,
-                     tiles="CartoDB positron", control_scale=True)
+                     tiles="CartoDB dark_matter", control_scale=True)
     colors = {"EWL":"#009530","NSL":"#D42E2B","NEL":"#9900AA","CCL":"#FA9E0D","DTL":"#005EC4","TEL":"#9D5B25"}
     line_names = {"EWL":"East-West","NSL":"North-South","NEL":"North East","CCL":"Circle","DTL":"Downtown","TEL":"Thomson-East Coast"}
 
@@ -367,8 +387,8 @@ with tabs[0]:
     # Legend
     legend_cols = st.columns(7)
     for i, code in enumerate(["EWL","NSL","NEL","CCL","DTL","TEL"]):
-        legend_cols[i].markdown(f'<span style="color:{colors[code]};font-weight:600">●</span> <span style="color:#8a8d91;font-size:0.7rem">{code}</span>', unsafe_allow_html=True)
-    legend_cols[6].markdown(f'<span style="color:#ED2939">●M</span><span style="color:#8a8d91;font-size:0.65rem">RT</span> <span style="color:#005EC4">●B</span><span style="color:#8a8d91;font-size:0.65rem">us</span>', unsafe_allow_html=True)
+        legend_cols[i].markdown(f'<span style="color:{colors[code]};font-weight:600">●</span> <span style="color:#64748b;font-size:0.7rem">{code}</span>', unsafe_allow_html=True)
+    legend_cols[6].markdown(f'<span style="color:#ED2939">●M</span><span style="color:#64748b;font-size:0.65rem">RT</span> <span style="color:#005EC4">●B</span><span style="color:#64748b;font-size:0.65rem">us</span>', unsafe_allow_html=True)
 
 
 # ═══════════════ TAB 1: QUERY ═══════════════
@@ -437,6 +457,13 @@ with tabs[1]:
         st.rerun()
 
     # ── Chat display ──
+    if st.session_state.chat:
+        col_chat, col_clear = st.columns([6, 1])
+        with col_clear:
+            if st.button("🗑 Clear", key="clear_chat", width="stretch"):
+                st.session_state.chat = []
+                st.session_state.ctx = {}
+                st.rerun()
     for i, msg in enumerate(st.session_state.chat):
         with st.chat_message(msg["role"]):
             if msg["role"] == "user":
@@ -449,7 +476,7 @@ with tabs[1]:
                 col_conf, col_mode = st.columns([1, 3])
                 with col_conf:
                     st.markdown(f"""
-                    <div style="background:#f1f5f9;border-radius:8px;padding:8px;text-align:center">
+                    <div style="background:#1a2332;border-radius:8px;padding:8px;text-align:center">
                         <div style="font-size:1.4rem;font-weight:800;color:{conf_colors.get(conf,'#64748b')}">{conf_pct}%</div>
                         <div style="font-size:0.65rem;color:#64748b;font-weight:600">{conf}</div>
                     </div>
@@ -545,12 +572,12 @@ with tabs[2]:
         for i, (name, metrics) in enumerate(models_data.items()):
             with cols[i]:
                 is_best = name == best
-                border = "2px solid #16a34a" if is_best else "1px solid #e2e8f0"
-                bg = "#f0fdf4" if is_best else "#ffffff"
+                border = "2px solid #34d399" if is_best else "1px solid #1e293b"
+                bg = "#0f2a1a" if is_best else "#1a2332"
                 st.markdown(f"""
                 <div style="background:{bg};border:{border};border-radius:10px;padding:16px;text-align:center">
-                    <div style="font-weight:700;font-size:0.95rem;color:#0f172a">{name}</div>
-                    <div style="font-size:1.6rem;font-weight:800;color:#0f172a;margin:6px 0">R²={metrics.get('R2',0):.3f}</div>
+                    <div style="font-weight:700;font-size:0.95rem;color:#e2e8f0">{name}</div>
+                    <div style="font-size:1.6rem;font-weight:800;color:#e2e8f0;margin:6px 0">R²={metrics.get('R2',0):.3f}</div>
                     <div style="font-size:0.7rem;color:#64748b">MAE={metrics.get('MAE',0):.1f} · RMSE={metrics.get('RMSE',0):.1f}</div>
                     <div style="font-size:0.7rem;color:#64748b">CV={metrics.get('CV_R2_mean',0):.3f}±{metrics.get('CV_R2_std',0):.3f}</div>
                 </div>
@@ -583,10 +610,10 @@ with tabs[2]:
     for i, (icon, val, title, desc) in enumerate(findings):
         with findings_cols[i]:
             st.markdown(f"""
-            <div style="background:#f8fafc;border-radius:10px;padding:14px;border:1px solid #e2e8f0;text-align:center">
+            <div style="background:#1a2332;border-radius:10px;padding:14px;border:1px solid #1e293b;text-align:center">
                 <div style="font-size:1.6rem">{icon}</div>
                 <div style="font-size:1.8rem;font-weight:800;color:#DC2626">{val}</div>
-                <div style="font-size:0.8rem;font-weight:600;color:#0f172a">{title}</div>
+                <div style="font-size:0.8rem;font-weight:600;color:#e2e8f0">{title}</div>
                 <div style="font-size:0.7rem;color:#64748b">{desc}</div>
             </div>
             """, unsafe_allow_html=True)
@@ -686,35 +713,29 @@ with tabs[3]:
                     hop_dist = str(nx.shortest_path_length(engine.G, src, tgt))
                 except: pass
             enriched_rows.append({
-                "Source": src, "Target": tgt,
+                "Source": src,
+                "Target": tgt,
                 "Similarity": f"{float(sim):.4f}",
                 "Explanation": explanation,
-                "Graph Distance": f"{hop_dist} hops",
-                "Action": f"Explore {src}",
+                "Graph Dist": f"{hop_dist} hops",
             })
 
-        edf = pd.DataFrame(enriched_rows)
-
-        # ── Fix #5: Clickable "Explore" buttons ──
-        for i, row in enumerate(enriched_rows):
-            cols = st.columns([2, 2, 1, 1.5, 1.5, 2])
-            with cols[0]: st.caption(row["Source"])
-            with cols[1]: st.caption(row["Target"])
-            with cols[2]: st.caption(row["Similarity"])
-            with cols[3]: st.caption(row["Explanation"])
-            with cols[4]: st.caption(row["Graph Distance"])
-            with cols[5]:
-                if st.button(f"🔍 View", key=f"explore_link_{i}"):
-                    # Switch to Explore tab and highlight
-                    lat = engine.G.nodes[row["Source"]].get("lat", 1.35) if engine else 1.35
-                    lon = engine.G.nodes[row["Source"]].get("lon", 103.8) if engine else 103.8
+        if enriched_rows:
+            edf = pd.DataFrame(enriched_rows)
+            st.caption(f"{len(edf)} predicted missing links — select a row to explore on map")
+            event = st.dataframe(edf, use_container_width=True, hide_index=True,
+                                selection_mode="single-row", on_select="rerun", key="link_table")
+            if event and event.selection and "rows" in event.selection and event.selection["rows"]:
+                idx = event.selection["rows"][0]
+                row = enriched_rows[idx]
+                src_name = row["Source"]
+                if engine and engine.G and src_name in engine.G:
+                    lat = engine.G.nodes[src_name].get("lat", 1.35)
+                    lon = engine.G.nodes[src_name].get("lon", 103.8)
                     st.session_state.map_center = [float(lat), float(lon)]
                     st.session_state.map_zoom = 14
-                    st.session_state.selected_station = {"name": row["Source"], "type": "MRT", "lat": lat, "lon": lon}
-                    st.success(f"Go to 🗺️ Explore tab to see {row['Source']} ↔ {row['Target']}")
-
-        # Header row
-        st.caption("Click 🔍 View to jump to Explore tab with station highlighted")
+                    st.session_state.selected_station = {"name": src_name, "type": "MRT", "lat": lat, "lon": lon}
+                    st.success(f"🗺️ Go to Explore tab → {src_name} highlighted on map")
 
         # ── Fix #4: t-SNE plot ──
         embp = fig_dir / "node_embeddings_tsne.png"
@@ -775,13 +796,13 @@ with tabs[4]:
         if cp.exists():
             card = json.loads(cp.read_text())
             st.markdown(f"""
-            <div style="background:#f8fafc;border-radius:10px;padding:18px;border:1px solid #e2e8f0">
-                <div style="font-weight:700;font-size:1rem;color:#0f172a">{card.get('project','')}</div>
+            <div style="background:#1a2332;border-radius:10px;padding:18px;border:1px solid #1e293b">
+                <div style="font-weight:700;font-size:1rem;color:#e2e8f0">{card.get('project','')}</div>
                 <div style="font-size:0.75rem;color:#64748b;margin:4px 0">{card.get('generated_at','')[:19]}</div>
                 <hr style="margin:10px 0">
-                <div style="font-size:0.8rem;color:#334155"><b>Dataset:</b> {card.get('dataset','')}</div>
-                <div style="font-size:0.8rem;color:#334155"><b>Task:</b> {card.get('task','')}</div>
-                <div style="font-size:0.8rem;color:#334155"><b>Best Model:</b> <span style="color:#16a34a;font-weight:700">{card.get('best_model','')}</span></div>
+                <div style="font-size:0.8rem;color:#94a3b8"><b>Dataset:</b> {card.get('dataset','')}</div>
+                <div style="font-size:0.8rem;color:#94a3b8"><b>Task:</b> {card.get('task','')}</div>
+                <div style="font-size:0.8rem;color:#94a3b8"><b>Best Model:</b> <span style="color:#34d399;font-weight:700">{card.get('best_model','')}</span></div>
             </div>
             """, unsafe_allow_html=True)
 
